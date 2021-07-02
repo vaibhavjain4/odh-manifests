@@ -90,21 +90,6 @@ spec:
           name: manifests
           path: airflow/cluster
       name: airflow-cluster
-#    - kustomizeConfig:
-#        repoRef:
-#          name: manifests
-#          path: odhargo/cluster
-#      name: odhargo-cluster
-#    - kustomizeConfig:
-#        repoRef:
-#          name: manifests
-#          path: odhargo/odhargo
-#      name: odhargo
-#    - kustomizeConfig:
-#        repoRef:
-#          name: manifests
-#          path: odh-dashboard
-#      name: odh-dashboard
     - kustomizeConfig:
         overlays:
           - ml-workshop
@@ -124,3 +109,21 @@ spec:
     - name: manifests
       uri: https://github.com/masoodfaisal/odh-manifests/tarball/master
   version: master
+
+
+
+#    - kustomizeConfig:
+#        repoRef:
+#          name: manifests
+#          path: odhargo/cluster
+#      name: odhargo-cluster
+#    - kustomizeConfig:
+#        repoRef:
+#          name: manifests
+#          path: odhargo/odhargo
+#      name: odhargo
+#    - kustomizeConfig:
+#        repoRef:
+#          name: manifests
+#          path: odh-dashboard
+#      name: odh-dashboard
