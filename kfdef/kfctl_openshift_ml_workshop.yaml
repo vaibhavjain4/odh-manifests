@@ -99,8 +99,6 @@ spec:
               http://minio-ml-workshop.ml-workshop:9000
           - name: s3_credentials_secret
             value: s3-credentials
-          - name: HIVE_LOG_LEVEL
-            value: DEBUG
           - name: s3_endpoint_url_prefix
             value: ""
         repoRef:
