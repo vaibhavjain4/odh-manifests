@@ -6,6 +6,7 @@ metadata:
     hive: metastore
   name: hive-metastore
 spec:
+  replicas: 2
   template:
     spec:
       containers:
@@ -13,5 +14,3 @@ spec:
           env:
             - name: HIVE_LOGLEVEL
               value: "DEBUG"
-            - name: S3_ENDPOINT_URL_PREFIX
-              value: ""

@@ -1,0 +1,22 @@
+# Source: modeldb/charts/webapp/templates/route.yaml
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  annotations:
+    openshift.io/host.generated: 'true'
+  name: modeldb
+  labels:
+    app: modeldb
+    app.kubernetes.io/managed-by: Helm
+    component: webapp
+spec:
+  to:
+    kind: Service
+    name: modeldb-webapp
+    weight: 100
+  port:
+    targetPort: 3000
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: None
+  wildcardPolicy: None

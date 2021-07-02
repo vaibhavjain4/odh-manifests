@@ -1,0 +1,100 @@
+---
+# Source: modeldb/charts/backend/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: modeldb
+    component: backend
+  name: modeldb-backend
+spec:
+  ports:
+    - name: backend
+      port: 8085
+    - name: artifactstore
+      port: 8086
+    - port: 3000
+      name: http
+  selector:
+    app: modeldb
+    component: backend
+  type: ClusterIP
+---
+# Source: modeldb/charts/graphql/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: modeldb
+    component: graphql
+  name: modeldb-graphql
+  annotations:
+    {}
+spec:
+  ports:
+    - port: 3000
+  selector:
+    app: modeldb
+    component: graphql
+  type: ClusterIP
+---
+# Source: modeldb/charts/postgresql/templates/svc-headless.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: modeldb-postgresql-headless
+  labels:
+    app: postgresql
+    chart: postgresql-3.16.1
+    release: "modeldb"
+    heritage: "Helm"
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+    - name: postgresql
+      port: 5432
+      targetPort: postgresql
+  selector:
+    app: postgresql
+    release: "modeldb"
+---
+# Source: modeldb/charts/postgresql/templates/svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: modeldb-postgresql
+  labels:
+    app: postgresql
+    chart: postgresql-3.16.1
+    release: "modeldb"
+    heritage: "Helm"
+spec:
+  type: ClusterIP
+  ports:
+    - name: postgresql
+      port: 5432
+      targetPort: postgresql
+  selector:
+    app: postgresql
+    release: "modeldb"
+    role: master
+---
+# Source: modeldb/charts/webapp/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: modeldb
+    component: webapp
+  name: modeldb-webapp
+  annotations:
+    {}
+spec:
+  ports:
+    - port: 3000
+      targetPort: 3000
+  selector:
+    app: modeldb
+    component: webapp
+  type: ClusterIP

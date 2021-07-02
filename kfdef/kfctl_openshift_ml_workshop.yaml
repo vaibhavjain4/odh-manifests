@@ -67,7 +67,7 @@ spec:
     - kustomizeConfig:
         parameters:
           - name: s3_endpoint_url
-            value: "http://minio-ml-workshop.ml-workshop:9000"
+            value: "minio-ml-workshop.ml-workshop:9000"
         repoRef:
           name: manifests
           path: jupyterhub/jupyterhub
@@ -96,15 +96,25 @@ spec:
         parameters:
           - name: s3_endpoint_url
             value: >-
-              http://minio-ml-workshop.ml-workshop:9000
+              minio-ml-workshop.ml-workshop:9000
           - name: s3_credentials_secret
             value: s3-credentials
           - name: s3_endpoint_url_prefix
-            value: ""
+            value: "http://"
         repoRef:
           name: manifests
           path: trino
       name: trino
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: ml-workshop-minio
+      name: minio
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: ml-workshop-modeldb
+      name: modeldb
   repos:
     - name: kf-manifests
       uri: https://github.com/kubeflow/manifests/archive/v1.2-branch.tar.gz
