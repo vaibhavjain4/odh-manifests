@@ -7,5 +7,5 @@ resources:
 
 
 patchesStrategicMerge:
-  - hive-config-hive-site.yaml
+  - hive-config.yaml
   - aws-secret.yaml
