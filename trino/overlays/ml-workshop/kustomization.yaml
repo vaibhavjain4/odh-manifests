@@ -7,6 +7,6 @@ resources:
 
 
 patchesStrategicMerge:
+  - hive-metastore-dc.yaml
   - hive-config.yaml
   - aws-secret.yaml
-  - hive-metastore-dc.yaml
