@@ -1,0 +1,47 @@
+apiVersion: airflow.apache.org/v1alpha1
+kind: AirflowCluster
+metadata:
+  name: pc-cluster
+  namespace: kafkab-0211
+  finalizers:
+    - sigapps.k8s.io/cleanup
+spec:
+  config: {}
+  airflowbase:
+    name: pc-base
+  dags:
+    git:
+      branch: main
+      once: false
+      repo: 'https://github.com/masoodfaisal/dags/'
+  #    subdir: "dags/"
+  executor: Celery
+  ui:
+    enableroutes: true
+    image: quay.io/opendatahub/docker-airflow
+    replicas: 1
+    resources: {}
+    version: openshift
+  scheduler:
+    database: hb1g05xelszeg799
+    dbuser: yzo16chrm3n05srf
+    image: quay.io/opendatahub/docker-airflow
+    resources: {}
+    version: openshift
+  redis:
+    image: redis
+    resources: {}
+    version: '4.0'
+  flower:
+    enableroutes: true
+    image: quay.io/opendatahub/docker-airflow
+    replicas: 1
+    resources: {}
+    version: openshift
+  worker:
+    forceroot: 'false'
+    image: quay.io/opendatahub/docker-airflow
+    replicas: 2
+    resources: {}
+    version: openshift
+

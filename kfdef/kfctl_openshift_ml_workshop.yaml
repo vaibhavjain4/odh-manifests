@@ -13,7 +13,7 @@ spec:
     - kustomizeConfig:
         repoRef:
           name: manifests
-        path: odhseldon/cluster
+          path: odhseldon/cluster
       name: odhseldon
     - kustomizeConfig:
         parameters:
@@ -125,6 +125,12 @@ spec:
           name: manifests
           path: ml-workshop-jenkins
       name: ml-jenkins
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: ml-workshop-airflow
+      name: ml-airflow
+
   repos:
     - name: kf-manifests
       uri: https://github.com/kubeflow/manifests/archive/v1.2-branch.tar.gz
