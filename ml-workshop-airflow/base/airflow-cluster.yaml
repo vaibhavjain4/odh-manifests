@@ -21,13 +21,13 @@ spec:
     image: quay.io/opendatahub/docker-airflow
     replicas: 1
     resources: {}
-    version: openshift
+    version: 1.10.12-1
   scheduler:
     database: hb1g05xelszeg799
     dbuser: yzo16chrm3n05srf
     image: quay.io/opendatahub/docker-airflow
     resources: {}
-    version: openshift
+    version: 1.10.12-1
   redis:
     image: redis
     resources: {}
@@ -37,11 +37,11 @@ spec:
     image: quay.io/opendatahub/docker-airflow
     replicas: 1
     resources: {}
-    version: openshift
+    version: 1.10.12-1
   worker:
     forceroot: 'false'
     image: quay.io/opendatahub/docker-airflow
     replicas: 2
     resources: {}
-    version: openshift
+    version: 1.10.12-1
 
