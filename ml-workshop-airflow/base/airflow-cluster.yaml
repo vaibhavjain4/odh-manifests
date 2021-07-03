@@ -18,30 +18,30 @@ spec:
   executor: Celery
   ui:
     enableroutes: true
-    image: quay.io/opendatahub/docker-airflow
+    image: quay.io/ml-aml-workshop/airflow-custom
     replicas: 1
     resources: {}
-    version: 1.10.12-1
+    version: 1.1.0
   scheduler:
     database: hb1g05xelszeg799
     dbuser: yzo16chrm3n05srf
-    image: quay.io/opendatahub/docker-airflow
+    image: quay.io/ml-aml-workshop/airflow-custom
     resources: {}
-    version: 1.10.12-1
+    version: 1.1.0
   redis:
     image: redis
     resources: {}
     version: '4.0'
   flower:
     enableroutes: true
-    image: quay.io/opendatahub/docker-airflow
+    image: quay.io/ml-aml-workshop/airflow-custom
     replicas: 1
     resources: {}
-    version: 1.10.12-1
+    version: 1.1.0
   worker:
     forceroot: 'false'
-    image: quay.io/opendatahub/docker-airflow
+    image: quay.io/ml-aml-workshop/airflow-custom
     replicas: 2
     resources: {}
-    version: 1.10.12-1
+    version: 1.1.0
 
