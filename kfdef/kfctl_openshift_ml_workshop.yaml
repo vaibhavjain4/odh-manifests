@@ -120,7 +120,11 @@ spec:
           name: manifests
           path: ml-workshop-kafka-populator
       name: modeldb
-
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: ml-workshop-jenkins
+      name: ml-jenkins
   repos:
     - name: kf-manifests
       uri: https://github.com/kubeflow/manifests/archive/v1.2-branch.tar.gz
