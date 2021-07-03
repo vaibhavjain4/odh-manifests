@@ -13,7 +13,7 @@ spec:
     - kustomizeConfig:
         repoRef:
           name: manifests
-          path: odhseldon/cluster
+        path: odhseldon/cluster
       name: odhseldon
     - kustomizeConfig:
         parameters:
@@ -115,6 +115,12 @@ spec:
           name: manifests
           path: ml-workshop-modeldb
       name: modeldb
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: ml-workshop-kafka-populator
+      name: modeldb
+
   repos:
     - name: kf-manifests
       uri: https://github.com/kubeflow/manifests/archive/v1.2-branch.tar.gz
