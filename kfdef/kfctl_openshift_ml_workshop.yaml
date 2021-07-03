@@ -119,7 +119,7 @@ spec:
         repoRef:
           name: manifests
           path: ml-workshop-kafka-populator
-      name: modeldb
+      name: kafka-populator
     - kustomizeConfig:
         repoRef:
           name: manifests
