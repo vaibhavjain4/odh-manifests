@@ -13,6 +13,10 @@ spec:
   ports:
     - port: 9000
       protocol: TCP
+    - port: 33933
+      protocol: TCP
+      name: web
+
   selector:
     app.kubernetes.io/name: minio
     app.kubernetes.io/instance: min
