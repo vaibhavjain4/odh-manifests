@@ -13,6 +13,7 @@ spec:
   ports:
     - port: 9000
       protocol: TCP
+      name: api
     - port: 33933
       protocol: TCP
       name: web
