@@ -55,7 +55,7 @@ spec:
           args:
             - server
             - /storage
-            - --config-dir=/config
+#            - --config-dir=/config
             - --console-address=":33933"
           env:
             - name: MINIO_ACCESS_KEY
@@ -77,11 +77,11 @@ spec:
           volumeMounts:
             - name: storage
               mountPath: "/storage"
-            - name: config
-              mountPath: "/config"
+#            - name: config
+#              mountPath: "/config"
       volumes:
         - name: storage
           persistentVolumeClaim:
             claimName: minio-ml-workshop
-        - name: config
-          emptyDir: {}
+#        - name: config
+#          emptyDir: {}
