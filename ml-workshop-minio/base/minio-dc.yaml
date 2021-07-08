@@ -56,7 +56,7 @@ spec:
             - server
             - /storage
             - --config-dir=/config
-            - --console-address ":33933"
+            - '--console-address ":33933"'
           env:
             - name: MINIO_ACCESS_KEY
               value: "minio"
