@@ -130,6 +130,11 @@ spec:
           name: manifests
           path: ml-workshop-airflow
       name: ml-airflow
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: ml-workshop-custom-images
+      name: ml-sorkshop-images
 
   repos:
     - name: kf-manifests
