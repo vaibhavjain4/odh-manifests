@@ -134,7 +134,7 @@ spec:
         repoRef:
           name: manifests
           path: ml-workshop-custom-images
-      name: ml-sorkshop-images
+      name: ml-workshop-images
 
   repos:
     - name: kf-manifests
