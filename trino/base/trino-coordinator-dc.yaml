@@ -39,6 +39,16 @@ spec:
             items:
               - key: hive.properties
                 path: hive.properties
+              - key: customerchurn.properties  
+                path: customerchurn.properties
+        - name: trino-kafka-volume
+          secret:
+            secretName: trino-catalog
+            defaultMode: 420
+            items:
+              - key: customer_churn.json
+                path: customer_churn.json
+
       containers:
         - resources:
             requests:
@@ -74,6 +84,9 @@ spec:
               mountPath: /etc/trino
             - name: trino-catalogs-volume
               mountPath: /etc/trino/catalog
+            - name: trino-kafka-volume
+              mountPath: /etc/trino/kafka
+
           image: $(trino_image)
           args:
             - --config=/etc/trino/config-coordinator.properties
