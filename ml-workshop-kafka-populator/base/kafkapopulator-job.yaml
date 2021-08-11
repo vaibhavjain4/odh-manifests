@@ -6,9 +6,6 @@ metadata:
   labels:
     application: kafkadump-ml-workshop
 spec:
-  parallelism: 1
-  completions: 2
-  backoffLimit: 3
   template:
     metadata:
       name: kafkadump-ml-workshop
