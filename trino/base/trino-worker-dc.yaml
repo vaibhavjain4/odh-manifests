@@ -48,8 +48,8 @@ spec:
             secretName: trino-catalog
             defaultMode: 420
             items:
-              - key: customer_churn.json
-                path: customer_churn.json
+              - key: data.json
+                path: data.json
 
       containers:
         - resources:
