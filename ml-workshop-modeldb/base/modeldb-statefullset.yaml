@@ -23,7 +23,7 @@ spec:
         verta.ai/disable_anti_affinity: "true"
     spec:
       containers:
-        - image: quay.io/ml-aml-workshop/modeldb-backend:14AUG2021
+        - image: quay.io/ml-aml-workshop/modeldb-backend:15AUG2021
           # vertaaiofficial/modeldb-backend:2.0.8.1
           env:
             - name: VERTA_MODELDB_CONFIG
@@ -67,7 +67,7 @@ spec:
             - mountPath: "/artifact-store/"
               name: modeldb
 #              subPath:
-        - image:  quay.io/ml-aml-workshop/modeldb-proxy:14AUG2021
+        - image:  quay.io/ml-aml-workshop/modeldb-proxy:15AUG2021
           #  vertaaiofficial/modeldb-proxy:2.0.8.1
           imagePullPolicy: Always
           name: proxy
