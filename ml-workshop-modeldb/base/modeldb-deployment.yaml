@@ -63,7 +63,8 @@ spec:
         verta.ai/disable_anti_affinity: "true"
     spec:
       containers:
-        - image: vertaaiofficial/modeldb-frontend:2.0.8.1
+        - image: quay.io/ml-aml-workshop/modeldb-frontend:14AUG2021
+          # image: vertaaiofficial/modeldb-frontend:2.0.8.1
           imagePullPolicy: Always
           name: modeldb
           ports:
