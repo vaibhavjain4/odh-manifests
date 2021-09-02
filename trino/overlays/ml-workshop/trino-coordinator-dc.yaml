@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trino-coordinator
+
+spec:
+  template:
+    spec:
+      volumes:
+        - name: trino-catalogs-volume
+          secret:
+            secretName: trino-catalog
+            defaultMode: 420
+            items:
+              - key: customerchurn.properties  
+                path: customerchurn.properties
+
+        - name: trino-kafka-volume
+          secret:
+            secretName: trino-catalog
+            defaultMode: 420
+            items:
+              - key: customerchurn.json
+                path: customerchurn.json
+
+      containers:
+        - volumeMounts:
+            - name: trino-kafka-volume
+              mountPath: /etc/trino/kafka
+

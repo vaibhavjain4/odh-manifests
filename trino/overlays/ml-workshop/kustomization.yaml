@@ -10,3 +10,6 @@ patchesStrategicMerge:
   - hive-metastore-dc.yaml
   - hive-config.yaml
   - aws-secret.yaml
+  - trino-workder-dc.yaml
+  - trino-coordinator-dc.yaml
+  - trino-catalog-secret.yaml
