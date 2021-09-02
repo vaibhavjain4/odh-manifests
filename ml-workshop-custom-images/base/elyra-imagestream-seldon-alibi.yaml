@@ -1,11 +1,11 @@
 kind: ImageStream
 apiVersion: image.openshift.io/v1
 metadata:
-  name: ml-workshop-elyra-v2
+  name: ml-workshop-elyra-seldon-alibi
   labels:
     opendatahub.io/notebook-image: 'true'
   annotations:
-    opendatahub.io/notebook-image-name: MLWorkShop Notebook Image V0.0.2
+    opendatahub.io/notebook-image-name: MLWorkShop Notebook Image Drift and Outlier
 spec:
   lookupPolicy:
     local: false

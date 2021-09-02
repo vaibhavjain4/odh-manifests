@@ -5,7 +5,7 @@ metadata:
   labels:
     opendatahub.io/notebook-image: 'true'
   annotations:
-    opendatahub.io/notebook-image-name: MLWorkShop Notebook Image V0.0.1
+    opendatahub.io/notebook-image-name: MLWorkShop Notebook Image
 spec:
   lookupPolicy:
     local: false
