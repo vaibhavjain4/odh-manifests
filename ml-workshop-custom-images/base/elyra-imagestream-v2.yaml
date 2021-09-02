@@ -1,7 +1,7 @@
 kind: ImageStream
 apiVersion: image.openshift.io/v1
 metadata:
-  name: ml-workshop-elyra
+  name: ml-workshop-elyra-v2
   labels:
     opendatahub.io/notebook-image: 'true'
   annotations:
