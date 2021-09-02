@@ -24,7 +24,8 @@ spec:
                 path: customerchurn.json
 
       containers:
-        - volumeMounts:
+        - name: trino-coordinator
+          volumeMounts:
             - name: trino-kafka-volume
               mountPath: /etc/trino/kafka
 
