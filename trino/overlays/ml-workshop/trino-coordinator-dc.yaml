@@ -12,7 +12,9 @@ spec:
             secretName: trino-catalog
             defaultMode: 420
             items:
-              - key: customerchurn.properties  
+              - key: hive.properties
+                path: hive.properties
+              - key: customerchurn.properties
                 path: customerchurn.properties
 
         - name: trino-kafka-volume
