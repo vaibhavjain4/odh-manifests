@@ -135,6 +135,11 @@ spec:
           name: manifests
           path: ml-workshop-custom-images
       name: ml-workshop-images
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: ml-workshop-mlflow
+      name: ml-workshop-mlflow
 
   repos:
     - name: kf-manifests
