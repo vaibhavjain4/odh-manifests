@@ -98,7 +98,7 @@ spec:
             successThreshold: 1
             failureThreshold: 6
           volumeMounts:
-            - name: data
+            - name: mlflow-db-data
               mountPath: /bitnami/postgresql
   #              subPath:
   #      volumes:
