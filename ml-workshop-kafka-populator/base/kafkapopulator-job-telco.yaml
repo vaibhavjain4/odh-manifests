@@ -17,13 +17,16 @@ spec:
           command: ['sh', '-c', "until nslookup odh-message-bus-kafka-bootstrap.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for kafka service; sleep 2; done"]
       containers:
         - name: kafka-dump-ml-workshop
-          image: 'quay.io/ml-aml-workshop/kafka-churn-populator:latest'
+          image: 'quay.io/ml-aml-workshop/kafka-churn-populator:0.0.2'
           imagePullPolicy: Always
           env:
             - name: CHURN_FILE
-              value: '/opt/Customer-Churn_P2.csv'
+              value: '/tmp/Customer-Churn_P2.csv'
             - name: KAFKA_SERVERS
               value: odh-message-bus-kafka-bootstrap:9092
+            - name: KAFKA_TOPIC
+              value: datatelco
+
           command:
             - /bin/sh
             - -c

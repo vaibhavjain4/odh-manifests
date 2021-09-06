@@ -1,0 +1,14 @@
+# Source: kafka-populator/templates/kafka-topic.yaml
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: datatelco
+  labels:
+    strimzi.io/cluster: odh-message-bus
+spec:
+  config:
+    retention.ms: 604800000
+    segment.bytes: 1073741824
+  partitions: 1
+  replicas: 3
+  topicName: datatelco
