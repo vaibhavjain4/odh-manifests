@@ -2,13 +2,13 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: kafkadump-ml-workshop
+  name: kafkadump-ml-workshop-telco
   labels:
-    application: kafkadump-ml-workshop-telco
+    application: kafkadump-ml-workshop
 spec:
   template:
     metadata:
-      name: kafkadump-ml-workshop
+      name: kafkadump-ml-workshop-telco
     spec:
       restartPolicy: Never
       initContainers:
