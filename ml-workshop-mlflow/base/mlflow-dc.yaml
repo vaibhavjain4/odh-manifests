@@ -19,7 +19,7 @@ spec:
           command: ['sh', '-c', "until nslookup mlflow-db.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mlflow db service; sleep 2; done"]
       containers:
         - name: mlflow-deployment
-          image: quay.io/ml-aml-workshop/mlflow:0.0.1
+          image: quay.io/ml-aml-workshop/mlflow:0.0.2
           imagePullPolicy: Always
           args:
             - mlflow

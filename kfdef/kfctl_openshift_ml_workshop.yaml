@@ -65,6 +65,8 @@ spec:
 #          path: prometheus/operator
 #      name: prometheus-operator
     - kustomizeConfig:
+        overlays:
+          - ml-workshop
         parameters:
           - name: s3_endpoint_url
             value: "minio-ml-workshop.ml-workshop:9000"
