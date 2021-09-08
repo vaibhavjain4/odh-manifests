@@ -8,5 +8,5 @@ patchesStrategicMerge:
 
 
 commonLabels:
-  opendatahub.io/component: "false"
+  opendatahub.io/component: "true"
   component.opendatahub.io/name: jupyterhub
