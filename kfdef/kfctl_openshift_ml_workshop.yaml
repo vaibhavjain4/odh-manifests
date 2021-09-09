@@ -86,6 +86,8 @@ spec:
           path: airflow/operator
       name: airflow-operator
     - kustomizeConfig:
+        overlays:
+          - rbac
         repoRef:
           name: manifests
           path: airflow/cluster
