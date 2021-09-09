@@ -2,7 +2,6 @@ apiVersion: airflow.apache.org/v1alpha1
 kind: AirflowCluster
 metadata:
   name: pc-cluster
-  namespace: kafkab-0211
   finalizers:
     - sigapps.k8s.io/cleanup
 spec:
