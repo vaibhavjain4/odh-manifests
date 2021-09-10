@@ -699,9 +699,36 @@ spec:
         nodeAffinity:
 
       initContainers:
-
       containers:
-
+        - resources: {}
+          terminationMessagePath: /dev/termination-log
+          name: git-sync
+          command:
+            - /git-sync
+          env:
+            - name: GIT_SYNC_REPO
+              value: 'https://github.com/masoodfaisal/dags/'
+            - name: GIT_SYNC_DEST
+              value: gitdags
+            - name: GIT_SYNC_BRANCH
+              value: main
+            - name: GIT_SYNC_ROOT
+              value: /tmp/git
+            - name: GIT_SYNC_ONE_TIME
+              value: 'false'
+            - name: GIT_SYNC_REV
+            - name: HOME
+              value: /tmp
+          ports:
+            - name: gitsync
+              protocol: TCP
+              containerPort: 2020
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: dags-data
+              mountPath: /tmp/git
+          terminationMessagePolicy: File
+          image: 'k8s.gcr.io/git-sync/git-sync:v3.2.2'
         - name: airflow-worker
           image: quay.io/ml-aml-workshop/airflow-custom:2.0.0.worker
           imagePullPolicy: "Always"
@@ -770,5 +797,10 @@ spec:
             successThreshold: 1
             timeoutSeconds: 5
           volumeMounts:
+            - name: dags-data
+              mountPath: /opt/bitnami/airflow/dags
 
       volumes:
+        - name: dags-data
+          emptyDir: { }
+
