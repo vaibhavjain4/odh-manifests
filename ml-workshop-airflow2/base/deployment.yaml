@@ -525,8 +525,6 @@ spec:
         checksum/secret: accf045d76eda92532bfdcc8e5ceaf21dda9888d6ba641c0d8bfb79cb11ebb6a
     spec:
 
-      securityContext:
-        fsGroup: 1001
       serviceAccountName: app-aflow-redis
       affinity:
         podAffinity:
