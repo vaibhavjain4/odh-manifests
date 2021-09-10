@@ -76,7 +76,7 @@ spec:
             - name: gitsync
               containerPort: 2020
               protocol: TCP
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           volumeMounts:
             - name: dags-data
               mountPath: /tmp/git
@@ -84,7 +84,7 @@ spec:
           image: 'k8s.gcr.io/git-sync/git-sync:v3.2.2'
         - name: airflow-scheduler
           image: quay.io/ml-aml-workshop/airflow-custom:2.0.0.scheduler
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: "Always"
           securityContext:
             runAsUser: 1001
           env:
@@ -216,7 +216,7 @@ spec:
             - name: gitsync
               protocol: TCP
               containerPort: 2020
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           volumeMounts:
             - name: dags-data
               mountPath: /tmp/git
@@ -224,7 +224,7 @@ spec:
           image: 'k8s.gcr.io/git-sync/git-sync:v3.2.2'
         - name: airflow-web
           image: quay.io/ml-aml-workshop/airflow-custom:2.0.0.web
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: "Always"
           securityContext:
             runAsUser: 1001
           env:
@@ -392,7 +392,7 @@ spec:
       containers:
         - name: app-aflow-postgresql
           image: docker.io/bitnami/postgresql:11.13.0-debian-10-r12
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: "Always"
           resources:
             requests:
               cpu: 250m
@@ -547,7 +547,7 @@ spec:
       containers:
         - name: redis
           image: docker.io/bitnami/redis:6.2.5-debian-10-r11
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: "Always"
           command:
             - /bin/bash
           args:
@@ -704,7 +704,7 @@ spec:
 
         - name: airflow-worker
           image: quay.io/ml-aml-workshop/airflow-custom:2.0.0.worker
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: "Always"
           securityContext:
             runAsUser: 1001
           resources:
