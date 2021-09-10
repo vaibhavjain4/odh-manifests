@@ -215,6 +215,7 @@ spec:
           ports:
             - name: gitsync
               protocol: TCP
+              containerPort: 2020
           imagePullPolicy: IfNotPresent
           volumeMounts:
             - name: dags-data
@@ -275,7 +276,6 @@ spec:
               value: http://127.0.0.1:8080
             - name: AIRFLOW_LDAP_ENABLE
               value: "no"
-          envFrom:
           ports:
             - name: http
               containerPort: 8080
