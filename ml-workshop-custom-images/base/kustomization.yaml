@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - elyra-imagestream.yaml
   - elyra-imagestream-seldon-alibi.yaml
+  - elyra-imagestream-fm-experiments.yaml
 
 commonLabels:
   opendatahub.io/component: "false"
