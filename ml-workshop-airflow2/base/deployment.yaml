@@ -125,6 +125,9 @@ spec:
               value: app-aflow-airflow
             - name: AIRFLOW_WEBSERVER_PORT_NUMBER
               value: "8080"
+            - name: AIRFLOW__WEBSERVER__SECRET_KEY
+              value: "IKnowWhatYouDidLastYear"
+
           envFrom:
           ports:
             - name: task-logs
@@ -276,6 +279,9 @@ spec:
               value: http://127.0.0.1:8080
             - name: AIRFLOW_LDAP_ENABLE
               value: "no"
+            - name: AIRFLOW__WEBSERVER__SECRET_KEY
+              value: "IKnowWhatYouDidLastYear"
+
           ports:
             - name: http
               containerPort: 8080
@@ -774,6 +780,9 @@ spec:
               value: app-aflow-airflow
             - name: AIRFLOW_WEBSERVER_PORT_NUMBER
               value: "8080"
+            - name: AIRFLOW__WEBSERVER__SECRET_KEY
+              value: "IKnowWhatYouDidLastYear"
+
           envFrom:
           ports:
             - name: worker
