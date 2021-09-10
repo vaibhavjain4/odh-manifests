@@ -1,0 +1,19 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: ap-airflow2
+  labels:
+    app.kubernetes.io/instance: app-aflow
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: airflow
+    component.opendatahub.io/name: airflow2
+    helm.sh/chart: airflow-10.3.2
+    opendatahub.io/component: 'false'
+spec:
+  to:
+    kind: Service
+    name: app-aflow-airflow
+    weight: 100
+  port:
+    targetPort: http
+  wildcardPolicy: None
