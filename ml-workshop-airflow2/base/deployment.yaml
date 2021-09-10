@@ -447,7 +447,7 @@ spec:
                 - /bin/sh
                 - -c
                 - exec pg_isready -U "bn_airflow" -d "dbname=bitnami_airflow" -h 127.0.0.1 -p 5432
-            initialDelaySeconds: 500
+            initialDelaySeconds: 200
             periodSeconds: 10
             timeoutSeconds: 5
             successThreshold: 1
@@ -461,7 +461,7 @@ spec:
                 - |
                   exec pg_isready -U "bn_airflow" -d "dbname=bitnami_airflow" -h 127.0.0.1 -p 5432
                   [ -f /opt/bitnami/postgresql/tmp/.initialized ] || [ -f /bitnami/postgresql/.initialized ]
-            initialDelaySeconds: 500
+            initialDelaySeconds: 200
             periodSeconds: 10
             timeoutSeconds: 5
             successThreshold: 1
