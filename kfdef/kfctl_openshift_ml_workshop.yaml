@@ -80,18 +80,24 @@ spec:
           name: manifests
           path: jupyterhub/notebook-images
       name: notebook-images
+#    - kustomizeConfig:
+#        repoRef:
+#          name: manifests
+#          path: airflow/operator
+#      name: airflow-operator
+#    - kustomizeConfig:
+#        overlays:
+#          - rbac
+#        repoRef:
+#          name: manifests
+#          path: airflow/cluster
+#      name: airflow-cluster
     - kustomizeConfig:
         repoRef:
           name: manifests
-          path: airflow/operator
-      name: airflow-operator
-    - kustomizeConfig:
-        overlays:
-          - rbac
-        repoRef:
-          name: manifests
-          path: airflow/cluster
-      name: airflow-cluster
+          path: ml-workshop-airflow2
+      name: airflow2
+
     - kustomizeConfig:
         overlays:
           - ml-workshop
