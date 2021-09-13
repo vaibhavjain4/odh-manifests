@@ -26,3 +26,8 @@ spec:
   port:
     targetPort: http
   wildcardPolicy: None
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: None
+
+

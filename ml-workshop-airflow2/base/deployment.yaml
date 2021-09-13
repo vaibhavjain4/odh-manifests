@@ -174,9 +174,7 @@ spec:
     spec:
 
       priorityClassName: ""
-      securityContext:
-        fsGroup: 1001
-      serviceAccountName: airflow2-proxy
+
       affinity:
         podAffinity:
 
@@ -194,7 +192,7 @@ spec:
               weight: 1
         nodeAffinity:
 
-
+      serviceAccountName: airflow2-proxy
       containers:
         - name: oauth-proxy
           image: openshift/oauth-proxy:latest
@@ -208,7 +206,7 @@ spec:
             - --provider=openshift
             - --openshift-service-account=airflow2-proxy
             - --upstream=http://localhost:8888
-            - --cookie-secret=SECRET
+            - --cookie-secret=SECRETAIRFLOW2
         - resources: {}
           terminationMessagePath: /dev/termination-log
           name: git-sync
