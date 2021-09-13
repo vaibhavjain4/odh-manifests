@@ -26,6 +26,7 @@ spec:
               name: public
           args:
             - --https-address=
+            - --http-address=:5000
             - --provider=openshift
             - --openshift-service-account=default
             - --upstream=http://localhost:5500

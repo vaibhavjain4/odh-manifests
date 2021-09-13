@@ -204,6 +204,7 @@ spec:
               name: public
           args:
             - --https-address=
+            - --http-address=:8080
             - --provider=openshift
             - --openshift-service-account=default
             - --upstream=http://localhost:8888
