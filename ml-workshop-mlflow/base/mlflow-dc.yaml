@@ -28,7 +28,7 @@ spec:
             - --https-address=
             - --http-address=:5000
             - --provider=openshift
-            - --openshift-service-account=default
+            - --openshift-service-account=mlflow-proxy
             - --upstream=http://localhost:5500
             - --cookie-secret=SECRET
         - name: mlflow-deployment
