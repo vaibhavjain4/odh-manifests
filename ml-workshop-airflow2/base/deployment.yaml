@@ -241,8 +241,8 @@ spec:
         - name: airflow-web
           image: quay.io/ml-aml-workshop/airflow-custom:2.0.0.web
           imagePullPolicy: "Always"
-          securityContext:
-            runAsUser: 1001
+#          securityContext:
+#            runAsUser: 1001
           env:
             - name: AIRFLOW_FERNET_KEY
               valueFrom:
