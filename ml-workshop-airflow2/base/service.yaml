@@ -116,10 +116,10 @@ spec:
   ports:
     - name: http
       port: 8080
-      targetPort: http
+      targetPort: 8080
     - name: internal
       port: 8888
-      targetPort: internal
+      targetPort: 8888
 
   selector:
     app.kubernetes.io/name: airflow
