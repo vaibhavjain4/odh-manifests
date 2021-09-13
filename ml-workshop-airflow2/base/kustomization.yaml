@@ -6,6 +6,7 @@ resources:
   - secrets.yaml
   - service.yaml
   - service-accounts.yaml
+  - route.yaml
 
 commonLabels:
   opendatahub.io/component: "false"
