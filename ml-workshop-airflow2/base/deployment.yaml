@@ -196,6 +196,18 @@ spec:
 
 
       containers:
+        - name: oauth-proxy
+          image: openshift/oauth-proxy:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: public
+          args:
+            - --https-address=
+            - --provider=openshift
+            - --openshift-service-account=default
+            - --upstream=http://localhost:8888
+            - --cookie-secret=SECRET
         - resources: {}
           terminationMessagePath: /dev/termination-log
           name: git-sync
@@ -265,9 +277,13 @@ spec:
             - name: AIRFLOW_EXECUTOR
               value: CeleryExecutor
             - name: AIRFLOW_WEBSERVER_HOST
-              value: '0.0.0.0'
+              value: 'localhost'
             - name: AIRFLOW_WEBSERVER_PORT_NUMBER
-              value: "8080"
+              value: "8888"
+            - name: AIRFLOW__WEBSERVER__RBAC
+              value: "False"
+            - name: AIRFLOW__WEBSERVER__AUTHENTICATE
+              value: "False"
             - name: AIRFLOW_USERNAME
               value: user
             - name: AIRFLOW_PASSWORD
