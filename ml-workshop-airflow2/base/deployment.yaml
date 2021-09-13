@@ -176,7 +176,7 @@ spec:
       priorityClassName: ""
       securityContext:
         fsGroup: 1001
-      serviceAccountName: ap-airflow2
+      serviceAccountName: airflow2-proxy
       affinity:
         podAffinity:
 
@@ -206,7 +206,7 @@ spec:
             - --https-address=
             - --http-address=:8080
             - --provider=openshift
-            - --openshift-service-account=ap-airflow2
+            - --openshift-service-account=airflow2-proxy
             - --upstream=http://localhost:8888
             - --cookie-secret=SECRET
         - resources: {}
