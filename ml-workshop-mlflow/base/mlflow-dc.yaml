@@ -13,6 +13,7 @@ spec:
       labels:
         app: mlflow
     spec:
+      serviceAccountName: mlflow-proxy
       initContainers:
         - name: waitkafka
           image: 'registry.access.redhat.com/rhscl/postgresql-96-rhel7:latest'
