@@ -116,8 +116,11 @@ spec:
   ports:
     - name: http
       port: 8080
-      nodePort: null
       targetPort: http
+    - name: http
+      port: 8888
+      targetPort: internal
+
   selector:
     app.kubernetes.io/name: airflow
     app.kubernetes.io/instance: app-aflow

@@ -124,7 +124,7 @@ spec:
             - name: AIRFLOW_WEBSERVER_HOST
               value: app-aflow-airflow
             - name: AIRFLOW_WEBSERVER_PORT_NUMBER
-              value: "8080"
+              value: "8888"
             - name: AIRFLOW__WEBSERVER__SECRET_KEY
               value: "IKnowWhatYouDidLastYear"
 
@@ -176,7 +176,7 @@ spec:
       priorityClassName: ""
       securityContext:
         fsGroup: 1001
-      serviceAccountName: default
+      serviceAccountName: ap-airflow2
       affinity:
         podAffinity:
 
@@ -206,7 +206,7 @@ spec:
             - --https-address=
             - --http-address=:8080
             - --provider=openshift
-            - --openshift-service-account=default
+            - --openshift-service-account=ap-airflow2
             - --upstream=http://localhost:8888
             - --cookie-secret=SECRET
         - resources: {}
@@ -278,7 +278,7 @@ spec:
             - name: AIRFLOW_EXECUTOR
               value: CeleryExecutor
             - name: AIRFLOW_WEBSERVER_HOST
-              value: 'localhost'
+              value: '0.0.0.0'
             - name: AIRFLOW_WEBSERVER_PORT_NUMBER
               value: "8888"
             - name: AIRFLOW__WEBSERVER__RBAC
@@ -293,7 +293,7 @@ spec:
                   name: app-aflow-airflow
                   key: airflow-password
             - name: AIRFLOW_BASE_URL
-              value: http://127.0.0.1:8080
+              value: http://127.0.0.1:8888
             - name: AIRFLOW_LDAP_ENABLE
               value: "no"
             - name: AIRFLOW__WEBSERVER__SECRET_KEY
@@ -301,7 +301,7 @@ spec:
 
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 8888
           livenessProbe:
             tcpSocket:
               port: http
@@ -796,7 +796,7 @@ spec:
             - name: AIRFLOW_WEBSERVER_HOST
               value: app-aflow-airflow
             - name: AIRFLOW_WEBSERVER_PORT_NUMBER
-              value: "8080"
+              value: "8888"
             - name: AIRFLOW__WEBSERVER__SECRET_KEY
               value: "IKnowWhatYouDidLastYear"
 
