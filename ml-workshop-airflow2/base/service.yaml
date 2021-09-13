@@ -117,7 +117,7 @@ spec:
     - name: http
       port: 8080
       targetPort: http
-    - name: http
+    - name: internal
       port: 8888
       targetPort: internal
 

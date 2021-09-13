@@ -278,7 +278,7 @@ spec:
             - name: AIRFLOW_EXECUTOR
               value: CeleryExecutor
             - name: AIRFLOW_WEBSERVER_HOST
-              value: '0.0.0.0'
+              value: "0.0.0.0"
             - name: AIRFLOW_WEBSERVER_PORT_NUMBER
               value: "8888"
             - name: AIRFLOW__WEBSERVER__RBAC
