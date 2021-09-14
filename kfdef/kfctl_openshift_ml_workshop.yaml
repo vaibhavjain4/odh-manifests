@@ -133,11 +133,11 @@ spec:
           name: manifests
           path: ml-workshop-jenkins
       name: ml-jenkins
-    - kustomizeConfig:
-        repoRef:
-          name: manifests
-          path: ml-workshop-airflow
-      name: ml-airflow
+    # - kustomizeConfig:
+    #     repoRef:
+    #       name: manifests
+    #       path: ml-workshop-airflow
+    #   name: ml-airflow
     - kustomizeConfig:
         repoRef:
           name: manifests
