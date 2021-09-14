@@ -1,0 +1,89 @@
+ODH Operator:
+quay.io/opendatahub/opendatahub-operator
+https://docs.openshift.com/container-platform/4.8/operators/admin/olm-restricted-networks.html
+
+
+JHub:
+"quay.io/odh-jupyterhub/nbviewer:latest"
+"quay.io/thoth-station/s2i-generic-data-science-notebook:v0.0.4"
+"quay.io/thoth-station/s2i-lab-elyra:v0.0.8"
+"quay.io/thoth-station/s2i-minimal-py38-notebook:v0.0.14"
+"quay.io/thoth-station/s2i-scipy-notebook:v0.0.2"
+"quay.io/odh-jupyterhub/s2i-spark-minimal-notebook:py36-spark2.4.5-hadoop2.7.3"
+"quay.io/odh-jupyterhub/s2i-spark-scipy-notebook:3.6"
+"quay.io/thoth-station/s2i-tensorflow-notebook:v0.0.2"
+quay.io/odh-jupyterhub/jupyterhub-img:v0.3.0, 
+registry.redhat.io/rhel8/postgresql-96, 
+
+
+airflow:
+quay.io/opendatahub/airflow-operator:openshift, 
+quay.io/opendatahub/docker-airflow
+
+airflow2:
+https://github.com/bitnami/bitnami-docker-airflow
+k8s.gcr.io/git-sync/git-sync:v3.2.2, quay.io/ml-aml-workshop/airflow-custom:2.0.0.scheduler, 
+openshift/oauth-proxy:latest, k8s.gcr.io/git-sync/git-sync:v3.2.2, quay.io/ml-aml-workshop/airflow-custom:2.0.0.web, 
+k8s.gcr.io/git-sync/git-sync:v3.2.2, quay.io/ml-aml-workshop/airflow-custom:2.0.0.worker, 
+docker.io/bitnami/postgresql:11.13.0-debian-10-r12, 
+docker.io/bitnami/redis:6.2.5-debian-10-r11, (move to RH Versions)
+docker.io/bitnami/airflow-worker:2.1.3-debian-10-r8, 
+
+pythin:
+registry.access.redhat.com/ubi8/python-38, 
+registry.access.redhat.com/rhel8/python-36
+
+hive:
+quay.io/cloudservices/ubi-hive:2.3.3-002, 
+
+jenkins:
+quay.io/redhat-developer/origin-jenkins@sha256:a8e94991bd42290c51310ad1d34554f1d1604813a9f15f8acf96e18f71ff65c7, quay.io/redhat-developer/jenkins-kubernetes-sidecar@sha256:590f088f15cc0c010d1730d68780bba3cee692b9c07d9322aa758f733ba08977, 
+registry.redhat.io/ocp-tools-4-tech-preview/jenkins-rhel8-operator@sha256:75dfcaa5abed8e1f46cbf1364b48667f795d22a1ace92d53f2df338ac98fe558, 
+
+minio: (nice to have) - not installed
+docker.io/minio/minio:latest, 
+minio/mc:latest, 
+
+mlflow:
+openshift/oauth-proxy:latest, 
+quay.io/ml-aml-workshop/mlflow:0.0.2, 
+docker.io/bitnami/postgresql:10.7.0,  (move to Red Hat image)
+registry.connect.redhat.com/seldonio/mlflowserver, 
+registry.connect.redhat.com/seldonio/seldon-core-executor,
+
+verta:
+vertaaiofficial/modeldb-backend:2.0.8.1, 
+vertaaiofficial/modeldb-proxy:2.0.8.1, 
+vertaaiofficial/modeldb-graphql:2.0.8.1, 
+docker.io/bitnami/postgresql:10.7.0, 
+vertaaiofficial/modeldb-frontend:2.0.8.2, 
+
+Kafka:
+quay.io/strimzi/operator
+quay.io/strimzi/kafka
+
+spark:
+quay.io/radanalyticsio/spark-operator:1.1.0, 
+quay.io/radanalyticsio/openshift-spark-py36
+quay.io/radanalyticsio/openshift-spark
+quay.io/odh-jupyterhub/s2i-spark-container
+
+superset:
+quay.io/internaldatahub/superset:1.1.0-trino, 
+quay.io/internaldatahub/postgresql-96-centos7:9.6, 
+
+trino:
+quay.io/opendatahub/trino:355, 
+registry.redhat.io/rhel8/postgresql-96:latest, 
+quay.io/opendatahub/trino:355, 
+
+
+Good to have: 
+"quay.io/ml-aml-workshop/elyra:0.0.1"
+"quay.io/ml-aml-workshop/elyra:fmv3"
+"quay.io/ml-aml-workshop/elyra:0.0.4"
+
+
+
+
+https://github.com/cgruver/opendatahub-disconnected-install

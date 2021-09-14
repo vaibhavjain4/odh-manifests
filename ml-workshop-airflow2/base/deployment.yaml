@@ -502,7 +502,6 @@ spec:
         resources:
           requests:
             storage: "8Gi"
-        storageClassName: gp2
 ---
 # Source: airflow/charts/redis/templates/master/statefulset.yaml
 apiVersion: apps/v1
