@@ -31,8 +31,8 @@ spec:
     spec:
 
       priorityClassName: ""
-      securityContext:
-        fsGroup: 1001
+      # securityContext:
+      #   fsGroup: 1001
       serviceAccountName: default
       affinity:
         podAffinity:
@@ -85,8 +85,8 @@ spec:
         - name: airflow-scheduler
           image: quay.io/ml-aml-workshop/airflow-custom:2.0.0.scheduler
           imagePullPolicy: "Always"
-          securityContext:
-            runAsUser: 1001
+          # securityContext:
+          #   runAsUser: 1001
           env:
             - name: AIRFLOW_FERNET_KEY
               valueFrom:
@@ -386,25 +386,25 @@ spec:
       # securityContext:
       #   fsGroup: 1001
       automountServiceAccountToken: false
-      initContainers:
-        - name: init-chmod-data
-          image: docker.io/bitnami/minideb:latest
-          imagePullPolicy: "Always"
-          resources:
-            requests:
-              cpu: 250m
-              memory: 256Mi
-          command:
-            - sh
-            - -c
-            - |
-              chown -R 1001:1001 /bitnami
-              if [ -d /bitnami/postgresql/data ]; then
-                chmod  0700 /bitnami/postgresql/data;
-              fi
-          volumeMounts:
-            - name: aflow-data
-              mountPath: /bitnami/postgresql
+      # initContainers:
+      #   - name: init-chmod-data
+      #     image: docker.io/bitnami/minideb:latest
+      #     imagePullPolicy: "Always"
+      #     resources:
+      #       requests:
+      #         cpu: 250m
+      #         memory: 256Mi
+      #     command:
+      #       - sh
+      #       - -c
+      #       - |
+      #         chown -R 1001:1001 /bitnami
+      #         if [ -d /bitnami/postgresql/data ]; then
+      #           chmod  0700 /bitnami/postgresql/data;
+      #         fi
+      #     volumeMounts:
+      #       - name: aflow-data
+      #         mountPath: /bitnami/postgresql
       containers:
         - name: app-aflow-postgresql
           image: docker.io/bitnami/postgresql:10.7.0
@@ -748,8 +748,8 @@ spec:
         - name: airflow-worker
           image: quay.io/ml-aml-workshop/airflow-custom:2.0.0.worker
           imagePullPolicy: "Always"
-          securityContext:
-            runAsUser: 1001
+          # securityContext:
+          #   runAsUser: 1001
           resources:
             limits: {}
             requests: {}
