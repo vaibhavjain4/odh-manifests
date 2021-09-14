@@ -296,6 +296,8 @@ spec:
               value: "no"
             - name: AIRFLOW__WEBSERVER__SECRET_KEY
               value: "IKnowWhatYouDidLastYear"
+            - name: AUTH_ROLE_PUBLIC
+              value: "Public"
 
           ports:
             - name: http
@@ -381,54 +383,49 @@ spec:
               weight: 1
         nodeAffinity:
 
-      securityContext:
-        fsGroup: 1001
+      # securityContext:
+      #   fsGroup: 1001
       automountServiceAccountToken: false
       initContainers:
         - name: init-chmod-data
-          image: docker.io/bitnami/bitnami-shell:10-debian-10-r172
+          image: docker.io/bitnami/minideb:latest
           imagePullPolicy: "Always"
           resources:
             requests:
               cpu: 250m
               memory: 256Mi
           command:
-            - /bin/sh
-            - -cx
+            - sh
+            - -c
             - |
-              chown 1001:1001 /bitnami/postgresql
-              mkdir -p /bitnami/postgresql/data
-              chmod 700 /bitnami/postgresql/data
-              find /bitnami/postgresql -mindepth 1 -maxdepth 1 -not -name "conf" -not -name ".snapshot" -not -name "lost+found" | \
-                xargs chown -R 1001:1001
-              chmod -R 777 /dev/shm
-          securityContext:
-            runAsUser: 0
+              chown -R 1001:1001 /bitnami
+              if [ -d /bitnami/postgresql/data ]; then
+                chmod  0700 /bitnami/postgresql/data;
+              fi
           volumeMounts:
-            - name: data
+            - name: aflow-data
               mountPath: /bitnami/postgresql
-              subPath:
-            - name: dshm
-              mountPath: /dev/shm
       containers:
         - name: app-aflow-postgresql
-          image: docker.io/bitnami/postgresql:11.13.0-debian-10-r12
+          image: docker.io/bitnami/postgresql:10.7.0
           imagePullPolicy: "Always"
           resources:
             requests:
               cpu: 250m
               memory: 256Mi
-          securityContext:
-            runAsUser: 1001
+          # securityContext:
+          #   runAsUser: 1001
           env:
-            - name: BITNAMI_DEBUG
-              value: "false"
-            - name: POSTGRESQL_PORT_NUMBER
-              value: "5432"
-            - name: POSTGRESQL_VOLUME_DIR
-              value: "/bitnami/postgresql"
             - name: PGDATA
-              value: "/bitnami/postgresql/data"
+              value: "/bitnami/postgresql"
+            # - name: BITNAMI_DEBUG
+            #   value: "false"
+            # - name: POSTGRESQL_PORT_NUMBER
+            #   value: "5432"
+            # - name: POSTGRESQL_VOLUME_DIR
+            #   value: "/bitnami/postgresql"
+            # - name: PGDATA
+            #   value: "/bitnami/postgresql/data"
             - name: POSTGRES_POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -443,22 +440,22 @@ spec:
                   key: postgresql-password
             - name: POSTGRES_DB
               value: "bitnami_airflow"
-            - name: POSTGRESQL_ENABLE_LDAP
-              value: "no"
-            - name: POSTGRESQL_ENABLE_TLS
-              value: "no"
-            - name: POSTGRESQL_LOG_HOSTNAME
-              value: "false"
-            - name: POSTGRESQL_LOG_CONNECTIONS
-              value: "false"
-            - name: POSTGRESQL_LOG_DISCONNECTIONS
-              value: "false"
-            - name: POSTGRESQL_PGAUDIT_LOG_CATALOG
-              value: "off"
-            - name: POSTGRESQL_CLIENT_MIN_MESSAGES
-              value: "error"
-            - name: POSTGRESQL_SHARED_PRELOAD_LIBRARIES
-              value: "pgaudit"
+            # - name: POSTGRESQL_ENABLE_LDAP
+            #   value: "no"
+            # - name: POSTGRESQL_ENABLE_TLS
+            #   value: "no"
+            # - name: POSTGRESQL_LOG_HOSTNAME
+            #   value: "false"
+            # - name: POSTGRESQL_LOG_CONNECTIONS
+            #   value: "false"
+            # - name: POSTGRESQL_LOG_DISCONNECTIONS
+            #   value: "false"
+            # - name: POSTGRESQL_PGAUDIT_LOG_CATALOG
+            #   value: "off"
+            # - name: POSTGRESQL_CLIENT_MIN_MESSAGES
+            #   value: "error"
+            # - name: POSTGRESQL_SHARED_PRELOAD_LIBRARIES
+            #   value: "pgaudit"
           ports:
             - name: tcp-postgresql
               containerPort: 5432
@@ -468,7 +465,7 @@ spec:
                 - /bin/sh
                 - -c
                 - exec pg_isready -U "bn_airflow" -d "dbname=bitnami_airflow" -h 127.0.0.1 -p 5432
-            initialDelaySeconds: 200
+            initialDelaySeconds: 60
             periodSeconds: 10
             timeoutSeconds: 5
             successThreshold: 1
@@ -481,25 +478,24 @@ spec:
                 - -e
                 - |
                   exec pg_isready -U "bn_airflow" -d "dbname=bitnami_airflow" -h 127.0.0.1 -p 5432
-                  [ -f /opt/bitnami/postgresql/tmp/.initialized ] || [ -f /bitnami/postgresql/.initialized ]
-            initialDelaySeconds: 200
+            initialDelaySeconds: 60
             periodSeconds: 10
             timeoutSeconds: 5
             successThreshold: 1
             failureThreshold: 6
           volumeMounts:
-            - name: dshm
-              mountPath: /dev/shm
-            - name: data
+            # - name: dshm
+            #   mountPath: /dev/shm
+            - name: aflow-data
               mountPath: /bitnami/postgresql
-              subPath:
-      volumes:
-        - name: dshm
-          emptyDir:
-            medium: Memory
+              # subPath:
+      # volumes:
+      #   - name: dshm
+      #     emptyDir:
+      #       medium: Memory
   volumeClaimTemplates:
     - metadata:
-        name: data
+        name: aflow-data
       spec:
         accessModes:
           - "ReadWriteOnce"
