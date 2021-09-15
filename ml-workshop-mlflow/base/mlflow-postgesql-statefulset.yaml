@@ -66,10 +66,14 @@ spec:
               cpu: 250m
               memory: 256Mi
           env:
+            - name: POSTGRESQL_ADMIN_PASSWORD
+              value: "admin"
             - name: POSTGRESQL_USER
               value: "postgres"
             - name: POSTGRESQL_PASSWORD
               value: "postgres"
+            - name: POSTGRESQL_DATABASE
+              value: "postgres"  
           ports:
             - name: postgresql
               containerPort: 5432
