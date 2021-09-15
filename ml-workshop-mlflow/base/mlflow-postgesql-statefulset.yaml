@@ -85,7 +85,7 @@ spec:
             tcpSocket:
               port: 5432
 
-            initialDelaySeconds: 5
+            initialDelaySeconds: 30
             periodSeconds: 10
             timeoutSeconds: 5
             successThreshold: 1
