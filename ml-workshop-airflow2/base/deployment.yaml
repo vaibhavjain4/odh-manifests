@@ -477,24 +477,30 @@ spec:
             - name: tcp-postgresql
               containerPort: 5432
           livenessProbe:
-            exec:
-              command:
-                - /bin/sh
-                - -c
-                - exec pg_isready -U "bn_airflow" -d "dbname=bitnami_airflow" -h 127.0.0.1 -p 5432
+            tcpSocket:
+              port: 5432
+
+            # exec:
+            #   command:
+            #     - /bin/sh
+            #     - -c
+            #     - exec pg_isready -U "bn_airflow" -d "dbname=bitnami_airflow" -h 127.0.0.1 -p 5432
             initialDelaySeconds: 60
             periodSeconds: 10
             timeoutSeconds: 5
             successThreshold: 1
             failureThreshold: 6
           readinessProbe:
-            exec:
-              command:
-                - /bin/sh
-                - -c
-                - -e
-                - |
-                  exec pg_isready -U "bn_airflow" -d "dbname=bitnami_airflow" -h 127.0.0.1 -p 5432
+            tcpSocket:
+              port: 5432
+
+            # exec:
+            #   command:
+            #     - /bin/sh
+            #     - -c
+            #     - -e
+            #     - |
+            #       exec pg_isready -U "bn_airflow" -d "dbname=bitnami_airflow" -h 127.0.0.1 -p 5432
             initialDelaySeconds: 60
             periodSeconds: 10
             timeoutSeconds: 5
