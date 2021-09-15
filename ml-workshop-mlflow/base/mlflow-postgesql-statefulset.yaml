@@ -36,62 +36,55 @@ spec:
         app: mlflow-db
     spec:
       initContainers:
-        - name: init-chmod-data
-          image: docker.io/bitnami/minideb:latest
-          imagePullPolicy: "Always"
-          resources:
-            requests:
-              cpu: 250m
-              memory: 256Mi
-          command:
-            - sh
-            - -c
-            - |
-              chown -R 1001:1001 /bitnami
-              if [ -d /bitnami/postgresql/data ]; then
-                chmod  0700 /bitnami/postgresql/data;
-              fi
+      #   - name: init-chmod-data
+      #     image: docker.io/bitnami/minideb:latest
+      #     imagePullPolicy: "Always"
+      #     resources:
+      #       requests:
+      #         cpu: 250m
+      #         memory: 256Mi
+      #     command:
+      #       - sh
+      #       - -c
+      #       - |
+      #         chown -R 1001:1001 /bitnami
+      #         if [ -d /bitnami/postgresql/data ]; then
+      #           chmod  0700 /bitnami/postgresql/data;
+      #         fi
 
 
-          volumeMounts:
-            - name: mlflow-db-data
-              mountPath: /bitnami/postgresql
-      #              subPath:
+      #     volumeMounts:
+      #       - name: mlflow-db-data
+      #         mountPath: /bitnami/postgresql
+      # #              subPath:
       containers:
         - name: mlflow-db-postgresql
-          image: docker.io/bitnami/postgresql:10.7.0
+          image: registry.redhat.io/rhel8/postgresql-10:1-154
           imagePullPolicy: "Always"
           resources:
             requests:
               cpu: 250m
               memory: 256Mi
           env:
-            - name: PGDATA
-              value: "/bitnami/postgresql"
-            - name: POSTGRES_USER
+            - name: POSTGRESQL_USER
               value: "postgres"
-            - name: POSTGRES_PASSWORD
+            - name: POSTGRESQL_PASSWORD
               value: "postgres"
           ports:
             - name: postgresql
               containerPort: 5432
           livenessProbe:
-            exec:
-              command:
-                - sh
-                - -c
-                - exec pg_isready -U "postgres" -h localhost
+            tcpSocket:
+              port: 5432
             initialDelaySeconds: 30
             periodSeconds: 10
             timeoutSeconds: 5
             successThreshold: 1
             failureThreshold: 6
           readinessProbe:
-            exec:
-              command:
-                - sh
-                - -c
-                - exec pg_isready -U "postgres" -h localhost
+            tcpSocket:
+              port: 5432
+
             initialDelaySeconds: 5
             periodSeconds: 10
             timeoutSeconds: 5
@@ -99,7 +92,7 @@ spec:
             failureThreshold: 6
           volumeMounts:
             - name: mlflow-db-data
-              mountPath: /bitnami/postgresql
+              mountPath: /var/lib/pgsql/data
   #              subPath:
   #      volumes:
   volumeClaimTemplates:
