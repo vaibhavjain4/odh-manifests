@@ -124,7 +124,7 @@ spec:
             - name: AIRFLOW_WEBSERVER_HOST
               value: app-aflow-airflow
             - name: AIRFLOW_WEBSERVER_PORT_NUMBER
-              value: "8888"
+              value: "8080"
             - name: AIRFLOW__WEBSERVER__SECRET_KEY
               value: "IKnowWhatYouDidLastYear"
 
@@ -194,19 +194,19 @@ spec:
 
       serviceAccountName: airflow2-proxy
       containers:
-        - name: oauth-proxy
-          image: openshift/oauth-proxy:latest
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 8080
-              name: public
-          args:
-            - --https-address=
-            - --http-address=:8080
-            - --provider=openshift
-            - --openshift-service-account=airflow2-proxy
-            - --upstream=http://localhost:8888
-            - --cookie-secret=SECRETAIRFLOW2
+        # - name: oauth-proxy
+        #   image: openshift/oauth-proxy:latest
+        #   imagePullPolicy: IfNotPresent
+        #   ports:
+        #     - containerPort: 8080
+        #       name: public
+        #   args:
+        #     - --https-address=
+        #     - --http-address=:8080
+        #     - --provider=openshift
+        #     - --openshift-service-account=airflow2-proxy
+        #     - --upstream=http://localhost:8888
+        #     - --cookie-secret=SECRETAIRFLOW2
         - resources: {}
           terminationMessagePath: /dev/termination-log
           name: git-sync
@@ -237,7 +237,7 @@ spec:
           terminationMessagePolicy: File
           image: 'k8s.gcr.io/git-sync/git-sync:v3.2.2'
         - name: airflow-web
-          image: quay.io/ml-aml-workshop/airflow-custom:2.0.0.web
+          image: quay.io/ml-aml-workshop/airflow-custom:2.1.6.web
           imagePullPolicy: "Always"
 #          securityContext:
 #            runAsUser: 1001
@@ -278,7 +278,7 @@ spec:
             - name: AIRFLOW_WEBSERVER_HOST
               value: "0.0.0.0"
             - name: AIRFLOW_WEBSERVER_PORT_NUMBER
-              value: "8888"
+              value: "8080"
             - name: AIRFLOW__WEBSERVER__RBAC
               value: "False"
             - name: AIRFLOW__WEBSERVER__AUTHENTICATE
@@ -291,17 +291,28 @@ spec:
                   name: app-aflow-airflow
                   key: airflow-password
             - name: AIRFLOW_BASE_URL
-              value: http://127.0.0.1:8888
+              value: http://127.0.0.1:8080
             - name: AIRFLOW_LDAP_ENABLE
               value: "no"
             - name: AIRFLOW__WEBSERVER__SECRET_KEY
               value: "IKnowWhatYouDidLastYear"
             - name: AUTH_ROLE_PUBLIC
               value: "Public"
+            - name: AIRFLOW__WEBSERVER__ENABLE_PROXY_FIX
+              value: "True"
+            - name: OAUTH_API_BASE_URL
+              value: "https://openshift.default.svc.cluster.local:443"
+            - name: REQUESTS_CA_BUNDLE
+              value: "/tmp/combined.pem" 
+            - name: SA_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: airflow2-proxy
+                  key: token
 
           ports:
             - name: http
-              containerPort: 8888
+              containerPort: 8080
           livenessProbe:
             tcpSocket:
               port: http
@@ -820,7 +831,7 @@ spec:
             - name: AIRFLOW_WEBSERVER_HOST
               value: app-aflow-airflow
             - name: AIRFLOW_WEBSERVER_PORT_NUMBER
-              value: "8888"
+              value: "8080"
             - name: AIRFLOW__WEBSERVER__SECRET_KEY
               value: "IKnowWhatYouDidLastYear"
 
