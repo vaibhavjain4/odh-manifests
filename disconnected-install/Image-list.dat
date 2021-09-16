@@ -1,0 +1,90 @@
+#These images are for V1.1.0 operator
+
+
+### jupyterhub
+##Jupyterhub [central Jupyterhub + Traefik Proxy]
+#--> Jupyterhub-base
+registry.redhat.io/rhel8/postgresql-96
+quay.io/openshift/origin-deployer:4.7.0
+quay.io/radanalyticsio/openshift-spark-py36:2.4.5-2
+registry.redhat.io/openshift4/ose-leader-elector-rhel8:v4.7
+quay.io/odh-jupyterhub/jupyterhub-img:v0.3.3
+registry.access.redhat.com/ubi8/ubi-micro:8.4
+quay.io/internaldatahub/traefik:v1.7-build
+quay.io/internaldatahub/configmap-puller:0.1
+#--> Jupyterhub-overlays
+registry.access.redhat.com/ubi7/python-36
+quay.io/odh-jupyterhub/jupyterhub-img:v0.3.3
+#--> notebook-images-base
+quay.io/odh-jupyterhub/nbviewer:latest
+quay.io/odh-jupyterhub/s2i-spark-minimal-notebook:py36-spark2.4.5-hadoop2.7.3
+quay.io/odh-jupyterhub/s2i-spark-minimal-notebook:3.6
+#-->notebook-images-overlays-additional
+quay.io/thoth-station/s2i-lab-elyra:v0.0.9
+quay.io/thoth-station/s2i-generic-data-science-notebook:v0.0.5
+quay.io/thoth-station/s2i-minimal-py38-notebook:v0.0.15
+quay.io/thoth-station/s2i-minimal-notebook:v0.0.15
+quay.io/thoth-station/s2i-scipy-notebook:v0.0.2
+quay.io/odh-jupyterhub/s2i-spark-scipy-notebook:3.6
+quay.io/thoth-station/s2i-tensorflow-notebook:v0.0.2
+#--> notebook-images-overlays-build
+quay.io/thoth-station/s2i-thoth-ubi8-py36:v0.15.0
+#--> notebook-images-overlays-cuda-11.0.3
+nvcr.io/nvidia/cuda:11.0.3-cudnn8-devel-ubi8
+#--> notebook-images-overlays-cuda
+registry.access.redhat.com/rhscl/s2i-base-rhel7:1
+
+
+### airflow  
+## [Airflow Operator-Controller] and [Airflow Base + Cluster]
+#--> airflow-operator
+quay.io/opendatahub/airflow-operator:openshift
+#--> airflow-cluster
+registry.redhat.io/rhscl/postgresql-10-rhel7:latest
+quay.io/opendatahub/docker-airflow:1.10.11
+quay.io/opendatahub/docker-airflow:openshift
+
+### airflow2 
+# not part of original ODH
+### mlflow
+# not part of original ODH
+
+### radanalyticsio 
+#--> contains spark operator
+quay.io/radanalyticsio/openshift-spark:2.4.5-2
+quay.io/radanalyticsio/openshift-spark-py36:2.4.5-2
+quay.io/jkremser/openshift-spark:2.4.0-aws
+quay.io/radanalyticsio/spark-operator:1.1.0
+
+### odhseldon
+#--> sheldon operator [seldon-operator-certified seldon-operator:v1.7.0]
+registry.connect.redhat.com/seldonio/mock-classifier
+registry.connect.redhat.com/seldonio/seldon-core-operator
+registry.connect.redhat.com/seldonio/sklearnserver-rest
+registry.connect.redhat.com/seldonio/xgboostserver-rest
+registry.connect.redhat.com/seldonio/xgboostserver-grpc
+registry.connect.redhat.com/seldonio/tfproxy-rest
+registry.connect.redhat.com/seldonio/seldon-core-executor
+registry.connect.redhat.com/seldonio/sklearnserver-grpc
+registry.connect.redhat.com/seldonio/mock-classifier
+registry.connect.redhat.com/seldonio/storage-initializer
+registry.connect.redhat.com/seldonio/tensorflow-serving
+registry.connect.redhat.com/seldonio/mlflowserver-grpc
+registry.connect.redhat.com/seldonio/tfproxy-grpc
+registry.connect.redhat.com/seldonio/mlflowserver-rest
+registry.connect.redhat.com/seldonio/alibiexplainer
+registry.connect.redhat.com/seldonio/seldon-engine
+registry.connect.redhat.com/seldonio/tfproxy
+registry.connect.redhat.com/seldonio/xgboostserver
+registry.connect.redhat.com/seldonio/mlflowserver
+registry.connect.redhat.com/seldonio/sklearnserver
+1.2.2
+
+### superset
+quay.io/opendatahub/superset:1.1.0
+quay.io/internaldatahub/postgresql-96-centos7:9.6
+
+### trino
+quay.io/cloudservices/ubi-hive:2.3.3-002
+registry.redhat.io/rhel8/postgresql-96:latest
+quay.io/opendatahub/trino:361
