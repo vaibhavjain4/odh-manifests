@@ -51,9 +51,13 @@ k8s.gcr.io/git-sync/git-sync:v3.2.2
 quay.io/ml-aml-workshop/airflow-custom:2.1.6.web
 registry.redhat.io/rhel8/postgresql-10:1-154
 quay.io/ml-aml-workshop/airflow-custom:2.0.0.worker
+docker.io/bitnami/airflow:2.1.3-debian-10-r0
+docker.io/bitnami/airflow-scheduler:2.1.3-debian-10-r8
+docker.io/bitnami/airflow-worker:2.1.3-debian-10-r8
+docker.io/bitnami/git:2.33.0-debian-10-r16
+docker.io/bitnami/airflow-exporter:0.20210126.0-debian-10-r201
 
-helmchart -> postgresql-10.9.4
-helmchart -> airflow-10.3.2
+
 
 ### mlflow
 # not part of original ODH
@@ -115,4 +119,7 @@ vertaaiofficial/modeldb-proxy:2.0.8.1
 docker.io/bitnami/minideb:latest
 docker.io/bitnami/postgresql:10.7.0
 
-helmchart -> postgresql-3.16.1
+### jenkins
+quay.io/redhat-developer/origin-jenkins@sha256:a8e94991bd42290c51310ad1d34554f1d1604813a9f15f8acf96e18f71ff65c7, 
+quay.io/redhat-developer/jenkins-kubernetes-sidecar@sha256:590f088f15cc0c010d1730d68780bba3cee692b9c07d9322aa758f733ba08977, 
+registry.redhat.io/ocp-tools-4-tech-preview/jenkins-rhel8-operator@sha256:75dfcaa5abed8e1f46cbf1364b48667f795d22a1ace92d53f2df338ac98fe558
