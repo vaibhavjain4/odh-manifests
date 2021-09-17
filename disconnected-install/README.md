@@ -2,7 +2,7 @@
 
 Step1: Collect all the required images. [Image-list.dat](Image-list.dat)
 
-There are multiple ways to get the images
+There are multiple ways to get the images. some of the methods you can use are listed below:
 
     * Manual method: This is the most time taking process of finding the images. In This method one needs to go to each file in the manifest and then check for images being used. for subscription, we will have to use the below command to find the images
         `Command:  
