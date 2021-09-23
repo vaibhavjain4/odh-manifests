@@ -1,0 +1,34 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: ml-workshop-elyra-fm-experiments
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: 'quay.io/ml-aml-workshop/elyra:fmv3'
+
+---
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: ml-workshop-elyra-seldon-alibi
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: 'quay.io/ml-aml-workshop/elyra:0.0.4'
+
+---
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: ml-workshop-elyra
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: 'quay.io/ml-aml-workshop/elyra:0.0.1'

@@ -1,0 +1,58 @@
+---
+varReference:
+  - path: data
+    kind: ConfigMap
+  - path: stringData
+    kind: Secret
+  - path: metadata/annotations/volume.beta.kubernetes.io\/storage-class
+    kind: PersistentVolumeClaim
+  - path: spec/template/spec/containers[]/resources/requests/cpu
+    kind: Deployment
+  - path: spec/template/spec/containers[]/resources/limits/cpu
+    kind: Deployment
+  - path: spec/template/spec/containers[]/resources/requests/memory
+    kind: Deployment
+  - path: spec/template/spec/containers[]/resources/limits/memory
+    kind: Deployment
+  - path: spec/template/spec/containers[]/image
+    kind: Deployment
+  - path: spec/template/spec/initContainers[]/image
+    kind: Deployment    
+  - path: spec/template/spec/initContainers[]/image
+    kind: StatefulSet
+  - path: spec/template/spec/containers[]/image
+    kind: StatefulSet
+  - path: spec/template/spec/initContainers[]/image
+    kind: DeploymentConfig
+  - path: spec/template/spec/containers[]/image
+    kind: DeploymentConfig
+  - path: spec/tags/from/name
+    kind: ImageStream
+  - path: spec/ui/image
+    kind: AirflowCluster
+  - path: spec/ui/version
+    kind: AirflowCluster
+  - path: spec/scheduler/image
+    kind: AirflowCluster
+  - path: spec/scheduler/version
+    kind: AirflowCluster
+  - path: spec/redis/image
+    kind: AirflowCluster
+  - path: spec/redis/version
+    kind: AirflowCluster
+  - path: spec/flower/image
+    kind: AirflowCluster
+  - path: spec/flower/version
+    kind: AirflowCluster
+  - path: spec/worker/image
+    kind: AirflowCluster
+  - path: spec/worker/version
+    kind: AirflowCluster
+  - path: spec/postgres/image
+    kind: AirflowBase
+  - path: spec/postgres/version
+    kind: AirflowBase
+  - path: spec/storage/image
+    kind: AirflowBase
+  - path: spec/storage/version
+    kind: AirflowBase

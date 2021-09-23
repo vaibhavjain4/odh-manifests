@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kafkadump-ml-workshop
+spec:
+  template:
+    spec:
+      initContainers:
+        - name: waitkafka
+          image: 'registry.access.redhat.com/rhscl/postgresql-96-rhel7:latest'
+      containers:
+        - name: kafka-dump-ml-workshop
+          image: 'quay.io/ml-aml-workshop/kafka-churn-populator:0.0.2'
+
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kafkadump-ml-workshop-telco
+spec:
+  template:
+    spec:
+      initContainers:
+        - name: waitkafka
+          image: 'registry.access.redhat.com/rhscl/postgresql-96-rhel7:latest'
+      containers:
+        - name: kafka-dump-ml-workshop-telco
+          image: 'quay.io/ml-aml-workshop/kafka-churn-populator:0.0.2'

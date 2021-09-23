@@ -1,0 +1,30 @@
+---
+varReference:
+  - path: data
+    kind: ConfigMap
+  - path: stringData
+    kind: Secret
+  - path: metadata/annotations/volume.beta.kubernetes.io\/storage-class
+    kind: PersistentVolumeClaim
+  - path: spec/template/spec/containers[]/resources/requests/cpu
+    kind: Deployment
+  - path: spec/template/spec/containers[]/resources/limits/cpu
+    kind: Deployment
+  - path: spec/template/spec/containers[]/resources/requests/memory
+    kind: Deployment
+  - path: spec/template/spec/containers[]/resources/limits/memory
+    kind: Deployment
+  - path: spec/template/spec/containers[]/image
+    kind: Deployment
+  - path: spec/template/spec/initContainers[]/image
+    kind: Deployment    
+  - path: spec/template/spec/initContainers[]/image
+    kind: StatefulSet
+  - path: spec/template/spec/containers[]/image
+    kind: StatefulSet
+  - path: spec/template/spec/initContainers[]/image
+    kind: DeploymentConfig
+  - path: spec/template/spec/containers[]/image
+    kind: DeploymentConfig
+  - path: spec/tags/from/name
+    kind: ImageStream

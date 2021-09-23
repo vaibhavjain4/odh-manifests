@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hue
+spec:
+  template:
+    spec:
+      initContainers:
+        - name: db-init
+          image: $(HUE_IMAGE)
+      containers:
+        - name: hue
+          image: $(HUE_IMAGE)
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hue-mysql
+spec:
+  template:
+    spec:
+      containers:
+        - name: mysqld-exporter
+          image: $(HUE_MYSQL_EXPORTER_IMAGE)
+        - name: mysql
+          image: $(HUE_MYSQL_IMAGE)

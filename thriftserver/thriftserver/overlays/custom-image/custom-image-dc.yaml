@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: thriftserver-db
+spec:
+  template:
+    spec:
+      containers:
+        - name: postgres-exporter
+          image: postgres-exporter
+        - name: postgresql
+          image: postgresql
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: thriftserver
+spec:
+  template:
+    spec:
+      containers:
+        - name: thriftserver
+          image: spark-cluster-image

@@ -1,0 +1,35 @@
+apiVersion: airflow.apache.org/v1alpha1
+kind: AirflowBase
+metadata:
+  name: pc-base
+spec:
+  postgres:
+    image: registry.access.redhat.com/rhscl/postgresql-10-rhel7
+    version: latest
+  storage:
+    image: k8s.gcr.io/volume-nfs
+    version: '0.8'
+
+---
+apiVersion: airflow.apache.org/v1alpha1
+kind: AirflowCluster
+metadata:
+  name: pc-cluster
+spec:
+  ui:
+    image: quay.io/ml-aml-workshop/airflow-custom
+    version: 1.2.0
+  scheduler:
+    image: quay.io/ml-aml-workshop/airflow-custom
+    version: 1.2.0
+  redis:
+    image: redis
+    version: '4.0'
+  flower:
+    image: quay.io/ml-aml-workshop/airflow-custom
+    version: 1.2.0
+  worker:
+    image: quay.io/ml-aml-workshop/airflow-custom
+    version: 1.2.0
+
+

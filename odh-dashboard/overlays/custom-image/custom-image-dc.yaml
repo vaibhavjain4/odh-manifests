@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: odh-dashboard
+spec:
+  template:
+    spec:
+      containers:
+      - name: odh-dashboard
+        image: quay.io/opendatahub/odh-dashboard:v1.0

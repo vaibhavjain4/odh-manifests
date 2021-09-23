@@ -1,0 +1,121 @@
+apiVersion: kfdef.apps.kubeflow.org/v1
+kind: KfDef
+metadata:
+  name: opendatahub-ml-workshop
+#  namespace: opendatahub
+spec:
+  applications:
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: odh-common
+      name: odh-common
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: odhseldon/cluster
+      name: odhseldon
+    - kustomizeConfig:
+        parameters:
+          # Note: The admin username is admin
+          - name: SUPERSET_ADMIN_PASSWORD
+            value: admin
+          - name: SUPERSET_IMAGE
+            value: quay.io/internaldatahub/superset:1.1.0-trino
+        repoRef:
+          name: manifests
+          path: superset
+      name: superset
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: radanalyticsio/spark/cluster
+      name: radanalyticsio-spark-cluster
+    - kustomizeConfig:
+        overlays:
+          - custom-image
+        parameters:
+          - name: s3_endpoint_url
+            value: "minio-ml-workshop.ml-workshop:9000"
+        repoRef:
+          name: manifests
+          path: jupyterhub/jupyterhub
+      name: jupyterhub
+    - kustomizeConfig:
+        overlays:
+          #- cuda
+          - additional
+        repoRef:
+          name: manifests
+          path: jupyterhub/notebook-images
+      name: notebook-images
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: ml-workshop-airflow2
+      name: airflow2
+    - kustomizeConfig:
+        overlays:
+          - ml-workshop
+        parameters:
+          - name: s3_endpoint_url
+            value: >-
+              minio-ml-workshop.ml-workshop:9000
+          - name: s3_credentials_secret
+            value: s3-credentials
+          - name: s3_endpoint_url_prefix
+            value: "http://"
+        repoRef:
+          name: manifests
+          path: trino
+      name: trino
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: ml-workshop-minio
+      name: minio
+    # - kustomizeConfig:
+    #     repoRef:
+    #       name: manifests
+    #       path: ml-workshop-modeldb
+    #   name: modeldb
+    # - kustomizeConfig:
+    #     repoRef:
+    #       name: manifests
+    #       path: ml-workshop-airflow
+    #   name: ml-airflow
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: ml-workshop-custom-images
+      name: ml-workshop-images
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: ml-workshop-mlflow
+      name: ml-workshop-mlflow
+
+  repos:
+    - name: kf-manifests
+      uri: https://github.com/kubeflow/manifests/archive/v1.2-branch.tar.gz
+    - name: manifests
+      uri: https://github.com/masoodfaisal/odh-manifests/tarball/disconnected-install
+  version: disconnected-install
+
+
+
+#    - kustomizeConfig:
+#        repoRef:
+#          name: manifests
+#          path: odhargo/cluster
+#      name: odhargo-cluster
+#    - kustomizeConfig:
+#        repoRef:
+#          name: manifests
+#          path: odhargo/odhargo
+#      name: odhargo
+#    - kustomizeConfig:
+#        repoRef:
+#          name: manifests
+#          path: odh-dashboard
+#      name: odh-dashboard

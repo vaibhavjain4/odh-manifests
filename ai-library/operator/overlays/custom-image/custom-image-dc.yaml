@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ailibrary-operator
+spec:
+  template:
+    spec:
+      containers:
+        - name: ansible
+          image: $(AI_LIB_OPR_IMAGE)
+        - name: ailibrary-operator
+          image: $(AI_LIB_OPR_IMAGE)

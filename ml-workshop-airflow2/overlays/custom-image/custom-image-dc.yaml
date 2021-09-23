@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-aflow-airflow-scheduler
+spec:
+  template:
+    spec:
+      containers:
+        - name: git-sync
+          image: $(AIRFLOW_GIT_SYNC_IMAGE)
+        - name: airflow-scheduler
+          image: $(AIRFLOW_SCHEDULER_IMAGE)
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-aflow-airflow-web
+spec:
+  template:
+    spec:
+      containers:
+        - name: git-sync
+          image: $(AIRFLOW_GIT_SYNC_IMAGE)
+        - name: airflow-web
+          image: $(AIRFLOW_WEB_IMAGE)
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: app-aflow-postgresql
+spec:
+  template:
+    spec:
+      containers:
+        - name: app-aflow-postgresql
+          image: $(AIRFLOW_POSTGRESQL_IMAGE)
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: app-aflow-redis-master
+  namespace: "ml-workshop"
+spec:
+  template:
+    spec:
+      containers:
+        - name: redis
+          image: $(AIRFLOW_REDIS_IMAGE)
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: app-aflow-airflow-worker
+spec:
+  template:
+    spec:
+      containers:
+        - name: git-sync
+          image: $(AIRFLOW_GIT_SYNC_IMAGE)
+        - name: airflow-worker
+          image: $(AIRFLOW_WORKER_IMAGE)

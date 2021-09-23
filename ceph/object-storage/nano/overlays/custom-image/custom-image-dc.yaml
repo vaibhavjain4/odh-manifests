@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ceph-nano
+spec:
+    spec:
+      initContainers:
+        - name: ceph-nano-init
+          image: (CEPH_DAEMON_IMAGE)
+      containers:
+        - image: $(CEPH_DAEMON_IMAGE)
+          name: ceph-nano
+        - image: oc
+          name: $(CEPH_CRED_EXPORTER_IMAGE)

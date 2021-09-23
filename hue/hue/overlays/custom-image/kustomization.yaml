@@ -1,0 +1,34 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+  - ../../base
+patchesStrategicMerge:
+  - custom-image-dc.yaml
+configurations:
+  - params.yaml
+configMapGenerator:
+  - name: hue-config
+    envs:
+      - params.env
+vars:
+  - name: HUE_IMAGE
+    objref:
+      name: hue-config
+      kind: ConfigMap
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.HUE_IMAGE
+  - name: HUE_MYSQL_IMAGE
+    objref:
+      name: hue-config
+      kind: ConfigMap
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.HUE_MYSQL_IMAGE
+  - name: HUE_MYSQL_EXPORTER_IMAGE
+    objref:
+      name: hue-config
+      kind: ConfigMap
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.HUE_MYSQL_EXPORTER_IMAGE

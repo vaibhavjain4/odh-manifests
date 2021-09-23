@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minio-ml-workshop
+spec:
+  template:
+    spec:
+      containers:
+        - name: minio
+          image: $(MINIO_IMAGE)

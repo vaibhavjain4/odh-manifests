@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+  - ../../base
+patchesStrategicMerge:
+  - custom-image-dc.yaml
+configurations:
+  - params.yaml
+configMapGenerator:
+  - name: ai-library-operator-config
+    envs:
+      - params.env
+vars:
+  - name: AI_LIB_OPR_IMAGE
+    objref:
+      name: ai-library-operator-config
+      kind: ConfigMap
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.AI_LIB_OPR_IMAGE

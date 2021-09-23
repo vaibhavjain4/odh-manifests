@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: superset
+spec:
+  template:
+    spec:
+      initContainers:
+      - name: superset-init
+        image: $(SUPERSET_IMAGE)
+      containers:
+      - name: superset
+        image: $(SUPERSET_IMAGE)
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: supersetdb
+spec:
+  template:
+    spec:
+      containers:
+      - name: postgresql
+        image: "quay.io/internaldatahub/postgresql-96-centos7:9.6"
