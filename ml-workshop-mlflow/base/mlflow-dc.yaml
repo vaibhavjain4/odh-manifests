@@ -38,7 +38,7 @@ spec:
           args:
             - mlflow
             - server
-            - --host=localhost
+            - --host=0.0.0.0
             - --port=5500
             - --backend-store-uri=postgresql://postgres:postgres@mlflow-db:5432/postgres
             - --default-artifact-root=s3://mlflow/
@@ -56,7 +56,7 @@ spec:
           #   value: "true"
           ports:
             - name: http
-              containerPort: 5000
+              containerPort: 5500
               protocol: TCP
           resources:
             requests:
@@ -73,6 +73,9 @@ spec:
     - port: 5000
       targetPort: 5000
       name: http
+    - port: 5500
+      targetPort: 5500
+      name: http-mlflow  
   selector:
     app: mlflow
 
