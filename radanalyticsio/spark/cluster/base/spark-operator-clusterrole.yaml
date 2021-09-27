@@ -2,8 +2,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: sparkoperator.v1.1.0-clusterrole
-  labels:
-    operators.coreos.com/radanalytics-spark.ml-workshop: ""
 rules:
 - apiGroups:
   - radanalytics.io
