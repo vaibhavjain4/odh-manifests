@@ -444,7 +444,6 @@ spec:
                                 type: integer
                               deletionTimestamp:
                                 
-                                  \ partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. \n Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
                                 format: date-time
                                 type: string
                               finalizers:
@@ -3759,12 +3758,8 @@ spec:
                                           x-kubernetes-int-or-string: true
                                       type: object
                                     ephemeral:
-                                      
-                                        \ \n A pod can use both types of ephemeral volumes and persistent volumes at the same time. \n This is a beta feature and only available when the GenericEphemeralVolume feature gate is enabled."
                                       properties:
                                         volumeClaimTemplate:
-                                          
-                                            \ made by Kubernetes to the PVC after it has been created. \n Required, must not be nil."
                                           properties:
                                             metadata:
                                               
