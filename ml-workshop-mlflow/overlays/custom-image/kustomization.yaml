@@ -4,7 +4,7 @@ bases:
   - ../../base
 patchesStrategicMerge:
   - mlflow-dc.yaml
-  - mlflow-postgesql-statefulset
+  - mlflow-postgesql-statefulset.yaml
 configurations:
   - params.yaml
 configMapGenerator:
