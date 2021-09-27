@@ -1,9 +1,9 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  labels:
-    olm.owner: seldon-operator.v1.7.0
-    operators.coreos.com/seldon-operator-certified.ml-workshop: ""
+  # labels:
+  #   olm.owner: seldon-operator.v1.7.0
+    # operators.coreos.com/seldon-operator-certified.ml-workshop: ""
   name: seldon-operator.v1.7.0-clusterrole
 rules:
 - apiGroups:

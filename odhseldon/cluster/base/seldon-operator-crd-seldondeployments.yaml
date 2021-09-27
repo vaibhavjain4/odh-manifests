@@ -1,15 +1,15 @@
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
-  annotations:
+  # annotations:
     # cert-manager.io/inject-ca-from: $(CERTIFICATE_NAMESPACE)/$(CERTIFICATE_NAME)
-    controller-gen.kubebuilder.io/version: v0.4.1
+    # controller-gen.kubebuilder.io/version: v0.4.1
   labels:
     app: seldon
     app.kubernetes.io/instance: seldon1
     app.kubernetes.io/name: seldon
     app.kubernetes.io/version: v0.5
-    operators.coreos.com/seldon-operator-certified.ml-workshop: ""
+    # operators.coreos.com/seldon-operator-certified.ml-workshop: ""
   name: seldondeployments.machinelearning.seldon.io
 spec:
   conversion:
