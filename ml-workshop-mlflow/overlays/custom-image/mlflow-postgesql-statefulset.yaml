@@ -7,4 +7,4 @@ spec:
     spec:
       containers:
         - name: mlflow-db-postgresql
-          image: $(MLFLOW_DB_POSTGRESQL_IMAGE)
+          image: 'registry.redhat.io/rhel8/postgresql-10:1-154'

@@ -7,9 +7,9 @@ spec:
     spec:
       initContainers:
         - name: waitkafka
-          image: $(MLFLOW_POSTGRESQL_IMAGE)
+          image: 'registry.access.redhat.com/rhscl/postgresql-96-rhel7:latest'
       containers:
         - name: oauth-proxy
-          image: $(MLFLOW_OAUTH_PROXY_IMAGE)
+          image: 'openshift/oauth-proxy:latest'
         - name: mlflow-deployment
-          image: $(MLFLOW_IMAGE)
+          image: 'quay.io/ml-aml-workshop/mlflow:0.0.2'
