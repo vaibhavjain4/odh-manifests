@@ -4,52 +4,53 @@ bases:
   - ../../base
 patchesStrategicMerge:
   - deployment.yaml
-configurations:
-  - params.yaml
-configMapGenerator:
-  - name: airflow2-config
-    envs:
-      - params.env
-vars:
-  - name: AIRFLOW_GIT_SYNC_IMAGE
-    objref:
-      name: airflow2-config
-      kind: ConfigMap
-      apiVersion: v1
-    fieldref:
-      fieldpath: data.AIRFLOW_GIT_SYNC_IMAGE
-  - name: AIRFLOW_SCHEDULER_IMAGE
-    objref:
-      name: airflow2-config
-      kind: ConfigMap
-      apiVersion: v1
-    fieldref:
-      fieldpath: data.AIRFLOW_SCHEDULER_IMAGE
-  - name: AIRFLOW_WEB_IMAGE
-    objref:
-      name: airflow2-config
-      kind: ConfigMap
-      apiVersion: v1
-    fieldref:
-      fieldpath: data.AIRFLOW_WEB_IMAGE
-  - name: AIRFLOW_POSTGRESQL_IMAGE
-    objref:
-      name: airflow2-config
-      kind: ConfigMap
-      apiVersion: v1
-    fieldref:
-      fieldpath: data.AIRFLOW_POSTGRESQL_IMAGE
-  - name: AIRFLOW_REDIS_IMAGE
-    objref:
-      name: airflow2-config
-      kind: ConfigMap
-      apiVersion: v1
-    fieldref:
-      fieldpath: data.AIRFLOW_REDIS_IMAGE
-  - name: AIRFLOW_WORKER_IMAGE
-    objref:
-      name: airflow2-config
-      kind: ConfigMap
-      apiVersion: v1
-    fieldref:
-      fieldpath: data.AIRFLOW_WORKER_IMAGE
+
+# configurations:
+#   - params.yaml
+# configMapGenerator:
+#   - name: airflow2-config
+#     envs:
+#       - params.env
+# vars:
+#   - name: AIRFLOW_GIT_SYNC_IMAGE
+#     objref:
+#       name: airflow2-config
+#       kind: ConfigMap
+#       apiVersion: v1
+#     fieldref:
+#       fieldpath: data.AIRFLOW_GIT_SYNC_IMAGE
+#   - name: AIRFLOW_SCHEDULER_IMAGE
+#     objref:
+#       name: airflow2-config
+#       kind: ConfigMap
+#       apiVersion: v1
+#     fieldref:
+#       fieldpath: data.AIRFLOW_SCHEDULER_IMAGE
+#   - name: AIRFLOW_WEB_IMAGE
+#     objref:
+#       name: airflow2-config
+#       kind: ConfigMap
+#       apiVersion: v1
+#     fieldref:
+#       fieldpath: data.AIRFLOW_WEB_IMAGE
+#   - name: AIRFLOW_POSTGRESQL_IMAGE
+#     objref:
+#       name: airflow2-config
+#       kind: ConfigMap
+#       apiVersion: v1
+#     fieldref:
+#       fieldpath: data.AIRFLOW_POSTGRESQL_IMAGE
+#   - name: AIRFLOW_REDIS_IMAGE
+#     objref:
+#       name: airflow2-config
+#       kind: ConfigMap
+#       apiVersion: v1
+#     fieldref:
+#       fieldpath: data.AIRFLOW_REDIS_IMAGE
+#   - name: AIRFLOW_WORKER_IMAGE
+#     objref:
+#       name: airflow2-config
+#       kind: ConfigMap
+#       apiVersion: v1
+#     fieldref:
+#       fieldpath: data.AIRFLOW_WORKER_IMAGE

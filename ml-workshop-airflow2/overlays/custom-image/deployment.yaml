@@ -9,9 +9,9 @@ spec:
     spec:
       containers:
         - name: git-sync
-          image: $(AIRFLOW_GIT_SYNC_IMAGE)
+          image: 'k8s.gcr.io/git-sync/git-sync:v3.2.2'
         - name: airflow-scheduler
-          image: $(AIRFLOW_SCHEDULER_IMAGE)
+          image: 'quay.io/ml-aml-workshop/airflow-custom:2.0.0.scheduler'
 
 ---
 apiVersion: apps/v1
@@ -23,9 +23,9 @@ spec:
     spec:
       containers:
         - name: git-sync
-          image: $(AIRFLOW_GIT_SYNC_IMAGE)
+          image: 'k8s.gcr.io/git-sync/git-sync:v3.2.2'
         - name: airflow-web
-          image: $(AIRFLOW_WEB_IMAGE)
+          image: 'quay.io/ml-aml-workshop/airflow-custom:2.1.6.web'
 
 ---
 apiVersion: apps/v1
@@ -37,7 +37,7 @@ spec:
     spec:
       containers:
         - name: app-aflow-postgresql
-          image: $(AIRFLOW_POSTGRESQL_IMAGE)
+          image: 'registry.redhat.io/rhel8/postgresql-10:1-154'
 
 ---
 apiVersion: apps/v1
@@ -50,7 +50,7 @@ spec:
     spec:
       containers:
         - name: redis
-          image: $(AIRFLOW_REDIS_IMAGE)
+          image: 'registry.redhat.io/rhel8/redis-6:1-18'
 
 ---
 apiVersion: apps/v1
@@ -62,6 +62,6 @@ spec:
     spec:
       containers:
         - name: git-sync
-          image: $(AIRFLOW_GIT_SYNC_IMAGE)
+          image: 'k8s.gcr.io/git-sync/git-sync:v3.2.2'
         - name: airflow-worker
-          image: $(AIRFLOW_WORKER_IMAGE)
+          image: 'quay.io/ml-aml-workshop/airflow-custom:2.0.0.worker'
