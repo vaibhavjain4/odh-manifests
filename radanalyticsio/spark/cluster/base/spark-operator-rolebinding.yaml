@@ -2,7 +2,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   labels:
-    olm.owner: sparkoperator.v1.1.0
     operators.coreos.com/radanalytics-spark.ml-workshop: ""
   name: sparkoperator.v1.1.0-spark-operator-rolebinding
 roleRef:
