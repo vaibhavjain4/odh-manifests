@@ -4,6 +4,7 @@ bases:
   - ../../base
 patchesStrategicMerge:
   - custom-image-dc.yaml
+  - jupyterhub-singleuser-profiles-configmap.yaml
 configurations:
   - params.yaml
 configMapGenerator:
@@ -11,6 +12,14 @@ configMapGenerator:
     envs:
       - params.env
 vars:
+  - name: JUPYTERHUB_SPARK_WORKER_IMAGE
+    objref:
+      name: jupyterhub-config
+      kind: ConfigMap
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.JUPYTERHUB_SPARK_WORKER_IMAGE
+
   - name: JUPYTERHUB_IMAGE
     objref:
       name: jupyterhub-config
