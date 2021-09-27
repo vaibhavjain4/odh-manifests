@@ -3,12 +3,15 @@ kind: DeploymentConfig
 metadata:
   name: jupyterhub
 spec:
+  selector:
+    app: jupyterhub
+    deploymentconfig: jupyterhub
   template:
     spec:
       initContainers:
-        - image: quay.io/odh-jupyterhub/jupyterhub-img:v0.3.0
-          name: wait-for-database
+      - image: quay.io/odh-jupyterhub/jupyterhub-img:v0.3.0
+        name: wait-for-database
       containers:
-        - image: quay.io/odh-jupyterhub/jupyterhub-img:v0.3.0
-          name: jupyterhub
+      - image: quay.io/odh-jupyterhub/jupyterhub-img:v0.3.0
+        name: jupyterhub
         
