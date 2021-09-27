@@ -3,7 +3,10 @@ kind: Kustomization
 bases:
   - ../../base
 patchesStrategicMerge:
-  - custom-image-dc.yaml
+  - elyra-imagestream.yaml
+  - elyra-imagestream-seldon-alibi.yaml
+  - elyra-imagestream-fm-experiments.yaml
+  
 configurations:
   - params.yaml
 configMapGenerator:
