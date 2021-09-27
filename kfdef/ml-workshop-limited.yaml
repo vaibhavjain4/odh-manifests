@@ -52,12 +52,15 @@ spec:
           path: jupyterhub/notebook-images
       name: notebook-images
     - kustomizeConfig:
+        overlays:
+          - custom-image
         repoRef:
           name: manifests
           path: ml-workshop-airflow2
       name: airflow2
     - kustomizeConfig:
         overlays:
+          - custom-image
           - ml-workshop
         parameters:
           - name: s3_endpoint_url
@@ -74,24 +77,11 @@ spec:
     - kustomizeConfig:
         repoRef:
           name: manifests
-          path: ml-workshop-minio
-      name: minio
-    # - kustomizeConfig:
-    #     repoRef:
-    #       name: manifests
-    #       path: ml-workshop-modeldb
-    #   name: modeldb
-    # - kustomizeConfig:
-    #     repoRef:
-    #       name: manifests
-    #       path: ml-workshop-airflow
-    #   name: ml-airflow
-    - kustomizeConfig:
-        repoRef:
-          name: manifests
           path: ml-workshop-custom-images
       name: ml-workshop-images
     - kustomizeConfig:
+        overlay:
+          - custom-image
         repoRef:
           name: manifests
           path: ml-workshop-mlflow
