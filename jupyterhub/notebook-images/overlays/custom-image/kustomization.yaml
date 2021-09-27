@@ -3,7 +3,8 @@ kind: Kustomization
 bases:
   - ../../base
 patchesStrategicMerge:
-  - custom-image-streams.yaml
+  - nbviewer-imagestream.yaml
+  - spark-notebook-imagestream.yaml
 configurations:
   - params.yaml
 configMapGenerator:
