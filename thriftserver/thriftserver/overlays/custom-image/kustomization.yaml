@@ -3,7 +3,8 @@ kind: Kustomization
 bases:
   - ../../base
 patchesStrategicMerge:
-  - custom-image-dc.yaml
+  - thriftserver-db.yaml
+  - thriftserver.yaml
 configurations:
   - params.yaml
 configMapGenerator:
