@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: modeldb-backend
+spec:
+  template:
+    spec:
+      containers:
+        - image: $(MODELDB_BACKEND_IMAGE)
+          name: backend
+        - image: $(MODELDB_PROXY_IMAGE)
+          name: proxy
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: modeldb-postgresql
+spec:
+  template:
+    spec:
+      initContainers:
+        - name: init-chmod-data
+          image: $(MODELDB_MINIDEB_IMAGE)
+      containers:
+        - name: modeldb-postgresql
+          image: $(MODELDB_POSTGRESQL_IMAGE)

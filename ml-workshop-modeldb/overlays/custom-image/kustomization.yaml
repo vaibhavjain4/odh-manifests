@@ -3,7 +3,8 @@ kind: Kustomization
 bases:
   - ../../base
 patchesStrategicMerge:
-  - custom-image-dc.yaml
+  - modeldb-deployment.yaml
+  - modeldb-statefullset.yaml
 configurations:
   - params.yaml
 configMapGenerator:

@@ -3,7 +3,7 @@ kind: Kustomization
 bases:
   - ../../base
 patchesStrategicMerge:
-  - custom-image-dc.yaml
+  - minio-dc.yaml
 configurations:
   - params.yaml
 configMapGenerator:

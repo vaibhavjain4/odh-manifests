@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mlflow
+spec:
+  template:
+    spec:
+      initContainers:
+        - name: waitkafka
+          image: $(MLFLOW_POSTGRESQL_IMAGE)
+      containers:
+        - name: oauth-proxy
+          image: $(MLFLOW_OAUTH_PROXY_IMAGE)
+        - name: mlflow-deployment
+          image: $(MLFLOW_IMAGE)

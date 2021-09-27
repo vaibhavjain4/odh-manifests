@@ -3,7 +3,8 @@ kind: Kustomization
 bases:
   - ../../base
 patchesStrategicMerge:
-  - custom-image-dc.yaml
+  - jupyterhub-db-dc.yaml
+  - jupyterhub-dc.yaml
   - jupyterhub-singleuser-profiles-configmap.yaml
 configurations:
   - params.yaml

@@ -1,0 +1,15 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: jupyterhub
+spec:
+  template:
+    metadata:
+    spec:
+      initContainers:
+        - image: $(JUPYTERHUB_IMAGE)
+          name: wait-for-database
+      containers:
+        - image: $(JUPYTERHUB_IMAGE)
+          name: jupyterhub
+        

@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: modeldb-graphql
+spec:
+  template:
+    spec:
+      containers:
+        - image: $(MODELDB_GRAPHQL_IMAGE)
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: modeldb-webapp
+spec:
+  template:
+    spec:
+      containers:
+        - image: $(MODELDB_FRONTEND_IMAGE)
