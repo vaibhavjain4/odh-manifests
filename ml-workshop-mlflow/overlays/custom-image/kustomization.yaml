@@ -3,7 +3,9 @@ kind: Kustomization
 bases:
   - ../../base
 patchesStrategicMerge:
-  - custom-image-dc.yaml
+  - mlflow-postgesql-statefulset.yaml
+  - mlflow-dc.yaml
+
 configurations:
   - params.yaml
 configMapGenerator:

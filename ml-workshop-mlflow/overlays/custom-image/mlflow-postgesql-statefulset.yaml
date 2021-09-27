@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mlflow-db
+spec:
+  template:
+    spec:
+      containers:
+        - name: mlflow-db-postgresql
+          image: $(MLFLOW_DB_POSTGRESQL_IMAGE)
