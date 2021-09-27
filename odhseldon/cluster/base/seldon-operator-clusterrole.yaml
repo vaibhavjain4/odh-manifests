@@ -3,7 +3,6 @@ kind: ClusterRole
 metadata:
   labels:
     olm.owner: seldon-operator.v1.7.0
-    olm.owner.kind: ClusterServiceVersion
     operators.coreos.com/seldon-operator-certified.ml-workshop: ""
   name: seldon-operator.v1.7.0-clusterrole
 rules:
