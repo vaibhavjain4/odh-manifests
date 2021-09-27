@@ -6,16 +6,15 @@ metadata:
 spec:
   applications:
     - kustomizeConfig:
-        repoRef:
-          name: manifests
-          path: odh-common
-      name: odh-common
-    - kustomizeConfig:
+        overlays:
+          - custom-image
         repoRef:
           name: manifests
           path: odhseldon/cluster
       name: odhseldon
     - kustomizeConfig:
+        overlays:
+          - custom-image
         parameters:
           # Note: The admin username is admin
           - name: SUPERSET_ADMIN_PASSWORD
@@ -27,6 +26,8 @@ spec:
           path: superset
       name: superset
     - kustomizeConfig:
+        overlays:
+          - custom-image
         repoRef:
           name: manifests
           path: radanalyticsio/spark/cluster
@@ -45,6 +46,7 @@ spec:
         overlays:
           #- cuda
           - additional
+          - custom-image
         repoRef:
           name: manifests
           path: jupyterhub/notebook-images

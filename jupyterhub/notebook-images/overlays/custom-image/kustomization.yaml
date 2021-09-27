@@ -3,7 +3,7 @@ kind: Kustomization
 bases:
   - ../../base
 patchesStrategicMerge:
-  - custom-image-dc.yaml
+  - custom-image-streams.yaml
 configurations:
   - params.yaml
 configMapGenerator:
