@@ -7,4 +7,4 @@ spec:
     spec:
       containers:
         - name: trino-worker
-          image: $(TRINO_IMAGE)
+          image: 'quay.io/opendatahub/trino:355'

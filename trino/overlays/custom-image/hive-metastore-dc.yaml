@@ -7,4 +7,4 @@ spec:
     spec:
       containers:
       - name: metastore
-        image: $(TRINO_HIVE_IMAGE)
+        image: 'quay.io/cloudservices/ubi-hive:2.3.3-002'
