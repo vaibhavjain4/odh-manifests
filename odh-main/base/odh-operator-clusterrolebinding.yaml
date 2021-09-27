@@ -3,10 +3,14 @@ kind: ClusterRoleBinding
 metadata:
   labels:
   name: opendatahub-operator.v1.1.0-rolebinding
+# roleRef:
+#   apiGroup: rbac.authorization.k8s.io
+#   kind: ClusterRole
+#   name: opendatahub-operator.v1.1.0-role
 roleRef:
-  apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: opendatahub-operator.v1.1.0-role
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io  
 subjects:
 - kind: ServiceAccount
   name: opendatahub-operator
