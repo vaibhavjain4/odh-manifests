@@ -4,8 +4,8 @@ spec:
   template:
     metadata:
       annotations:
-        containerImage: $(RADANALYTICS_SPARK_OPERATOR_IMAGE)
+        containerImage: 'quay.io/radanalyticsio/spark-operator:1.1.0'
     spec:
       containers:
-      - image: $(RADANALYTICS_SPARK_OPERATOR_IMAGE)
+      - image: 'quay.io/radanalyticsio/spark-operator:1.1.0'
         name: spark-operator

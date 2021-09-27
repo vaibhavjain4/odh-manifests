@@ -4,17 +4,17 @@ bases:
   - ../../base
 patchesStrategicMerge:
   - spark-operator-dc.yaml
-configurations:
-  - params.yaml
-configMapGenerator:
-  - name: radanalytics-spark-custom-config
-    envs:
-      - params.env
-vars:
-  - name: RADANALYTICS_SPARK_OPERATOR_IMAGE
-    objref:
-      name: radanalytics-spark-custom-config
-      kind: ConfigMap
-      apiVersion: v1
-    fieldref:
-      fieldpath: data.RADANALYTICS_SPARK_OPERATOR_IMAGE
+# configurations:
+#   - params.yaml
+# configMapGenerator:
+#   - name: radanalytics-spark-custom-config
+#     envs:
+#       - params.env
+# vars:
+#   - name: RADANALYTICS_SPARK_OPERATOR_IMAGE
+#     objref:
+#       name: radanalytics-spark-custom-config
+#       kind: ConfigMap
+#       apiVersion: v1
+#     fieldref:
+#       fieldpath: data.RADANALYTICS_SPARK_OPERATOR_IMAGE
