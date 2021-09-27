@@ -4,7 +4,6 @@ metadata:
   name: jupyterhub-db
 spec:
   template:
-    metadata:
     spec:
       containers:
       - image: registry.redhat.io/rhel8/postgresql-96

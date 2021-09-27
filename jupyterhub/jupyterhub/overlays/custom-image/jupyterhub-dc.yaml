@@ -4,7 +4,6 @@ metadata:
   name: jupyterhub
 spec:
   template:
-    metadata:
     spec:
       initContainers:
         - image: quay.io/odh-jupyterhub/jupyterhub-img:v0.3.0
