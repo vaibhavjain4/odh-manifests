@@ -1,0 +1,15 @@
+
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: app-aflow-redis-master
+  namespace: "ml-workshop"
+spec:
+  template:
+    spec:
+      containers:
+        - name: redis
+          image: 'registry.redhat.io/rhel8/redis-6:1-18'
+
+

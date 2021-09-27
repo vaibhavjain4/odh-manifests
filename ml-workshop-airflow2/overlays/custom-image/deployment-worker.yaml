@@ -1,0 +1,14 @@
+
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: app-aflow-airflow-worker
+spec:
+  template:
+    spec:
+      containers:
+        - name: git-sync
+          image: 'k8s.gcr.io/git-sync/git-sync:v3.2.2'
+        - name: airflow-worker
+          image: 'quay.io/ml-aml-workshop/airflow-custom:2.0.0.worker'

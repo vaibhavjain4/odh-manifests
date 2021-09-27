@@ -1,0 +1,15 @@
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-aflow-airflow-scheduler
+spec:
+  template:
+    spec:
+      containers:
+        - name: git-sync
+          image: 'k8s.gcr.io/git-sync/git-sync:v3.2.2'
+        - name: airflow-scheduler
+          image: 'quay.io/ml-aml-workshop/airflow-custom:2.0.0.scheduler'
+

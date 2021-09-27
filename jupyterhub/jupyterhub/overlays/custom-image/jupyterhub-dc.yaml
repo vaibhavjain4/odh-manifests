@@ -3,9 +3,6 @@ kind: DeploymentConfig
 metadata:
   name: jupyterhub
 spec:
-  selector:
-    app: jupyterhub
-    deploymentconfig: jupyterhub
   template:
     spec:
       initContainers:

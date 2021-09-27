@@ -1,0 +1,196 @@
+
+
+# Source: airflow/charts/postgresql/templates/statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: app-aflow-postgresql
+  labels:
+    app.kubernetes.io/name: postgresql
+    helm.sh/chart: postgresql-10.9.4
+    app.kubernetes.io/instance: app-aflow
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: primary
+  annotations:
+  namespace: ml-workshop
+spec:
+  serviceName: app-aflow-postgresql-headless
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: postgresql
+      app.kubernetes.io/instance: app-aflow
+      role: primary
+  template:
+    metadata:
+      name: app-aflow-postgresql
+      labels:
+        app.kubernetes.io/name: postgresql
+        helm.sh/chart: postgresql-10.9.4
+        app.kubernetes.io/instance: app-aflow
+        app.kubernetes.io/managed-by: Helm
+        role: primary
+        app.kubernetes.io/component: primary
+    spec:
+      affinity:
+        podAffinity:
+
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: postgresql
+                    app.kubernetes.io/instance: app-aflow
+                    app.kubernetes.io/component: primary
+                namespaces:
+                  - "ml-workshop"
+                topologyKey: kubernetes.io/hostname
+              weight: 1
+        nodeAffinity:
+
+      # securityContext:
+      #   fsGroup: 1001
+      automountServiceAccountToken: false
+      # initContainers:
+      #   - name: init-chmod-data
+      #     image: docker.io/bitnami/minideb:latest
+      #     imagePullPolicy: "Always"
+      #     resources:
+      #       requests:
+      #         cpu: 250m
+      #         memory: 256Mi
+      #     command:
+      #       - sh
+      #       - -c
+      #       - |
+      #         chown -R 1001:1001 /bitnami
+      #         if [ -d /bitnami/postgresql/data ]; then
+      #           chmod  0700 /bitnami/postgresql/data;
+      #         fi
+      #     volumeMounts:
+      #       - name: aflow-data
+      #         mountPath: /bitnami/postgresql
+      containers:
+        - name: app-aflow-postgresql
+          image: registry.redhat.io/rhel8/postgresql-10:1-154
+          #docker.io/bitnami/postgresql:10.7.0
+          imagePullPolicy: "Always"
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          # securityContext:
+          #   runAsUser: 1001
+          env:
+            # - name: PGDATA
+            #   value: "/bitnami/postgresql"
+            # - name: BITNAMI_DEBUG
+            #   value: "false"
+            # - name: POSTGRESQL_PORT_NUMBER
+            #   value: "5432"
+            # - name: POSTGRESQL_VOLUME_DIR
+            #   value: "/bitnami/postgresql"
+            # - name: PGDATA
+            #   value: "/bitnami/postgresql/data"
+            # - name: POSTGRES_POSTGRES_PASSWORD
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: app-aflow-postgresql
+            #       key: postgresql-postgres-password
+            - name: POSTGRESQL_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-aflow-postgresql
+                  key: postgresql-postgres-password
+
+            # - name: POSTGRES_USER
+            #   value: "bn_airflow"
+            - name: POSTGRESQL_USER
+              value: "bn_airflow"
+            # - name: POSTGRES_PASSWORD
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: app-aflow-postgresql
+            #       key: postgresql-password
+
+            - name: POSTGRESQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-aflow-postgresql
+                  key: postgresql-password
+            - name: POSTGRESQL_DATABASE
+              value: "bitnami_airflow"
+            # - name: POSTGRES_DB
+            #   value: "bitnami_airflow"
+            # - name: POSTGRESQL_ENABLE_LDAP
+            #   value: "no"
+            # - name: POSTGRESQL_ENABLE_TLS
+            #   value: "no"
+            # - name: POSTGRESQL_LOG_HOSTNAME
+            #   value: "false"
+            # - name: POSTGRESQL_LOG_CONNECTIONS
+            #   value: "false"
+            # - name: POSTGRESQL_LOG_DISCONNECTIONS
+            #   value: "false"
+            # - name: POSTGRESQL_PGAUDIT_LOG_CATALOG
+            #   value: "off"
+            # - name: POSTGRESQL_CLIENT_MIN_MESSAGES
+            #   value: "error"
+            # - name: POSTGRESQL_SHARED_PRELOAD_LIBRARIES
+            #   value: "pgaudit"
+          ports:
+            - name: tcp-postgresql
+              containerPort: 5432
+          livenessProbe:
+            tcpSocket:
+              port: 5432
+
+            # exec:
+            #   command:
+            #     - /bin/sh
+            #     - -c
+            #     - exec pg_isready -U "bn_airflow" -d "dbname=bitnami_airflow" -h 127.0.0.1 -p 5432
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          readinessProbe:
+            tcpSocket:
+              port: 5432
+
+            # exec:
+            #   command:
+            #     - /bin/sh
+            #     - -c
+            #     - -e
+            #     - |
+            #       exec pg_isready -U "bn_airflow" -d "dbname=bitnami_airflow" -h 127.0.0.1 -p 5432
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          volumeMounts:
+            # - name: dshm
+            #   mountPath: /dev/shm
+            - name: aflow-data
+              # mountPath: /bitnami/postgresql
+              mountPath: /var/lib/pgsql/data
+              # subPath:
+      # volumes:
+      #   - name: dshm
+      #     emptyDir:
+      #       medium: Memory
+  volumeClaimTemplates:
+    - metadata:
+        name: aflow-data
+      spec:
+        accessModes:
+          - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: "8Gi"
