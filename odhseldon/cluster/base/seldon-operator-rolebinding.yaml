@@ -13,4 +13,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: seldon-manager
-  # namespace: ml-workshop
+  namespace: anz-ml
