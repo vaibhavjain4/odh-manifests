@@ -3,7 +3,6 @@ kind: ClusterRole
 metadata:
   name: sparkoperator.v1.1.0-clusterrole
   labels:
-    olm.owner: sparkoperator.v1.1.0
     operators.coreos.com/radanalytics-spark.ml-workshop: ""
 rules:
 - apiGroups:

@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata:
-  name: spark-operator
 spec:
   template:
+    metadata:
+      annotations:
+        containerImage: $(RADANALYTICS_SPARK_OPERATOR_IMAGE)
     spec:
       containers:
       - image: $(RADANALYTICS_SPARK_OPERATOR_IMAGE)
         name: spark-operator
-        
