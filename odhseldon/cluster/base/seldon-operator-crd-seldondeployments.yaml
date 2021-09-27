@@ -4,11 +4,11 @@ metadata:
   # annotations:
     # cert-manager.io/inject-ca-from: $(CERTIFICATE_NAMESPACE)/$(CERTIFICATE_NAME)
     # controller-gen.kubebuilder.io/version: v0.4.1
-  labels:
-    app: seldon
-    app.kubernetes.io/instance: seldon1
-    app.kubernetes.io/name: seldon
-    app.kubernetes.io/version: v0.5
+  # labels:
+  #   app: seldon
+  #   app.kubernetes.io/instance: seldon1
+  #   app.kubernetes.io/name: seldon
+  #   app.kubernetes.io/version: v0.5
     # operators.coreos.com/seldon-operator-certified.ml-workshop: ""
   name: seldondeployments.machinelearning.seldon.io
 spec:
@@ -22,7 +22,7 @@ spec:
     shortNames:
     - sdep
     singular: seldondeployment
-  #preserveUnknownFields: true
+  preserveUnknownFields: true
   scope: Namespaced
   versions:
   - name: v1
@@ -13495,10 +13495,9 @@ spec:
             type: object
         type: object
     served: true
-    storage: false
+    storage: true
     subresources:
       scale:
         specReplicasPath: .spec.replicas
         statusReplicasPath: .status.replicas
-      status: {}
 
