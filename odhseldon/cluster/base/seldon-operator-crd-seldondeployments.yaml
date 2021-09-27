@@ -22,7 +22,7 @@ spec:
     shortNames:
     - sdep
     singular: seldondeployment
-  preserveUnknownFields: true
+  #preserveUnknownFields: true
   scope: Namespaced
   versions:
   - name: v1
