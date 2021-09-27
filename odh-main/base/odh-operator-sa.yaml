@@ -4,4 +4,3 @@ metadata:
   labels:
     operators.coreos.com/opendatahub-operator.openshift-operators: ""
   name: opendatahub-operator
-  namespace: openshift-operators

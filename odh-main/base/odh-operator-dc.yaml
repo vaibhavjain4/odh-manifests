@@ -2,12 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    olm.owner: opendatahub-operator.v1.1.0
-    olm.owner.kind: ClusterServiceVersion
-    olm.owner.namespace: openshift-operators
     operators.coreos.com/opendatahub-operator.openshift-operators: ""
   name: opendatahub-operator
-  namespace: openshift-operators
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -227,14 +223,10 @@ spec:
         certified: "False"
         containerImage: quay.io/opendatahub/opendatahub-operator:v1.1.0
         description: Open Data Hub Operator for deployment and management of Open Data Hub and Kubeflow on OpenShift
-        olm.operatorGroup: global-operators
-        olm.operatorNamespace: openshift-operators
         olm.properties: '[{"type": "olm.maxOpenShiftVersion", "value": "4.8"}]'
         olm.targetNamespaces: ""
-        operatorframework.io/properties: '{"properties":[{"type":"olm.gvk","value":{"group":"kfdef.apps.kubeflow.org","kind":"KfDef","version":"v1"}},{"type":"olm.package","value":{"packageName":"opendatahub-operator","version":"1.1.0"}}]}'
         repository: https://github.com/opendatahub-io/opendatahub-operator
         support: Open Data Hub
-      creationTimestamp: null
       labels:
         name: opendatahub-operator
     spec:
