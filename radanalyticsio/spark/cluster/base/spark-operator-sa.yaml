@@ -1,0 +1,14 @@
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: spark-crd-operator
+  labels:
+    operators.coreos.com/radanalytics-spark.ml-workshop: ''
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    operators.coreos.com/radanalytics-spark.ml-workshop: ""
+  name: spark-operator

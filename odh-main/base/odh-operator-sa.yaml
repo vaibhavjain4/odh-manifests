@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    operators.coreos.com/opendatahub-operator.openshift-operators: ""
+  name: opendatahub-operator
+  namespace: openshift-operators

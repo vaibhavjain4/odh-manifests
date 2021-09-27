@@ -7,4 +7,4 @@ spec:
     spec:
       containers:
       - name: odh-dashboard
-        image: quay.io/opendatahub/odh-dashboard:v1.0
+        image: $(ODH_DASHBOARD_IMAGE)

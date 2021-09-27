@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    olm.owner: opendatahub-operator.v1.1.0
+    olm.owner.kind: ClusterServiceVersion
+    olm.owner.namespace: openshift-operators
+    operators.coreos.com/opendatahub-operator.openshift-operators: ""
+  name: opendatahub-operator.v1.1.0-rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: opendatahub-operator.v1.1.0-role
+subjects:
+- kind: ServiceAccount
+  name: opendatahub-operator
+  namespace: openshift-operators

@@ -1,5 +1,5 @@
 #These images are for V1.1.0 operator
-
+quay.io/opendatahub/opendatahub-operator:v1.1.0
 
 ### jupyterhub
 ##Jupyterhub [central Jupyterhub + Traefik Proxy]

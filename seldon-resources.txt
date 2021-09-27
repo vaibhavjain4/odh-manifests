@@ -1,0 +1,123 @@
+configmap/a33bd623.machinelearning.seldon.io             0      68d
+configmap/seldon-config                                  4      68d
+configmap/seldon-data-drift-bridge-config                1      3d18h
+endpoints/seldon-583b4df158ce291f1a60e9d1994fb277                    <none>                                                             67d
+endpoints/seldon-82d0c9489cb497f376e52ff8a819082b                                                                                       2d19h
+endpoints/seldon-data-drift-bridge-service                           10.130.2.135:8080                                                  3d18h
+endpoints/seldon-de2c38c92d9ad9b81a4064b22f34f1fc                    10.129.3.109:9501,10.129.3.109:9001                                67d
+endpoints/seldon-webhook-service                                     10.130.2.184:8443                                                  68d
+79m         Normal    Updated                        seldondeployment/minio-sklearn-ross                                   Updated SeldonDeployment "minio-sklearn-ross"
+79m         Normal    Updated                        seldondeployment/mlflow-deployment-fm                                 Updated SeldonDeployment "mlflow-deployment-fm"
+166m        Normal    Pulled                         pod/mlflow-deployment-mlflow-deployment-dag-0-chrun-classifiernds7w   Container image "registry.connect.redhat.com/seldonio/mlflowserver@sha256:05cc0ecb43052aedb27954f478c059c08a8f133df71f96a39ab7eeabd0329dcd" already present on machine
+79m         Normal    Updated                        seldondeployment/mlflow-deployment                                    Updated SeldonDeployment "mlflow-deployment"
+79m         Normal    Updated                        seldondeployment/model-123                                            Updated SeldonDeployment "model-123"
+79m         Normal    Updated                        seldondeployment/model-customerchurnuser29202021010501774158          Updated SeldonDeployment "model-customerchurnuser29202021010501774158"
+79m         Normal    Updated                        seldondeployment/model-saeed                                          Updated SeldonDeployment "model-saeed"
+176m        Normal    Pulled                         pod/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-8657d967d7-plwv6          Container image "registry.connect.redhat.com/seldonio/mlflowserver@sha256:05cc0ecb43052aedb27954f478c059c08a8f133df71f96a39ab7eeabd0329dcd" already present on machine
+16m         Warning   Unhealthy                      pod/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-8657d967d7-plwv6          Readiness probe failed: dial tcp 10.130.2.185:9000: connect: connection refused
+68s         Warning   Unhealthy                      pod/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-8657d967d7-plwv6          Readiness probe failed: HTTP probe failed with statuscode: 503
+11m         Warning   BackOff                        pod/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-8657d967d7-plwv6          Back-off restarting failed container
+66m         Warning   Failed                         pod/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-d4bb58fc9-x9q4h           Failed to pull image "registry.connect.redhat.com/seldonio/mlflow:latest": rpc error: code = Unknown desc = Error reading manifest latest in registry.connect.redhat.com/seldonio/mlflow: unauthorized: authentication required
+115s        Normal    BackOff                        pod/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-d4bb58fc9-x9q4h           Back-off pulling image "registry.connect.redhat.com/seldonio/mlflow:latest"
+6m52s       Warning   Unhealthy                      pod/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-d4bb58fc9-x9q4h           Readiness probe failed: HTTP probe failed with statuscode: 503
+81s         Warning   FailedGetResourceMetric        horizontalpodautoscaler/seldon-ce2c319da6c40205f5083c69b62b6843       missing request for cpu
+126m        Warning   FailedComputeMetricsReplicas   horizontalpodautoscaler/seldon-ce2c319da6c40205f5083c69b62b6843       invalid metrics (1 invalid out of 1), first error is: failed to get cpu utilization: missing request for cpu
+81s         Warning   FailedGetResourceMetric        horizontalpodautoscaler/seldon-d7237f485ed30117f0c0b35883b822b3       missing request for cpu
+6m22s       Warning   FailedComputeMetricsReplicas   horizontalpodautoscaler/seldon-d7237f485ed30117f0c0b35883b822b3       invalid metrics (1 invalid out of 1), first error is: failed to get cpu utilization: missing request for cpu
+2m51s       Warning   FailedGetResourceMetric        horizontalpodautoscaler/seldon-f6be9d47615840eab338d893d4120027       missing request for cpu
+pod/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-8657d967d7-plwv6          0/2     Running            1006       2d18h
+pod/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-d4bb58fc9-x9q4h           0/2     ImagePullBackOff   0          2d18h
+pod/seldon-ce2c319da6c40205f5083c69b62b6843-54c9db76c-wmp4d           3/3     Running            0          68d
+pod/seldon-controller-manager-6bfd9ccbd5-2djx9                        1/1     Running            0          2d18h
+pod/seldon-d7237f485ed30117f0c0b35883b822b3-654467d7f6-xs8p5          3/3     Running            0          67d
+pod/seldon-data-drift-bridge-7f4cfcff56-bz5k6                         1/1     Running            0          3d18h
+pod/seldon-f6be9d47615840eab338d893d4120027-6fd7bc5f8d-hvv6q          3/3     Running            0          3d16h
+secret/seldon-data-drift-bridge-dockercfg-qj86k          kubernetes.io/dockercfg               1      3d18h
+secret/seldon-data-drift-bridge-token-fdfd6              kubernetes.io/service-account-token   4      3d18h
+secret/seldon-data-drift-bridge-token-rj7gt              kubernetes.io/service-account-token   4      3d18h
+secret/seldon-init-container-secret                      Opaque                                4      13d
+secret/seldon-manager-dockercfg-qxxqr                    kubernetes.io/dockercfg               1      68d
+secret/seldon-manager-token-d9lfc                        kubernetes.io/service-account-token   4      68d
+secret/seldon-manager-token-nd5t8                        kubernetes.io/service-account-token   4      68d
+serviceaccount/seldon-data-drift-bridge          2         3d18h
+serviceaccount/seldon-manager                    2         68d
+service/seldon-583b4df158ce291f1a60e9d1994fb277                    ClusterIP   172.30.78.249    <none>        9000/TCP,9500/TCP            67d
+service/seldon-82d0c9489cb497f376e52ff8a819082b                    ClusterIP   172.30.151.42    <none>        9000/TCP,9500/TCP            2d19h
+service/seldon-data-drift-bridge-service                           ClusterIP   172.30.162.22    <none>        8080/TCP                     3d18h
+service/seldon-de2c38c92d9ad9b81a4064b22f34f1fc                    ClusterIP   172.30.247.173   <none>        9001/TCP,9501/TCP            67d
+service/seldon-webhook-service                                     ClusterIP   172.30.84.224    <none>        443/TCP                      68d
+deployment.apps/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb                      0/1     1            0           2d19h
+deployment.apps/seldon-ce2c319da6c40205f5083c69b62b6843                      1/1     1            1           68d
+deployment.apps/seldon-controller-manager                                    1/1     1            1           68d
+deployment.apps/seldon-d7237f485ed30117f0c0b35883b822b3                      1/1     1            1           67d
+deployment.apps/seldon-data-drift-bridge                                     1/1     1            1           3d18h
+deployment.apps/seldon-f6be9d47615840eab338d893d4120027                      1/1     1            1           3d19h
+replicaset.apps/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-54748588cb                      0         0         0       2d19h
+replicaset.apps/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-5fcd56bb7b                      0         0         0       2d19h
+replicaset.apps/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-67fbf565b4                      0         0         0       2d19h
+replicaset.apps/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-798494f897                      0         0         0       2d19h
+replicaset.apps/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-857dbbcfbf                      0         0         0       2d18h
+replicaset.apps/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-8657d967d7                      1         1         0       2d19h
+replicaset.apps/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-d4bb58fc9                       1         1         0       2d18h
+replicaset.apps/seldon-ce2c319da6c40205f5083c69b62b6843-54c9db76c                       1         1         1       68d
+replicaset.apps/seldon-controller-manager-6bfd9ccbd5                                    1         1         1       68d
+replicaset.apps/seldon-d7237f485ed30117f0c0b35883b822b3-654467d7f6                      1         1         1       67d
+replicaset.apps/seldon-data-drift-bridge-7f4cfcff56                                     1         1         1       3d18h
+replicaset.apps/seldon-f6be9d47615840eab338d893d4120027-6fd7bc5f8d                      1         1         1       3d17h
+replicaset.apps/seldon-f6be9d47615840eab338d893d4120027-7bd984b74d                      0         0         0       3d19h
+rolebinding.authorization.openshift.io/seldon-operator.v1.7.0-seldon-manager-6649979959      ml-workshop/seldon-operator.v1.7.0-seldon-manager-6649979959                                                    seldon-manager                    
+role.authorization.openshift.io/seldon-operator.v1.7.0-seldon-manager-6649979959
+horizontalpodautoscaler.autoscaling/seldon-ce2c319da6c40205f5083c69b62b6843   Deployment/seldon-ce2c319da6c40205f5083c69b62b6843   <unknown>/5%   1         5         1          68d
+horizontalpodautoscaler.autoscaling/seldon-d7237f485ed30117f0c0b35883b822b3   Deployment/seldon-d7237f485ed30117f0c0b35883b822b3   <unknown>/5%   1         5         1          67d
+horizontalpodautoscaler.autoscaling/seldon-f6be9d47615840eab338d893d4120027   Deployment/seldon-f6be9d47615840eab338d893d4120027   <unknown>/5%   1         5         1          3d19h
+endpointslice.discovery.k8s.io/seldon-583b4df158ce291f1a60e9d1994fb277-tnq97                    IPv4          <unset>          <unset>                                 67d
+endpointslice.discovery.k8s.io/seldon-82d0c9489cb497f376e52ff8a819082b-284f7                    IPv4          9500,9000        10.130.2.181,10.130.2.185               2d19h
+endpointslice.discovery.k8s.io/seldon-data-drift-bridge-service-xzqcc                           IPv4          8080             10.130.2.135                            3d18h
+endpointslice.discovery.k8s.io/seldon-de2c38c92d9ad9b81a4064b22f34f1fc-lsbh4                    IPv4          9001,9501        10.129.3.109                            67d
+endpointslice.discovery.k8s.io/seldon-webhook-service-jcn2n                                     IPv4          8443             10.130.2.184                            68d
+85m         Normal    Updated                        seldondeployment/minio-sklearn-ross                                   Updated SeldonDeployment "minio-sklearn-ross"
+85m         Normal    Updated                        seldondeployment/mlflow-deployment-fm                                 Updated SeldonDeployment "mlflow-deployment-fm"
+172m        Normal    Pulled                         pod/mlflow-deployment-mlflow-deployment-dag-0-chrun-classifiernds7w   Container image "registry.connect.redhat.com/seldonio/mlflowserver@sha256:05cc0ecb43052aedb27954f478c059c08a8f133df71f96a39ab7eeabd0329dcd" already present on machine
+85m         Normal    Updated                        seldondeployment/mlflow-deployment                                    Updated SeldonDeployment "mlflow-deployment"
+85m         Normal    Updated                        seldondeployment/model-123                                            Updated SeldonDeployment "model-123"
+85m         Normal    Updated                        seldondeployment/model-customerchurnuser29202021010501774158          Updated SeldonDeployment "model-customerchurnuser29202021010501774158"
+85m         Normal    Updated                        seldondeployment/model-saeed                                          Updated SeldonDeployment "model-saeed"
+21m         Warning   Unhealthy                      pod/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-8657d967d7-plwv6          Readiness probe failed: dial tcp 10.130.2.185:9000: connect: connection refused
+117s        Warning   Unhealthy                      pod/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-8657d967d7-plwv6          Readiness probe failed: HTTP probe failed with statuscode: 503
+16m         Warning   BackOff                        pod/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-8657d967d7-plwv6          Back-off restarting failed container
+72m         Warning   Failed                         pod/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-d4bb58fc9-x9q4h           Failed to pull image "registry.connect.redhat.com/seldonio/mlflow:latest": rpc error: code = Unknown desc = Error reading manifest latest in registry.connect.redhat.com/seldonio/mlflow: unauthorized: authentication required
+7m44s       Normal    BackOff                        pod/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-d4bb58fc9-x9q4h           Back-off pulling image "registry.connect.redhat.com/seldonio/mlflow:latest"
+2m41s       Warning   Unhealthy                      pod/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-d4bb58fc9-x9q4h           Readiness probe failed: HTTP probe failed with statuscode: 503
+2m9s        Warning   FailedGetResourceMetric        horizontalpodautoscaler/seldon-ce2c319da6c40205f5083c69b62b6843       missing request for cpu
+132m        Warning   FailedComputeMetricsReplicas   horizontalpodautoscaler/seldon-ce2c319da6c40205f5083c69b62b6843       invalid metrics (1 invalid out of 1), first error is: failed to get cpu utilization: missing request for cpu
+2m9s        Warning   FailedGetResourceMetric        horizontalpodautoscaler/seldon-d7237f485ed30117f0c0b35883b822b3       missing request for cpu
+12m         Warning   FailedComputeMetricsReplicas   horizontalpodautoscaler/seldon-d7237f485ed30117f0c0b35883b822b3       invalid metrics (1 invalid out of 1), first error is: failed to get cpu utilization: missing request for cpu
+3m39s       Warning   FailedGetResourceMetric        horizontalpodautoscaler/seldon-f6be9d47615840eab338d893d4120027       missing request for cpu
+imagestream.image.openshift.io/ml-workshop-elyra-seldon-alibi      image-registry.openshift-image-registry.svc:5000/ml-workshop/ml-workshop-elyra-seldon-alibi      latest                                  3 weeks ago
+imagestreamtag.image.openshift.io/ml-workshop-elyra-seldon-alibi:latest                          image-registry.openshift-image-registry.svc:5000/ml-workshop/ml-workshop-elyra-seldon-alibi@sha256:eebaa6ee1119d2d8835c1e149a3f476b09a43e576888412b1a984598598f847c     3 weeks ago
+imagetag.image.openshift.io/ml-workshop-elyra-seldon-alibi:latest                          Tag    ImportFailed (NotFound)                                                         1         2 weeks ago
+kafkabridge.kafka.strimzi.io/seldon-data-drift   1                  True
+kafkatopic.kafka.strimzi.io/seldon-data-drift                                                                                  my-cluster        10           1                    
+seldondeployment.machinelearning.seldon.io/minio-sklearn-ross                            3d18h
+seldondeployment.machinelearning.seldon.io/mlflow-deployment                             13d
+seldondeployment.machinelearning.seldon.io/mlflow-deployment-fm                          2d20h
+seldondeployment.machinelearning.seldon.io/model-123                                     68d
+seldondeployment.machinelearning.seldon.io/model-customerchurnuser29202021010501774158   67d
+seldondeployment.machinelearning.seldon.io/model-saeed                                   3d19h
+podmetrics.metrics.k8s.io/seldon-bca95d1dc19c8d93230dd1bd4c9b8cfb-8657d967d7-plwv6          1910m   18796Ki     5m0s
+podmetrics.metrics.k8s.io/seldon-ce2c319da6c40205f5083c69b62b6843-54c9db76c-wmp4d           0       311152Ki    5m0s
+podmetrics.metrics.k8s.io/seldon-controller-manager-6bfd9ccbd5-2djx9                        0       19628Ki     5m0s
+podmetrics.metrics.k8s.io/seldon-d7237f485ed30117f0c0b35883b822b3-654467d7f6-xs8p5          0       308640Ki    5m0s
+podmetrics.metrics.k8s.io/seldon-data-drift-bridge-7f4cfcff56-bz5k6                         0       412380Ki    5m0s
+podmetrics.metrics.k8s.io/seldon-f6be9d47615840eab338d893d4120027-6fd7bc5f8d-hvv6q          0       301712Ki    5m0s
+clusterserviceversion.operators.coreos.com/seldon-operator.v1.7.0             Seldon Operator                            1.7.0                seldon-operator.v1.6.0             Succeeded
+installplan.operators.coreos.com/install-ntdlq   seldon-operator.v1.7.0   Automatic   true
+subscription.operators.coreos.com/seldon-operator-certified    seldon-operator-certified    certified-operators   stable
+packagemanifest.packages.operators.coreos.com/seldon-deploy-operator                               Certified Operators   96d
+packagemanifest.packages.operators.coreos.com/seldon-deploy-operator-rhmp                          Red Hat Marketplace   96d
+packagemanifest.packages.operators.coreos.com/seldon-operator-certified                            Certified Operators   96d
+packagemanifest.packages.operators.coreos.com/seldon-operator                                      Community Operators   96d
+packagemanifest.packages.operators.coreos.com/seldon-operator-certified-rhmp                       Red Hat Marketplace   96d
+poddisruptionbudget.policy/seldon-data-drift-bridge    N/A             1                 1                     3d18h
+rolebinding.rbac.authorization.k8s.io/seldon-operator.v1.7.0-seldon-manager-6649979959      Role/seldon-operator.v1.7.0-seldon-manager-6649979959     68d
+role.rbac.authorization.k8s.io/seldon-operator.v1.7.0-seldon-manager-6649979959     2021-07-19T23:56:36Z

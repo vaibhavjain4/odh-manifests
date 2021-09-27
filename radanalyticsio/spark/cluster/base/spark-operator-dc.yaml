@@ -1,0 +1,129 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    olm.owner: sparkoperator.v1.1.0
+    operators.coreos.com/radanalytics-spark.ml-workshop: ""
+  name: spark-operator
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: radanalytics-spark-operator
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        alm-examples: |-
+          [
+            {
+              "apiVersion": "radanalytics.io/v1",
+              "kind": "SparkCluster",
+              "metadata": {
+                "name": "my-spark-cluster"
+              },
+              "spec": {
+                "worker": {
+                  "instances": "2"
+                },
+                "master": {
+                  "instances": "1"
+                }
+              }
+            },
+            {
+              "apiVersion": "radanalytics.io/v1",
+              "kind": "SparkApplication",
+              "metadata": {
+                "name": "my-spark-app"
+              },
+              "spec": {
+                "mainApplicationFile": "local:///opt/spark/examples/jars/spark-examples_2.11-2.4.5.jar",
+                "mainClass": "org.apache.spark.examples.SparkPi",
+                "driver": {
+                  "cores": 0.2,
+                  "coreLimit": "500m"
+                },
+                "executor": {
+                  "instances": 2,
+                  "cores": 1,
+                  "coreLimit": "1000m"
+                }
+              }
+            },
+            {
+              "apiVersion": "radanalytics.io/v1",
+              "kind": "SparkHistoryServer",
+              "metadata": {
+                  "name": "my-history-server"
+              },
+              "spec": {
+                  "type": "remoteStorage",
+                  "expose": true,
+                  "logDirectory": "s3a://my-history-server/",
+                  "updateInterval": 10,
+                  "retainedApplications": 50,
+                  "customImage": "quay.io/jkremser/openshift-spark:2.4.0-aws",
+                  "sparkConfiguration": [
+                    {
+                        "name": "spark.hadoop.fs.s3a.impl",
+                        "value": "org.apache.hadoop.fs.s3a.S3AFileSystem"
+                    },
+                    {
+                        "name": "spark.hadoop.fs.s3a.access.key",
+                        "value": "foo"
+                    },
+                    {
+                        "name": "spark.hadoop.fs.s3a.secret.key",
+                        "value": "bar"
+                    },
+                    {
+                        "name": "spark.hadoop.fs.s3a.endpoint",
+                        "value": "http://ceph-nano-0:8000"
+                    }
+                  ]
+              }
+            }
+          ]
+        capabilities: Deep Insights
+        categories: Big Data
+        certified: "false"
+        containerImage: quay.io/radanalyticsio/spark-operator:1.1.0
+        description: An operator for managing the Apache Spark clusters and intelligent applications that spawn those clusters.
+        olm.operatorGroup: opendatahub
+        olm.operatorNamespace: ml-workshop
+        olm.properties: '[{"type": "olm.maxOpenShiftVersion", "value": "4.8"}]'
+        olm.targetNamespaces: ml-workshop
+        operatorframework.io/properties: '{"properties":[{"type":"olm.gvk","value":{"group":"radanalytics.io","kind":"SparkApplication","version":"v1"}},{"type":"olm.gvk","value":{"group":"radanalytics.io","kind":"SparkCluster","version":"v1"}},{"type":"olm.gvk","value":{"group":"radanalytics.io","kind":"SparkHistoryServer","version":"v1"}},{"type":"olm.package","value":{"packageName":"radanalytics-spark","version":"1.1.0"}}]}'
+        repository: https://github.com/radanalyticsio/spark-operator
+        support: jkremser@redhat.com
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/name: radanalytics-spark-operator
+    spec:
+      containers:
+      - env:
+        - name: WATCH_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.annotations['olm.targetNamespaces']
+        image: quay.io/radanalyticsio/spark-operator:1.1.0
+        imagePullPolicy: Always
+        name: spark-operator
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: spark-crd-operator
+      serviceAccountName: spark-crd-operator
+      terminationGracePeriodSeconds: 5

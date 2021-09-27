@@ -7,14 +7,14 @@ patchesStrategicMerge:
 configurations:
   - params.yaml
 configMapGenerator:
-  - name: ai-library-config
+  - name: odh-dashboard-config
     envs:
       - params.env
 vars:
-  - name: YOUR_IMAGE
+  - name: ODH_DASHBOARD_IMAGE
     objref:
-      name: superset-config
+      name: odh-dashboard-config
       kind: ConfigMap
       apiVersion: v1
     fieldref:
-      fieldpath: data.YOUR_IMAGE
+      fieldpath: data.ODH_DASHBOARD_IMAGE

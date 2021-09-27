@@ -7,9 +7,9 @@ spec:
     spec:
       containers:
         - name: postgres-exporter
-          image: postgres-exporter
+          image: $(THRIFT_DB_EXPORTER_IMAGE)
         - name: postgresql
-          image: postgresql
+          image: $(THRIFT_DB_IMAGE)
 
 ---
 apiVersion: apps/v1
@@ -21,4 +21,4 @@ spec:
     spec:
       containers:
         - name: thriftserver
-          image: spark-cluster-image
+          image: $(THRIFT_SERVER_IMAGE)

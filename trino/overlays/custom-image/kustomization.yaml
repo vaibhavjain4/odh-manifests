@@ -7,14 +7,28 @@ patchesStrategicMerge:
 configurations:
   - params.yaml
 configMapGenerator:
-  - name: ai-library-config
+  - name: trino-custom-config
     envs:
       - params.env
 vars:
-  - name: YOUR_IMAGE
+  - name: TRINO_IMAGE
     objref:
-      name: superset-config
+      name: trino-custom-config
       kind: ConfigMap
       apiVersion: v1
     fieldref:
-      fieldpath: data.YOUR_IMAGE
+      fieldpath: data.TRINO_IMAGE
+  - name: TRINO_DB_IMAGE
+    objref:
+      name: trino-custom-config
+      kind: ConfigMap
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.TRINO_DB_IMAGE
+  - name: TRINO_HIVE_IMAGE
+    objref:
+      name: trino-custom-config
+      kind: ConfigMap
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.TRINO_HIVE_IMAGE

@@ -7,14 +7,14 @@ patchesStrategicMerge:
 configurations:
   - params.yaml
 configMapGenerator:
-  - name: ai-library-config
+  - name: radanalytics-spark-custom-config
     envs:
       - params.env
 vars:
-  - name: YOUR_IMAGE
+  - name: RADANALYTICS_SPARK_OPERATOR_IMAGE
     objref:
-      name: superset-config
+      name: radanalytics-spark-custom-config
       kind: ConfigMap
       apiVersion: v1
     fieldref:
-      fieldpath: data.YOUR_IMAGE
+      fieldpath: data.RADANALYTICS_SPARK_OPERATOR_IMAGE

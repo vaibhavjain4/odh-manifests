@@ -7,14 +7,28 @@ patchesStrategicMerge:
 configurations:
   - params.yaml
 configMapGenerator:
-  - name: ai-library-config
+  - name: thrift-custom-config
     envs:
       - params.env
 vars:
-  - name: YOUR_IMAGE
+  - name: THRIFT_DB_EXPORTER_IMAGE
     objref:
-      name: superset-config
+      name: thrift-custom-config
       kind: ConfigMap
       apiVersion: v1
     fieldref:
-      fieldpath: data.YOUR_IMAGE
+      fieldpath: data.THRIFT_DB_EXPORTER_IMAGE
+  - name: THRIFT_DB_IMAGE
+    objref:
+      name: thrift-custom-config
+      kind: ConfigMap
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.THRIFT_DB_IMAGE
+  - name: THRIFT_SERVER_IMAGE
+    objref:
+      name: thrift-custom-config
+      kind: ConfigMap
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.THRIFT_SERVER_IMAGE

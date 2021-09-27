@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
       - name: metastore
-        image: quay.io/cloudservices/ubi-hive:2.3.3-002
+        image: $(TRINO_HIVE_IMAGE)
 
 ---
 apiVersion: apps/v1
@@ -19,18 +19,19 @@ spec:
     spec:
       containers:
         - name: trino-coordinator
-          image: $(trino_image)
+          image: $(TRINO_IMAGE)
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: trino-db
 spec:
   template:
     spec:
       containers:
         - name: postgresql
-          image: postgresql
+          image: $(TRINO_DB_IMAGE)
 
 ---
 apiVersion: apps/v1
@@ -42,4 +43,4 @@ spec:
     spec:
       containers:
         - name: trino-worker
-          image: $(trino_image)
+          image: $(TRINO_IMAGE)

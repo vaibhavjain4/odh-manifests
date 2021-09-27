@@ -1,0 +1,269 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    olm.owner: opendatahub-operator.v1.1.0
+    olm.owner.kind: ClusterServiceVersion
+    olm.owner.namespace: openshift-operators
+    operators.coreos.com/opendatahub-operator.openshift-operators: ""
+  name: opendatahub-operator
+  namespace: openshift-operators
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      name: opendatahub-operator
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        alm-examples: |-
+          [
+            {
+              "apiVersion": "kfdef.apps.kubeflow.org/v1",
+              "kind": "KfDef",
+              "metadata": {
+                "name": "opendatahub",
+                "namespace": "opendatahub"
+              },
+              "spec": {
+                "applications": [
+                  {
+                    "kustomizeConfig": {
+                      "repoRef": {
+                        "name": "manifests",
+                        "path": "odh-common"
+                      }
+                    },
+                    "name": "odh-common"
+                  },
+                  {
+                    "kustomizeConfig": {
+                      "repoRef": {
+                        "name": "manifests",
+                        "path": "odhseldon/cluster"
+                      }
+                    },
+                    "name": "odhseldon"
+                  },
+                  {
+                    "kustomizeConfig": {
+                      "parameters": [
+                        {
+                          "name": "SUPERSET_ADMIN_PASSWORD",
+                          "value": "admin"
+                        }
+                      ],
+                      "repoRef": {
+                        "name": "manifests",
+                        "path": "superset"
+                      }
+                    },
+                    "name": "superset"
+                  },
+                  {
+                    "kustomizeConfig": {
+                      "parameters": [
+                        {
+                          "name": "namespace",
+                          "value": "openshift-operators"
+                        }
+                      ],
+                      "repoRef": {
+                        "name": "manifests",
+                        "path": "kafka/cluster"
+                      }
+                    },
+                    "name": "strimzi-operator"
+                  },
+                  {
+                    "kustomizeConfig": {
+                      "repoRef": {
+                        "name": "manifests",
+                        "path": "kafka/kafka"
+                      }
+                    },
+                    "name": "kafka-cluster"
+                  },
+                  {
+                    "kustomizeConfig": {
+                      "repoRef": {
+                        "name": "manifests",
+                        "path": "grafana/cluster"
+                      }
+                    },
+                    "name": "grafana-cluster"
+                  },
+                  {
+                    "kustomizeConfig": {
+                      "repoRef": {
+                        "name": "manifests",
+                        "path": "grafana/grafana"
+                      }
+                    },
+                    "name": "grafana-instance"
+                  },
+                  {
+                    "kustomizeConfig": {
+                      "repoRef": {
+                        "name": "manifests",
+                        "path": "radanalyticsio/spark/cluster"
+                      }
+                    },
+                    "name": "radanalyticsio-spark-cluster"
+                  },
+                  {
+                    "kustomizeConfig": {
+                      "repoRef": {
+                        "name": "manifests",
+                        "path": "prometheus/cluster"
+                      }
+                    },
+                    "name": "prometheus-cluster"
+                  },
+                  {
+                    "kustomizeConfig": {
+                      "repoRef": {
+                        "name": "manifests",
+                        "path": "prometheus/operator"
+                      }
+                    },
+                    "name": "prometheus-operator"
+                  },
+                  {
+                    "kustomizeConfig": {
+                      "parameters": [
+                        {
+                          "name": "s3_endpoint_url",
+                          "value": "s3.odh.com"
+                        }
+                      ],
+                      "repoRef": {
+                        "name": "manifests",
+                        "path": "jupyterhub/jupyterhub"
+                      }
+                    },
+                    "name": "jupyterhub"
+                  },
+                  {
+                    "kustomizeConfig": {
+                      "overlays": [
+                        "additional"
+                      ],
+                      "repoRef": {
+                        "name": "manifests",
+                        "path": "jupyterhub/notebook-images"
+                      }
+                    },
+                    "name": "notebook-images"
+                  },
+                  {
+                    "kustomizeConfig": {
+                      "repoRef": {
+                        "name": "manifests",
+                        "path": "airflow/operator"
+                      }
+                    },
+                    "name": "airflow-operator"
+                  },
+                  {
+                    "kustomizeConfig": {
+                      "repoRef": {
+                        "name": "manifests",
+                        "path": "airflow/cluster"
+                      }
+                    },
+                    "name": "airflow-cluster"
+                  },
+                  {
+                    "kustomizeConfig": {
+                      "repoRef": {
+                        "name": "manifests",
+                        "path": "odhargo/cluster"
+                      }
+                    },
+                    "name": "odhargo-cluster"
+                  },
+                  {
+                    "kustomizeConfig": {
+                      "repoRef": {
+                        "name": "manifests",
+                        "path": "odhargo/odhargo"
+                      }
+                    },
+                    "name": "odhargo"
+                  },
+                  {
+                    "kustomizeConfig": {
+                      "repoRef": {
+                        "name": "manifests",
+                        "path": "odh-dashboard"
+                      }
+                    },
+                    "name": "odh-dashboard"
+                  }
+                ],
+                "repos": [
+                  {
+                    "name": "kf-manifests",
+                    "uri": "https://github.com/kubeflow/manifests/tarball/v1.3-branch"
+                  },
+                  {
+                    "name": "manifests",
+                    "uri": "https://github.com/opendatahub-io/odh-manifests/tarball/v1.1.0"
+                  }
+                ]
+              }
+            }
+          ]
+        capabilities: Deep Insights
+        categories: AI/Machine Learning, Big Data
+        certified: "False"
+        containerImage: quay.io/opendatahub/opendatahub-operator:v1.1.0
+        description: Open Data Hub Operator for deployment and management of Open Data Hub and Kubeflow on OpenShift
+        olm.operatorGroup: global-operators
+        olm.operatorNamespace: openshift-operators
+        olm.properties: '[{"type": "olm.maxOpenShiftVersion", "value": "4.8"}]'
+        olm.targetNamespaces: ""
+        operatorframework.io/properties: '{"properties":[{"type":"olm.gvk","value":{"group":"kfdef.apps.kubeflow.org","kind":"KfDef","version":"v1"}},{"type":"olm.package","value":{"packageName":"opendatahub-operator","version":"1.1.0"}}]}'
+        repository: https://github.com/opendatahub-io/opendatahub-operator
+        support: Open Data Hub
+      creationTimestamp: null
+      labels:
+        name: opendatahub-operator
+    spec:
+      containers:
+      - command:
+        - opendatahub-operator
+        env:
+        - name: WATCH_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.annotations['olm.targetNamespaces']
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: OPERATOR_NAME
+          value: opendatahub-operator
+        image: quay.io/opendatahub/opendatahub-operator:v1.1.0
+        imagePullPolicy: Always
+        name: opendatahub-operator
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: opendatahub-operator
+      serviceAccountName: opendatahub-operator
+      terminationGracePeriodSeconds: 30
