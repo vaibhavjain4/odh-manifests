@@ -98,10 +98,7 @@ spec:
         - /manager
         env:
         - name: WATCH_NAMESPACE
-          valueFrom:
-            fieldRef:
-              apiVersion: v1
-              fieldPath: metadata.annotations['olm.targetNamespaces']
+          value: 'anz-ml'
         - name: RELATED_IMAGE_EXECUTOR
           value: registry.connect.redhat.com/seldonio/seldon-core-executor@sha256:2831ca7ae5a1451df2b8ebe26784a9b8e2ef80834350a76512b9f6790c6a0e55
         - name: RELATED_IMAGE_ENGINE
