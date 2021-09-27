@@ -51,6 +51,6 @@ data:
               worker_cpu_limit: '1'
               worker_memory_request: '2Gi'
               worker_cpu_request: '1'
-              spark_image: $(JUPYTERHUB_SPARK_WORKER_IMAGE)
+              spark_image: 'quay.io/radanalyticsio/openshift-spark-py36:2.4.5-2'
             return:
               SPARK_CLUSTER: 'metadata.name'

@@ -6,32 +6,32 @@ patchesStrategicMerge:
   - jupyterhub-db-dc.yaml
   - jupyterhub-dc.yaml
   - jupyterhub-singleuser-profiles-configmap.yaml
-configurations:
-  - params.yaml
-configMapGenerator:
-  - name: jupyterhub-config
-    envs:
-      - params.env
-vars:
-  - name: JUPYTERHUB_SPARK_WORKER_IMAGE
-    objref:
-      name: jupyterhub-config
-      kind: ConfigMap
-      apiVersion: v1
-    fieldref:
-      fieldpath: data.JUPYTERHUB_SPARK_WORKER_IMAGE
+# configurations:
+#   - params.yaml
+# configMapGenerator:
+#   - name: jupyterhub-config
+#     envs:
+#       - params.env
+# vars:
+#   - name: JUPYTERHUB_SPARK_WORKER_IMAGE
+#     objref:
+#       name: jupyterhub-config
+#       kind: ConfigMap
+#       apiVersion: v1
+#     fieldref:
+#       fieldpath: data.JUPYTERHUB_SPARK_WORKER_IMAGE
 
-  - name: JUPYTERHUB_IMAGE
-    objref:
-      name: jupyterhub-config
-      kind: ConfigMap
-      apiVersion: v1
-    fieldref:
-      fieldpath: data.JUPYTERHUB_IMAGE
-  - name: JUPYTERHUB_DB_IMAGE
-    objref:
-      name: jupyterhub-config
-      kind: ConfigMap
-      apiVersion: v1
-    fieldref:
-      fieldpath: data.JUPYTERHUB_DB_IMAGE
+#   - name: JUPYTERHUB_IMAGE
+#     objref:
+#       name: jupyterhub-config
+#       kind: ConfigMap
+#       apiVersion: v1
+#     fieldref:
+#       fieldpath: data.JUPYTERHUB_IMAGE
+#   - name: JUPYTERHUB_DB_IMAGE
+#     objref:
+#       name: jupyterhub-config
+#       kind: ConfigMap
+#       apiVersion: v1
+#     fieldref:
+#       fieldpath: data.JUPYTERHUB_DB_IMAGE

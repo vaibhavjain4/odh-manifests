@@ -7,4 +7,4 @@ spec:
     metadata:
     spec:
       containers:
-      - image: $(JUPYTERHUB_DB_IMAGE)
+      - image: registry.redhat.io/rhel8/postgresql-96

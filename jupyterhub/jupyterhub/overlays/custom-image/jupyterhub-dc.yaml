@@ -7,9 +7,9 @@ spec:
     metadata:
     spec:
       initContainers:
-        - image: $(JUPYTERHUB_IMAGE)
+        - image: quay.io/odh-jupyterhub/jupyterhub-img:v0.3.0
           name: wait-for-database
       containers:
-        - image: $(JUPYTERHUB_IMAGE)
+        - image: quay.io/odh-jupyterhub/jupyterhub-img:v0.3.0
           name: jupyterhub
         
