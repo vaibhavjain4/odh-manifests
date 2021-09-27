@@ -6,6 +6,8 @@ patchesStrategicMerge:
   - jupyterhub-db-dc.yaml
   - jupyterhub-dc.yaml
   - jupyterhub-singleuser-profiles-configmap.yaml
+
+  
 # configurations:
 #   - params.yaml
 # configMapGenerator:
