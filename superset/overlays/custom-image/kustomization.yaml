@@ -3,7 +3,8 @@ kind: Kustomization
 bases:
   - ../../base
 patchesStrategicMerge:
-  - custom-image-dc.yaml
+  - deployment.yaml
+  - supersetdb-deployment.yaml
 configurations:
   - params.yaml
 configMapGenerator:
