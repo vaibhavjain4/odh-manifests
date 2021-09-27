@@ -4,17 +4,18 @@ bases:
   - ../../base
 patchesStrategicMerge:
   - seldon-operator-dc.yaml
-configurations:
-  - params.yaml
-configMapGenerator:
-  - name: seldon-custom-config
-    envs:
-      - params.env
-vars:
-  - name: SELDON_CORE_IMAGE
-    objref:
-      name: seldon-custom-config
-      kind: ConfigMap
-      apiVersion: v1
-    fieldref:
-      fieldpath: data.SELDON_CORE_IMAGE
+  
+# configurations:
+#   - params.yaml
+# configMapGenerator:
+#   - name: seldon-custom-config
+#     envs:
+#       - params.env
+# vars:
+#   - name: SELDON_CORE_IMAGE
+#     objref:
+#       name: seldon-custom-config
+#       kind: ConfigMap
+#       apiVersion: v1
+#     fieldref:
+#       fieldpath: data.SELDON_CORE_IMAGE

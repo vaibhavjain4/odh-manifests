@@ -4,11 +4,8 @@ metadata:
   name: seldon-controller-manager
 spec:
   template:
-    metadata:
-      annotations:        
-        containerImage: $(SELDON_CORE_IMAGE)
     spec:
       containers:
-      - image: $(SELDON_CORE_IMAGE)
+      - image: registry.connect.redhat.com/seldonio/seldon-core-operator@sha256:d50e4585f1f212b3fd5aa4200ccb2e2260b44cf17ed4d0fc89bfa61cf1969b9b
         name: manager
         
