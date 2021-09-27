@@ -1,10 +1,43 @@
 apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
+  labels:
+    app: jupyterhub
   name: jupyterhub-db
 spec:
   template:
     spec:
       containers:
       - image: registry.redhat.io/rhel8/postgresql-96
+        env:
+        - name: POSTGRESQL_USER
+          value: jupyterhub
+        - name: POSTGRESQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: $(jupyterhub_secret)
+              key: POSTGRESQL_PASSWORD
+        - name: POSTGRESQL_DATABASE
+          value: jupyterhub
+        livenessProbe:
+          tcpSocket:
+            port: 5432
         name: postgresql
+        ports:
+        - containerPort: 5432
+          protocol: TCP
+        readinessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -i
+            - -c
+            - psql -h 127.0.0.1 -U $POSTGRESQL_USER -q -d $POSTGRESQL_DATABASE -c
+              'SELECT 1'
+        resources:
+          limits:
+            memory: 1Gi
+        volumeMounts:
+        - mountPath: /var/lib/pgsql/data
+          name: data
+
