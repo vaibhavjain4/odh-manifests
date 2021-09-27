@@ -5,24 +5,24 @@ bases:
 patchesStrategicMerge:
   - deployment.yaml
   - supersetdb-deployment.yaml
-configurations:
-  - params.yaml
-configMapGenerator:
-  - name: superset-custom-config
-    envs:
-      - params.env
-vars:
-  - name: SUPERSET_IMAGE
-    objref:
-      name: superset-custom-config
-      kind: ConfigMap
-      apiVersion: v1
-    fieldref:
-      fieldpath: data.SUPERSET_IMAGE
-  - name: SUPERSET_DB_IMAGE
-    objref:
-      name: superset-custom-config
-      kind: ConfigMap
-      apiVersion: v1
-    fieldref:
-      fieldpath: data.SUPERSET_DB_IMAGE
+# configurations:
+#   - params.yaml
+# configMapGenerator:
+#   - name: superset-custom-config
+#     envs:
+#       - params.env
+# vars:
+#   - name: SUPERSET_IMAGE
+#     objref:
+#       name: superset-custom-config
+#       kind: ConfigMap
+#       apiVersion: v1
+#     fieldref:
+#       fieldpath: data.SUPERSET_IMAGE
+#   - name: SUPERSET_DB_IMAGE
+#     objref:
+#       name: superset-custom-config
+#       kind: ConfigMap
+#       apiVersion: v1
+#     fieldref:
+#       fieldpath: data.SUPERSET_DB_IMAGE

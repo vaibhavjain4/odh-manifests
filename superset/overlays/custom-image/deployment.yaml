@@ -7,7 +7,7 @@ spec:
     spec:
       initContainers:
       - name: superset-init
-        image: $(SUPERSET_IMAGE)
+        image: quay.io/internaldatahub/superset:1.1.0
       containers:
       - name: superset
-        image: $(SUPERSET_IMAGE)
+        image: quay.io/internaldatahub/superset:1.1.0

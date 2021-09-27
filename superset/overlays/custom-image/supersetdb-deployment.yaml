@@ -7,4 +7,4 @@ spec:
     spec:
       containers:
       - name: postgresql
-        image: $(SUPERSET_DB_IMAGE)
+        image: quay.io/internaldatahub/postgresql-96-centos7:9.6
