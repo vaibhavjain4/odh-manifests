@@ -3,12 +3,12 @@ kind: Kustomization
 bases:
   - ../../base
 patchesStrategicMerge:
-  - statefulset-db.yaml
+  # - statefulset-db.yaml
   - deployment-web.yaml
   - deployment-worker.yaml
   - deployment-scheduler.yaml
   - statefulset-redis.yaml
-namespace: anz-ml
+# namespace: anz-ml
 # configurations:
 #   - params.yaml
 # configMapGenerator:
