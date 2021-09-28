@@ -56,7 +56,7 @@ spec:
           #   value: "true"
           ports:
             - name: http
-              containerPort: 5000
+              containerPort: 5500
               protocol: TCP
           resources:
             requests:
@@ -73,6 +73,10 @@ spec:
     - port: 5000
       targetPort: 5000
       name: http
+    - port: 5500
+      targetPort: 5500
+      name: http-internal
+
   selector:
     app: mlflow
 
