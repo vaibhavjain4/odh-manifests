@@ -159,8 +159,8 @@ spec:
               value: "True"
             - name: OAUTH_API_BASE_URL
               value: "https://openshift.default.svc.cluster.local:443"
-            - name: REQUESTS_CA_BUNDLE
-              value: "/tmp/combined.pem" 
+            # - name: REQUESTS_CA_BUNDLE
+            #   value: "/tmp/combined.pem" 
             - name: SA_SECRET_KEY
               valueFrom:
                 secretKeyRef:
