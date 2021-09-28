@@ -33,7 +33,7 @@ spec:
     name: app-aflow-airflow
     weight: 100
   port:
-    targetPort: http
+    targetPort: 8888
   wildcardPolicy: None
   tls:
     termination: edge
