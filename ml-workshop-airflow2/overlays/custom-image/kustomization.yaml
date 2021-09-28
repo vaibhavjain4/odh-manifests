@@ -3,7 +3,7 @@ kind: Kustomization
 bases:
   - ../../base
 patchesStrategicMerge:
-  # - statefulset-db.yaml
+  - statefulset-db.yaml
   - deployment-web.yaml
   - deployment-worker.yaml
   - deployment-scheduler.yaml
