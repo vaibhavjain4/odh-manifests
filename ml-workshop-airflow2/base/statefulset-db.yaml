@@ -12,7 +12,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: primary
   annotations:
-  namespace: ml-workshop
+  # namespace: ml-workshop
 spec:
   serviceName: app-aflow-postgresql-headless
   replicas: 1
