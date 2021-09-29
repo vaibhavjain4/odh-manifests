@@ -33,7 +33,7 @@ spec:
       priorityClassName: ""
       # securityContext:
       #   fsGroup: 1001
-      serviceAccountName: default
+      # serviceAccountName: default
       affinity:
         podAffinity:
 
@@ -141,4 +141,6 @@ spec:
       volumes:
         - name: dags-data
           emptyDir: { }
+      serviceAccount: airflow2-core
+      serviceAccountName: airflow2-core
 
