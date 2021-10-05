@@ -108,7 +108,6 @@ spec:
               value: "app-aflow-postgresql"
             - name: AIRFLOW_DATABASE_PORT_NUMBER
               value: "5432"
-
             - name: REDIS_HOST
               value: "app-aflow-redis-master"
             - name: REDIS_PORT_NUMBER
@@ -118,7 +117,6 @@ spec:
                 secretKeyRef:
                   name: app-aflow-redis
                   key: redis-password
-
             - name: AIRFLOW_EXECUTOR
               value: CeleryExecutor
             - name: AIRFLOW_WEBSERVER_HOST
@@ -127,7 +125,8 @@ spec:
               value: "8080"
             - name: AIRFLOW__WEBSERVER__SECRET_KEY
               value: "IKnowWhatYouDidLastYear"
-
+            - name: AIRFLOW__CORE__SENSITIVE_VAR_CONN_NAMES
+              value: AWS_SECRET_ACCESS_KEY,AWS_ACCESS_KEY_ID
           envFrom:
           ports:
             - name: task-logs
@@ -309,6 +308,8 @@ spec:
                 secretKeyRef:
                   name: airflow2-proxy
                   key: token
+            - name: AIRFLOW__CORE__SENSITIVE_VAR_CONN_NAMES
+              value: AWS_SECRET_ACCESS_KEY,AWS_ACCESS_KEY_ID
 
           ports:
             - name: http
