@@ -125,8 +125,6 @@ spec:
               value: "8080"
             - name: AIRFLOW__WEBSERVER__SECRET_KEY
               value: "IKnowWhatYouDidLastYear"
-            - name: AIRFLOW__CORE__SENSITIVE_VAR_CONN_NAMES
-              value: AWS_SECRET_ACCESS_KEY,AWS_ACCESS_KEY_ID
           envFrom:
           ports:
             - name: task-logs
@@ -308,8 +306,6 @@ spec:
                 secretKeyRef:
                   name: airflow2-proxy
                   key: token
-            - name: AIRFLOW__CORE__SENSITIVE_VAR_CONN_NAMES
-              value: AWS_SECRET_ACCESS_KEY,AWS_ACCESS_KEY_ID
 
           ports:
             - name: http
