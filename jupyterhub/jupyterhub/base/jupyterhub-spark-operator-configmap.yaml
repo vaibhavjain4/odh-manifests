@@ -36,6 +36,7 @@ data:
         memoryRequest: "{{ master_memory_request }}"
         cpuRequest: "{{ master_cpu_request }}"
       customImage: "{{ spark_image }}"
+      metrics: true
       env:
       - name: SPARK_METRICS_ON
         value: prometheus
