@@ -131,25 +131,6 @@ spec:
               value: "no"
             - name: AIRFLOW__WEBSERVER__SECRET_KEY
               value: "IKnowWhatYouDidLastYear"
-            - name: AUTH_ROLE_PUBLIC
-              value: "Public"
-            - name: AIRFLOW__WEBSERVER__ENABLE_PROXY_FIX
-              value: "True"
-            - name: OAUTH_API_BASE_URL
-              value: "https://openshift.default.svc.cluster.local:443"
-            - name: OAUTH_REDIRECT_URL
-              value:  https://ap2-airflow2-ml-workshop.apps.cluster-fxdfp.fxdfp.sandbox1120.opentlc.com
-            - name: OAUTH_TOKEN_URL
-              value: https://oauth-openshift.apps.cluster-fxdfp.fxdfp.sandbox1120.opentlc.com/oauth/token
-            - name: OAUTH_AUTHORIZE_URL
-              value: https://oauth-openshift.apps.cluster-fxdfp.fxdfp.sandbox1120.opentlc.com/oauth/authorize
-            - name: AIRFLOW_NAMESPACE
-              value: ml-workshop
-            - name: SA_SECRET_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: airflow2-proxy
-                  key: token              
           envFrom:
           ports:
             - name: task-logs
@@ -326,6 +307,24 @@ spec:
               value: "https://openshift.default.svc.cluster.local:443"
             - name: REQUESTS_CA_BUNDLE
               value: "/tmp/combined.pem" 
+            - name: AUTH_ROLE_PUBLIC 
+              value: "Public"
+            - name: AIRFLOW__WEBSERVER__ENABLE_PROXY_FIX
+              value: "True"
+            - name: OAUTH_REDIRECT_URL
+              value:  https://ap2-airflow2-ml-workshop.apps.cluster-fxdfp.fxdfp.sandbox1120.opentlc.com
+            - name: OAUTH_TOKEN_URL
+              value: https://oauth-openshift.apps.cluster-fxdfp.fxdfp.sandbox1120.opentlc.com/oauth/token
+            - name: OAUTH_AUTHORIZE_URL
+              value: https://oauth-openshift.apps.cluster-fxdfp.fxdfp.sandbox1120.opentlc.com/oauth/authorize
+            - name: AIRFLOW_NAMESPACE
+              value: ml-workshop
+            - name: SA_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: airflow2-proxy
+                  key: token              
+
             - name: SA_SECRET_KEY
               valueFrom:
                 secretKeyRef:
