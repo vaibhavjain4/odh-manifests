@@ -306,7 +306,7 @@ spec:
             - name: OAUTH_API_BASE_URL
               value: "https://openshift.default.svc.cluster.local:443"
             - name: REQUESTS_CA_BUNDLE
-              value: "/opt/app-root/lib64/python3.8/site-packages/certifi/cacert.pem" 
+              value: "/opt/bitnami/python/lib/python3.8/site-packages/certifi/cacert.pem" 
             - name: AUTH_ROLE_PUBLIC 
               value: "Public"
             - name: AIRFLOW__WEBSERVER__ENABLE_PROXY_FIX
