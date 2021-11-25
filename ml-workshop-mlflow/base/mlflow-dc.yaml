@@ -27,7 +27,7 @@ spec:
               name: public
           args:
             - --https-address=
-            - --http-address=5000
+            - --http-address=:5000
             - --provider=openshift
             - --openshift-service-account=mlflow-proxy
             - --upstream=http://localhost:5500
