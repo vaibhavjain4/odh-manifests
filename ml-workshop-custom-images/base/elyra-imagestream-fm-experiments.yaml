@@ -13,7 +13,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: 'quay.io/ml-aml-workshop/elyra:fmv3'
+        name: 'quay.io/ml-aml-workshop/elyra:fmv5'
       generation: 1
       importPolicy: {}
       referencePolicy:
