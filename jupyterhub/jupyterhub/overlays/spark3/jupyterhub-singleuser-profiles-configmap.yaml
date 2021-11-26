@@ -52,6 +52,6 @@ data:
               worker_cpu_limit: '750m'
               worker_memory_request: '4Gi'
               worker_cpu_request: '250m'
-              spark_image: 'quay.io/ml-aml-workshop/spark3:rossv3'
+              spark_image: 'quay.io/ml-aml-workshop/spark3:ross'
             return:
               SPARK_CLUSTER: 'metadata.name'
