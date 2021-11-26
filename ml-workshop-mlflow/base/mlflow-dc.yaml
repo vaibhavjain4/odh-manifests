@@ -20,7 +20,7 @@ spec:
           command: ['sh', '-c', "until nslookup mlflow-db.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mlflow db service; sleep 2; done"]
       containers:
         - name: oauth-proxy
-          image: openshift4/ose-oauth-proxy:v4.8
+          image: quay.io/ml-aml-workshop/ose-oauth-proxy:v4.8
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
