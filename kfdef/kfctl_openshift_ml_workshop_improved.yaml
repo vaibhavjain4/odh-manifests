@@ -80,11 +80,6 @@ spec:
     - kustomizeConfig:
         repoRef:
           name: manifests
-          path: ml-workshop-modeldb
-      name: modeldb
-    - kustomizeConfig:
-        repoRef:
-          name: manifests
           path: ml-workshop-custom-images
       name: ml-workshop-images
     - kustomizeConfig:
