@@ -13,3 +13,4 @@ patchesStrategicMerge:
   - trino-worker-dc.yaml
   - trino-coordinator-dc.yaml
   - trino-catalog-secret.yaml
+  - trino-db-dc.yaml

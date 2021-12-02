@@ -5,6 +5,8 @@ metadata:
   labels:
     app: superset
 spec:
+  securityContext:
+    fsGroup: 1000630000
   replicas: 1
   selector:
     matchLabels:

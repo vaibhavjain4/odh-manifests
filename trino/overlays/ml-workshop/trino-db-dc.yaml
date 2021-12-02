@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trino-db
+  labels:
+    app: trino
+  annotations:
+    template.alpha.openshift.io/wait-for-ready: "true"
+spec:
+  securityContext:
+    fsGroup: 1000630000
+
+  template:
+    spec:
+      containers:
+        - name: postgresql
+          image: quay.io/internaldatahub/postgresql-96-centos7:9.6
+

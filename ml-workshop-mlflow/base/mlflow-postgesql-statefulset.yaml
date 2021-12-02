@@ -22,6 +22,8 @@ metadata:
   labels:
     app: mlflow-db
 spec:
+  securityContext:
+    fsGroup: 1000630000
   serviceName: mlflow-db
   replicas: 1
   updateStrategy:
@@ -59,7 +61,7 @@ spec:
       # #              subPath:
       containers:
         - name: mlflow-db-postgresql
-          image: registry.redhat.io/rhel8/postgresql-10:1-154
+          image: quay.io/internaldatahub/postgresql-96-centos7:9.6
           imagePullPolicy: "Always"
           resources:
             requests:

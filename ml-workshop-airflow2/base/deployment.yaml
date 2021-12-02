@@ -419,8 +419,8 @@ spec:
               weight: 1
         nodeAffinity:
 
-      # securityContext:
-      #   fsGroup: 1001
+      securityContext:
+        fsGroup: 1000630000
       automountServiceAccountToken: false
       # initContainers:
       #   - name: init-chmod-data
@@ -443,7 +443,7 @@ spec:
       #         mountPath: /bitnami/postgresql
       containers:
         - name: app-aflow-postgresql
-          image: registry.redhat.io/rhel8/postgresql-10:1-154
+          image: quay.io/internaldatahub/postgresql-96-centos7:9.6
           #docker.io/bitnami/postgresql:10.7.0
           imagePullPolicy: "Always"
           resources:
