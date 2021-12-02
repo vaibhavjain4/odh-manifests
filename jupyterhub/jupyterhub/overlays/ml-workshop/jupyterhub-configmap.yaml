@@ -8,7 +8,7 @@ data:
   jupyterhub_config.py: >-
     import os
 
-    c.KubeSpawner.pvc_name_template = '%s-nb-{username}-pvc' %os.environ['JUPYTERHUB_SERVICE_NAME']
+    c.KubeSpawner.pvc_name_template = '%s-nb-{username}-pvc' % os.environ['JUPYTERHUB_SERVICE_NAME']
     c.KubeSpawner.volumes = [
       dict(name='data',persistentVolumeClaim=dict(claimName=c.KubeSpawner.pvc_name_template)),
       {
