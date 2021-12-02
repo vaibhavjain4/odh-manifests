@@ -5,10 +5,10 @@ metadata:
     app: jupyterhub
   name: jupyterhub-db
 spec:
-  securityContext:
-    fsGroup: 1000630000
   template:
     spec:
+      securityContext:
+        fsGroup: 1000630000
       containers:
       - image: quay.io/internaldatahub/postgresql-96-centos7:9.6
         name: postgresql
