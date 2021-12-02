@@ -9,6 +9,7 @@ data:
     import os
 
     c.KubeSpawner.pvc_name_template = '%s-nb-{username}-pvc' % os.environ['JUPYTERHUB_SERVICE_NAME']
+
     c.KubeSpawner.volumes = [
       dict(name='data',persistentVolumeClaim=dict(claimName=c.KubeSpawner.pvc_name_template)),
       {
@@ -16,6 +17,7 @@ data:
         'secret': {'secretName': 'app-aflow-redis'}
       }
     ]
+
     c.KubeSpawner.volume_mounts = [
       dict(name='data',mountPath=DEFAULT_MOUNT_PATH),
       {
@@ -23,7 +25,9 @@ data:
         'mountPath': '/tmp/data'
       }
     ]
+
     c.KubeSpawner.user_storage_class = os.environ.get("JUPYTERHUB_STORAGE_CLASS",c.KubeSpawner.user_storage_class)
+
 
     c.KubeSpawner.lifecycle_hooks = {
         "postStart": {
@@ -33,12 +37,14 @@ data:
         }
     }
 
+
     def my_hook(spawner):
         # spawner is refers to the specific users KubeSpawner instance (one is created per user)
         # run the logic here...
         print("i am here")
         with open('/tmp/file.txt', 'w') as newcafile:
           newcafile.write("hello worl")
+
 
     c.Spawner.pre_spawn_hook = my_hook
   jupyterhub_admins: "admin"
