@@ -22,8 +22,6 @@ metadata:
   labels:
     app: mlflow-db
 spec:
-  securityContext:
-    fsGroup: 1000630000
   serviceName: mlflow-db
   replicas: 1
   updateStrategy:
@@ -37,6 +35,9 @@ spec:
       labels:
         app: mlflow-db
     spec:
+      securityContext:
+        fsGroup: 1000630000
+
       initContainers:
       #   - name: init-chmod-data
       #     image: docker.io/bitnami/minideb:latest
