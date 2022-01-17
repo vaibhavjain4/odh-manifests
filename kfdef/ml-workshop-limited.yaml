@@ -44,9 +44,10 @@ spec:
       name: jupyterhub
     - kustomizeConfig:
         overlays:
-          #- cuda
+          - cuda
           - additional
           - custom-image
+          # - custom-extensions
         repoRef:
           name: manifests
           path: jupyterhub/notebook-images

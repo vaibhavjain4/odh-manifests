@@ -5,18 +5,22 @@ metadata:
     opendatahub.io/notebook-image: "true"
   annotations:
     opendatahub.io/notebook-image-url: "https://github.com/thoth-station/s2i-lab-elyra"
-    opendatahub.io/notebook-image-name: "Elyra Notebook Image"
+    opendatahub.io/notebook-image-name: "Elyra Notebook Image with Spark"
     opendatahub.io/notebook-image-desc: "Jupyter notebook image with Elyra-AI installed"
-  name: s2i-lab-elyra
+  name: s2i-lab-elyra-spark
 spec:
   lookupPolicy:
-    local: true
+    local: false
   tags:
   - annotations:
       openshift.io/imported-from: quay.io/thoth-station/s2i-lab-elyra
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/s2i-lab-elyra:v0.1.1
-    name: "v0.1.1"
+      name: quay.io/ml-aml-workshop/elyra-spark:0.0.4
+    name: latest
     referencePolicy:
       type: Source
+status: 
+  tags:
+    - tag: latest
+      dockerImageReference: quay.io/ml-aml-workshop/elyra-spark:0.0.4
