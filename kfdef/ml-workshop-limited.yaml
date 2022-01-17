@@ -8,7 +8,7 @@ spec:
     - kustomizeConfig:
         repoRef:
           name: manifests
-          path: ml-workshop-odhseldon/cluster
+          path: ml-workshop-seldon/cluster
       name: odhseldon
     - kustomizeConfig:
         overlays:
@@ -24,8 +24,6 @@ spec:
           path: superset
       name: superset
     - kustomizeConfig:
-        overlays:
-          - custom-image
         repoRef:
           name: manifests
           path: ml-workshop-radanalyticsio/spark/cluster
@@ -42,9 +40,10 @@ spec:
       name: jupyterhub
     - kustomizeConfig:
         overlays:
-          - cuda
+          # - cuda
+          - cuda-11.0.3
           - additional
-          - custom-image
+          # - custom-image
           # - custom-extensions
         repoRef:
           name: manifests
