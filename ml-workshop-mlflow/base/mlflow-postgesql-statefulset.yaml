@@ -73,7 +73,10 @@ spec:
             - name: POSTGRESQL_PASSWORD
               value: "postgres"
             - name: POSTGRESQL_DATABASE
-              value: "postgres"  
+              value: "postgres" 
+            - name: PGDATA
+              value: /var/lib/pgsql/data/pgdata
+               
           ports:
             - name: postgresql
               containerPort: 5432
@@ -97,6 +100,7 @@ spec:
           volumeMounts:
             - name: mlflow-db-data
               mountPath: /var/lib/pgsql/data
+              subPath: pgdata
   #              subPath:
   #      volumes:
   volumeClaimTemplates:

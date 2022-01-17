@@ -8,4 +8,5 @@ spec:
       containers:
         - name: mlflow-db-postgresql
           # image: 'registry.redhat.io/rhel8/postgresql-10:1-154'
-          image: 'quay.io/internaldatahub/postgresql-96-centos7:9.6'
+          image: quay.io/internaldatahub/postgresql-96-centos7:9.6
+          
