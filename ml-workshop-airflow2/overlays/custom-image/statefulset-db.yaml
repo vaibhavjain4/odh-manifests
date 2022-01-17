@@ -8,4 +8,5 @@ spec:
     spec:
       containers:
         - name: app-aflow-postgresql
-          image: 'registry.redhat.io/rhel8/postgresql-10:1-154'
+          image: 'quay.io/internaldatahub/postgresql-96-centos7:9.6'
+          # image: 'registry.redhat.io/rhel8/postgresql-10:1-154'
