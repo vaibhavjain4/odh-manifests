@@ -72,11 +72,11 @@ spec:
           name: manifests
           path: trino
       name: trino
-    - kustomizeConfig:
-        repoRef:
-          name: manifests
-          path: ml-workshop-custom-images
-      name: ml-workshop-images
+    # - kustomizeConfig:
+    #     repoRef:
+    #       name: manifests
+    #       path: ml-workshop-custom-images
+    #   name: ml-workshop-images
     - kustomizeConfig:
         overlay:
           - custom-image
@@ -84,7 +84,11 @@ spec:
           name: manifests
           path: ml-workshop-mlflow
       name: ml-workshop-mlflow
-
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: ml-workshop-minio
+      name: minio
   repos:
     - name: kf-manifests
       uri: https://github.com/kubeflow/manifests/archive/v1.2-branch.tar.gz

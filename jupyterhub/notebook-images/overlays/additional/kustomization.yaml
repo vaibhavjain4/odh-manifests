@@ -3,12 +3,14 @@ kind: Kustomization
 bases:
 - ../../base
 resources:
-- minimal-notebook-imagestream.yaml
-- generic-data-science-notebook-imagestream.yaml
-- scipy-notebook-imagestream.yaml
-- tensorflow-notebook-imagestream.yaml
-- spark-scipy-notebook-imagestream.yaml
+# - minimal-notebook-imagestream.yaml
+# - generic-data-science-notebook-imagestream.yaml
+# - scipy-notebook-imagestream.yaml
+# - tensorflow-notebook-imagestream.yaml
+# - spark-scipy-notebook-imagestream.yaml
 - elyra-notebook-imagestream.yaml
+- elyra-notebook-spark3-imagestream.yaml
+- customnotebook-imagestream.yaml
 
 commonLabels:
   opendatahub.io/component: "true"

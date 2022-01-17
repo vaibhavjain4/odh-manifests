@@ -41,7 +41,7 @@ metadata:
   annotations:
     openshift.io/host.generated: 'true'
 spec:
-  host: null
+  # host: null
   subdomain: ''
   to:
     kind: Service

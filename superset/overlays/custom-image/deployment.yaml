@@ -7,7 +7,8 @@ spec:
     spec:
       initContainers:
       - name: superset-init
-        image: quay.io/internaldatahub/superset:1.1.0
+        image: quay.io/internaldatahub/superset:1.3.0
       containers:
       - name: superset
-        image: quay.io/internaldatahub/superset:1.1.0
+        # image: quay.io/internaldatahub/superset:1.1.0
+        image: quay.io/internaldatahub/superset:1.3.0

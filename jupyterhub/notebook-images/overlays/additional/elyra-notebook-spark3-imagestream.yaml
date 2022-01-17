@@ -7,7 +7,7 @@ metadata:
     opendatahub.io/notebook-image-url: "https://github.com/thoth-station/s2i-lab-elyra"
     opendatahub.io/notebook-image-name: "Elyra Notebook Image with Spark"
     opendatahub.io/notebook-image-desc: "Jupyter notebook image with Elyra-AI installed"
-  name: s2i-lab-elyra-spark
+  name: elyra-spark
 spec:
   lookupPolicy:
     local: false
@@ -17,6 +17,6 @@ spec:
     from:
       kind: DockerImage
       name: quay.io/ml-aml-workshop/elyra-spark:0.0.4
-    name: latest
+    name: "0.0.4"
     referencePolicy:
       type: Source
