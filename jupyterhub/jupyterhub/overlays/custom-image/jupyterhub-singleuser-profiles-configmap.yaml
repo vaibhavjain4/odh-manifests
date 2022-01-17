@@ -19,7 +19,7 @@ data:
 
       - name: Spark Notebook
         images:
-        - 'elyra-spark:0.0.3'
+        - 'elyra-spark:0.0.4'
         env:
         - name: PYSPARK_SUBMIT_ARGS
           value: '--conf spark.cores.max=2 --conf spark.executor.instances=2 --conf spark.executor.memory=1G --conf spark.executor.cores=1 --conf spark.driver.memory=2G --packages org.apache.hadoop:hadoop-aws:3.2.0 pyspark-shell'
@@ -47,6 +47,6 @@ data:
               worker_cpu_limit: '1'
               worker_memory_request: '2Gi'
               worker_cpu_request: '1'
-              spark_image: quay.io/ml-aml-workshop/spark3:ross
+              spark_image: quay.io/ml-on-k8s/spark:3.0.0
             return:
               SPARK_CLUSTER: 'metadata.name'

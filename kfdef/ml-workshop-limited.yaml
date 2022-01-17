@@ -6,11 +6,9 @@ metadata:
 spec:
   applications:
     - kustomizeConfig:
-        overlays:
-          - custom-image
         repoRef:
           name: manifests
-          path: odhseldon/cluster
+          path: ml-workshop-odhseldon/cluster
       name: odhseldon
     - kustomizeConfig:
         overlays:
@@ -30,7 +28,7 @@ spec:
           - custom-image
         repoRef:
           name: manifests
-          path: radanalyticsio/spark/cluster
+          path: ml-workshop-radanalyticsio/spark/cluster
       name: radanalyticsio-spark-cluster
     - kustomizeConfig:
         overlays:

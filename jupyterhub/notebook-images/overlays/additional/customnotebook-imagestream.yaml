@@ -1,0 +1,19 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    opendatahub.io/notebook-image: "true"
+  annotations:
+    opendatahub.io/notebook-image-name: "SciKit v1.10 - Elyra Notebook Image"
+    opendatahub.io/notebook-image-desc: "Jupyter notebook image with Scikit"
+  name: elyra-scikit-customnotebook
+spec:
+  lookupPolicy:
+    local: false
+  tags:
+  - from:
+      kind: DockerImage
+      name: quay.io/ml-on-k8s/scikit-notebook:v1.1.0
+    name: "v1.1.0"
+    referencePolicy:
+      type: Source
