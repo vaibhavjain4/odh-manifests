@@ -41,7 +41,7 @@ spec:
     - kustomizeConfig:
         overlays:
           # - cuda
-          - cuda-11.0.3
+          # - cuda-11.0.3
           - additional
           # - custom-image
           # - custom-extensions
