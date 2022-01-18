@@ -9,4 +9,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: airflow2-core
-  namespace: anz-ml
+  namespace: ml-workshop
