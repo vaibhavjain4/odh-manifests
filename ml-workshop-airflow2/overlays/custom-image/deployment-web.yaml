@@ -9,6 +9,6 @@ spec:
         - name: git-sync
           image: 'k8s.gcr.io/git-sync/git-sync:v3.2.2'
         - name: airflow-web
-          # image: 'quay.io/ml-aml-workshop/airflow-custom:2.1.7.1.web'
-          image: 'quay.io/ml-aml-workshop/airflow-custom:2.0.0.web'
+          image: 'quay.io/ml-aml-workshop/airflow-custom:2.1.7.1.web'
+          # image: 'quay.io/ml-aml-workshop/airflow-custom:2.0.0.web'
 
