@@ -160,8 +160,8 @@ spec:
               value: "True"
             - name: OAUTH_API_BASE_URL
               value: "https://openshift.default.svc.cluster.local:443"
-            # - name: REQUESTS_CA_BUNDLE
-            #   value: "/tmp/combined.pem" 
+            - name: REQUESTS_CA_BUNDLE
+              value: "/tmp/combined.pem" 
             - name: SA_SECRET_KEY
               valueFrom:
                 secretKeyRef:
@@ -197,6 +197,9 @@ spec:
           volumeMounts:
             - name: dags-data
               mountPath: /opt/bitnami/airflow/dags
+            - name: airflow-auth-cert
+              readOnly: true
+              mountPath: /tmp/oauth
 
           resources:
             limits: {}
@@ -204,4 +207,7 @@ spec:
       volumes:
         - name: dags-data
           emptyDir: {}
-
+        - name: airflow-auth-cert
+          secret:
+            secretName: airflow-auth-cert
+            defaultMode: 420
