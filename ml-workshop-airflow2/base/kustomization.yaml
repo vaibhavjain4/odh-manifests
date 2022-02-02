@@ -15,3 +15,20 @@ resources:
 commonLabels:
   opendatahub.io/component: "false"
   component.opendatahub.io/name: "airflow2"
+
+configMapGenerator:
+- name: airflow2-parameters
+  env: params.env
+generatorOptions:
+  disableNameSuffixHash: true
+vars:
+- name: OCP_APPS_URI
+  objref:
+    kind: ConfigMap
+    name: airflow2-parameters
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.OCP_APPS_URI
+
+configurations:
+- params.yaml

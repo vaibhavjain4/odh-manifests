@@ -52,6 +52,9 @@ spec:
     - kustomizeConfig:
         overlays:
           - custom-image
+        parameters:
+          - name: OCP_APPS_URI
+            value: <XXXX.apps.rosa-5a98.ibhp.p1.openshiftapps.com>
         repoRef:
           name: manifests
           path: ml-workshop-airflow2
