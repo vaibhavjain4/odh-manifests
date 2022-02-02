@@ -197,9 +197,9 @@ spec:
           volumeMounts:
             - name: dags-data
               mountPath: /opt/bitnami/airflow/dags
-            - name: airflow-auth-cert
-              readOnly: true
-              mountPath: /tmp/oauth
+            # - name: airflow-auth-cert
+            #   readOnly: true
+            #   mountPath: /tmp/oauth
 
           resources:
             limits: {}
@@ -207,7 +207,7 @@ spec:
       volumes:
         - name: dags-data
           emptyDir: {}
-        - name: airflow-auth-cert
-          secret:
-            secretName: airflow-auth-cert
-            defaultMode: 420
+        # - name: airflow-auth-cert
+        #   secret:
+        #     secretName: airflow-auth-cert
+        #     defaultMode: 420
