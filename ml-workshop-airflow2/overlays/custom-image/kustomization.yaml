@@ -8,6 +8,7 @@ patchesStrategicMerge:
   - deployment-worker.yaml
   - deployment-scheduler.yaml
   - statefulset-redis.yaml
+  - rbac.yaml
 # namespace: anz-ml
 # configurations:
 #   - params.yaml
