@@ -8,6 +8,7 @@ resources:
   - service-accounts.yaml
   - route.yaml
   - default-role-binding.yaml
+  - rbac.yaml
 
 commonLabels:
   opendatahub.io/component: "false"
