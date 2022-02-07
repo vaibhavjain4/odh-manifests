@@ -4,6 +4,7 @@ bases:
   - ../../base
 resources:
   - s3-secret.yaml
+  - postgresql-data-stateful-set.yaml
 
 
 patchesStrategicMerge:
