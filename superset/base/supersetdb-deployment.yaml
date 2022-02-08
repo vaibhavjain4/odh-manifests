@@ -18,6 +18,9 @@ spec:
       labels:
         name: supersetdb
     spec:
+      securityContext:
+        fsGroup: 26
+        runAsUser: 26
       containers:
       - name: postgresql
         image: "quay.io/internaldatahub/postgresql-96-centos7:9.6"
@@ -37,6 +40,8 @@ spec:
             secretKeyRef:
               key: database-name
               name: supersetdb
+        - name: PGDATA
+          value: /var/lib/pgsql/data/pgdata
 
         imagePullPolicy: Always
         livenessProbe:
@@ -64,6 +69,7 @@ spec:
         volumeMounts:
         - mountPath: /var/lib/pgsql/data
           name: "supersetdb-data"
+          subPath: pgdata
       volumes:
       - name: "supersetdb-data"
         persistentVolumeClaim:
