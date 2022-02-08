@@ -16,6 +16,9 @@ spec:
                 path: hive.properties
               - key: customerchurn.properties
                 path: customerchurn.properties
+              - key: postgresql.properties
+                path: postgresql.properties
+
 
         - name: trino-kafka-volume
           secret:
