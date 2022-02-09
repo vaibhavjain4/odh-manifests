@@ -17,6 +17,9 @@ spec:
       labels:
         deployment: trino-db
     spec:
+      securityContext:
+        fsGroup: 26
+        runAsUser: 26
       containers:
         - name: postgresql
           image: postgresql

@@ -73,6 +73,10 @@ spec:
       #     volumeMounts:
       #       - name: aflow-data
       #         mountPath: /bitnami/postgresql
+      securityContext:
+        fsGroup: 26
+        runAsUser: 26
+
       containers:
         - name: app-aflow-postgresql
           image: registry.redhat.io/rhel8/postgresql-10:1-154
