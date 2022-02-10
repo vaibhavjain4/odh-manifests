@@ -98,6 +98,14 @@ spec:
           path: kafka/kafka
       name: kafka-cluster
     - kustomizeConfig:
+        parameters:
+          - name: namespace
+            value: openshift-operators
+        repoRef:
+          name: manifests
+          path: kafka/cluster
+      name: strimzi-operator
+    - kustomizeConfig:
         repoRef:
           name: manifests
           path: ml-workshop-kafka-populator
