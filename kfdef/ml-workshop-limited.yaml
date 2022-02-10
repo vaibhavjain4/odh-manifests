@@ -93,11 +93,6 @@ spec:
           path: ml-workshop-minio
       name: minio
     - kustomizeConfig:
-        repoRef:
-          name: manifests
-          path: kafka/kafka
-      name: kafka-cluster
-    - kustomizeConfig:
         parameters:
           - name: namespace
             value: openshift-operators
@@ -105,6 +100,11 @@ spec:
           name: manifests
           path: kafka/cluster
       name: strimzi-operator
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: kafka/kafka
+      name: kafka-cluster
     - kustomizeConfig:
         repoRef:
           name: manifests
