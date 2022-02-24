@@ -18,7 +18,7 @@ spec:
       app.kubernetes.io/instance: app-aflow
       app.kubernetes.io/component: worker
   serviceName: app-aflow-airflow-worker-headless
-  replicas: 1
+  replicas: 5
   updateStrategy:
     type: "RollingUpdate"
   template:
