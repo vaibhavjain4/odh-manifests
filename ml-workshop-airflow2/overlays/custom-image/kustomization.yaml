@@ -5,6 +5,7 @@ bases:
 
 resources:
   - rbac.yaml
+  - cert-secret-job.yaml
 patchesStrategicMerge:
   - statefulset-db.yaml
   - deployment-web.yaml
