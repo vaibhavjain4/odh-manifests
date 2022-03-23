@@ -91,7 +91,7 @@ spec:
               key: POSTGRESQL_PASSWORD
         - name: JUPYTERHUB_DATABASE_HOST
           value: jupyterhub-db
-        image: quay.io/odh-jupyterhub/jupyterhub-img:v0.3.5
+        image: quay.io/odh-jupyterhub/jupyterhub-img:v0.3.6
         imagePullPolicy: "Always"
         name: wait-for-database
         resources:
