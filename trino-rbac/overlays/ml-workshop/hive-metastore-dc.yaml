@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: hive
+    hive: metastore
+  name: hive-metastore
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+        - name: metastore
+          env:
+            - name: HIVE_LOGLEVEL
+              value: "DEBUG"

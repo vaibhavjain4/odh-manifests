@@ -1,0 +1,38 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+  - ../../base
+patchesStrategicMerge:
+  - hive-metastore-dc.yaml
+  - trino-coordinator-dc.yaml
+  - trino-worker-dc.yaml
+  - trino-db-dc.yaml
+
+# configurations:
+#   - params.yaml
+# configMapGenerator:
+#   - name: trino-custom-config
+#     envs:
+#       - params.env
+# vars:
+#   - name: TRINO_IMAGE
+#     objref:
+#       name: trino-custom-config
+#       kind: ConfigMap
+#       apiVersion: v1
+#     fieldref:
+#       fieldpath: data.TRINO_IMAGE
+#   - name: TRINO_DB_IMAGE
+#     objref:
+#       name: trino-custom-config
+#       kind: ConfigMap
+#       apiVersion: v1
+#     fieldref:
+#       fieldpath: data.TRINO_DB_IMAGE
+#   - name: TRINO_HIVE_IMAGE
+#     objref:
+#       name: trino-custom-config
+#       kind: ConfigMap
+#       apiVersion: v1
+#     fieldref:
+#       fieldpath: data.TRINO_HIVE_IMAGE

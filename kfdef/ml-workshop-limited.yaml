@@ -110,6 +110,16 @@ spec:
           name: manifests
           path: ml-workshop-kafka-populator
       name: kafka-populator
+    - kustomizeConfig:
+        repoRef:
+          name: kf-manifests
+          path: tf-training/tf-job-crds
+      name: tf-job-crds
+    - kustomizeConfig:
+        repoRef:
+          name: kf-manifests
+          path: tf-training/tf-job-operator
+      name: tf-job-operator
   repos:
     - name: kf-manifests
       uri: https://github.com/kubeflow/manifests/archive/v1.2-branch.tar.gz

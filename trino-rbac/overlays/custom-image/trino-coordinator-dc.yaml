@@ -7,5 +7,4 @@ spec:
     spec:
       containers:
         - name: trino-coordinator
-#          image: 'quay.io/opendatahub/trino:355'
-          image: 'quay.io/opendatahub/trino:361'
+          image: 'quay.io/opendatahub/trino:355'
