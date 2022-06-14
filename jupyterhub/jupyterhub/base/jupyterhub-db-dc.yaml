@@ -26,7 +26,7 @@ spec:
         runAsUser: 26
 
       containers:
-      - image: registry.redhat.io/rhel8/postgresql-96
+      - image: registry.redhat.io/rhel8/postgresql-10:1-154
         env:
         - name: POSTGRESQL_USER
           value: jupyterhub

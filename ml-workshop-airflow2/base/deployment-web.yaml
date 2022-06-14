@@ -162,11 +162,11 @@ spec:
               value: "https://openshift.default.svc.cluster.local:443"
             - name: REQUESTS_CA_BUNDLE
               value: "/tmp/combined.pem" 
-            - name: SA_SECRET_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: airflow2-proxy
-                  key: token
+#            - name: SA_SECRET_KEY
+#              valueFrom:
+#                secretKeyRef:
+#                  name: airflow2-proxy
+#                  key: token
             - name: OAUTH_REDIRECT_URL
               value: https://ap-airflow2-ml-workshop$(OCP_APPS_URI)
             - name: OAUTH_TOKEN_URL
