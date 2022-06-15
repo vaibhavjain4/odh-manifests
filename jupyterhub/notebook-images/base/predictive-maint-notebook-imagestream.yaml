@@ -4,8 +4,8 @@ metadata:
   labels:
     opendatahub.io/notebook-image: "true"
   annotations:
-    opendatahub.io/notebook-image-name: "Sample TF Notebook used for pred maintainence"
-  name: pred-maintainence-notebook
+    opendatahub.io/notebook-image-name: "Predictive Maintenance Tensorflow GPU"
+  name: tensorflow-gpu
 spec:
   lookupPolicy:
     local: true
