@@ -76,7 +76,7 @@ spec:
           protocol: TCP
         resources:
           limits:
-            memory: 1Gi
+            memory: 4Gi
         volumeMounts:
         - mountPath: /opt/app-root/configs
           name: config
