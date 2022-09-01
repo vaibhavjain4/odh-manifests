@@ -72,5 +72,4 @@ spec:
           subPath: pgdata
       volumes:
       - name: "supersetdb-data"
-        persistentVolumeClaim:
-          claimName: supersetdb-data
+        emptyDir: {}
