@@ -60,8 +60,7 @@ spec:
           name: data
       volumes:
       - name: data
-        persistentVolumeClaim:
-          claimName: jupyterhub-db
+        emptyDir: {}
       - configMap:
           defaultMode: 420
           name: jupyterhub-cfg
