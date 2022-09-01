@@ -82,12 +82,15 @@ spec:
             - name: customerdatadb-data
               mountPath: /var/lib/pgsql/data
               subPath: pgdata
-  volumeClaimTemplates:
-    - metadata:
-        name: customerdatadb-data
-      spec:
-        accessModes:
-          - "ReadWriteOnce"
+      volumes:
+        - name: customerdatadb-data
+          emptyDir: {}              
+#  volumeClaimTemplates:
+#    - metadata:
+#        name: customerdatadb-data
+#      spec:
+#        accessModes:
+#          - "ReadWriteOnce"
         resources:
           requests:
             storage: "8Gi"
