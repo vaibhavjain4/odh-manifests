@@ -106,9 +106,9 @@ spec:
               mountPath: /var/lib/pgsql/data
               subPath: pgdata
   #              subPath:
-          volumes:
-            - name: mlflow-db-data
-              emptyDir: {}
+      volumes:
+        - name: mlflow-db-data
+          emptyDir: {}
   # volumeClaimTemplates:
   #  - metadata:
   #      name: mlflow-db-data
