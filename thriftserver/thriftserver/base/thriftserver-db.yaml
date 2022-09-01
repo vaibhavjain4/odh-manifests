@@ -92,7 +92,6 @@ spec:
             privileged: false
       volumes:
         - name: "postgresql-data"
-          persistentVolumeClaim:
-            claimName: thriftserver-db
+          emptyDir: {}
       restartPolicy: Always
       dnsPolicy: ClusterFirst
