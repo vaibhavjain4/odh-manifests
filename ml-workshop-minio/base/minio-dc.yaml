@@ -81,7 +81,6 @@ spec:
 #              mountPath: "/config"
       volumes:
         - name: storage
-          persistentVolumeClaim:
-            claimName: minio-ml-workshop
+          emptyDir: {}
 #        - name: config
 #          emptyDir: {}
