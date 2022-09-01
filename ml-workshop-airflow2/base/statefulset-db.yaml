@@ -189,8 +189,9 @@ spec:
               mountPath: /var/lib/pgsql/data
               subPath: pgdata
               # subPath:
-      # volumes:
-      #   - name: dshm
+      volumes:
+        - name: aflow-data
+          emptyDir: {}
       #     emptyDir:
       #       medium: Memory
   volumeClaimTemplates:
