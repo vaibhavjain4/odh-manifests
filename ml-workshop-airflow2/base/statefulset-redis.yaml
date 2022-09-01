@@ -134,6 +134,8 @@ spec:
             #   mountPath: /tmp
 
       volumes:
+        - name: redis-data
+          emptyDir: {}
         # - name: start-scripts
         #   configMap:
         #     name: app-aflow-redis-scripts
@@ -149,17 +151,17 @@ spec:
         #   emptyDir: {}
         # - name: tmp
         #   emptyDir: {}
-  volumeClaimTemplates:
-    - metadata:
-        name: redis-data
-        labels:
-          app.kubernetes.io/name: redis
-          app.kubernetes.io/instance: app-aflow
-          app.kubernetes.io/component: master
-      spec:
-        accessModes:
-          - "ReadWriteOnce"
-        resources:
-          requests:
-            storage: "8Gi"
+#  volumeClaimTemplates:
+#    - metadata:
+#        name: redis-data
+#        labels:
+#          app.kubernetes.io/name: redis
+#          app.kubernetes.io/instance: app-aflow
+#          app.kubernetes.io/component: master
+#      spec:
+#        accessModes:
+#          - "ReadWriteOnce"
+#        resources:
+#          requests:
+#            storage: "8Gi"
 
