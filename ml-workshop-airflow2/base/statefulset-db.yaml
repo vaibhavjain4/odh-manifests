@@ -194,12 +194,12 @@ spec:
           emptyDir: {}
       #     emptyDir:
       #       medium: Memory
-  volumeClaimTemplates:
-    - metadata:
-        name: aflow-data
-      spec:
-        accessModes:
-          - "ReadWriteOnce"
-        resources:
-          requests:
-            storage: "8Gi"
+#  volumeClaimTemplates:
+#    - metadata:
+#        name: aflow-data
+#      spec:
+#        accessModes:
+#          - "ReadWriteOnce"
+#        resources:
+#          requests:
+#            storage: "8Gi"
