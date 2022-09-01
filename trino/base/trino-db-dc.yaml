@@ -65,5 +65,4 @@ spec:
           imagePullPolicy: IfNotPresent
       volumes:
         - name: "postgresql-data"
-          persistentVolumeClaim:
-            claimName: trino-db-volume
+          emptyDir: {}
