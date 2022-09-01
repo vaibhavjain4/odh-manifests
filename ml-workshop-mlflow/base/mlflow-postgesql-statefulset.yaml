@@ -106,13 +106,15 @@ spec:
               mountPath: /var/lib/pgsql/data
               subPath: pgdata
   #              subPath:
-  #      volumes:
-  volumeClaimTemplates:
-    - metadata:
-        name: mlflow-db-data
-      spec:
-        accessModes:
-          - "ReadWriteOnce"
-        resources:
-          requests:
-            storage: "8Gi"
+          volumes:
+            - name: mlflow-db-data
+              emptyDir: {}
+  # volumeClaimTemplates:
+  #  - metadata:
+  #      name: mlflow-db-data
+  #    spec:
+  #      accessModes:
+  #        - "ReadWriteOnce"
+  #      resources:
+  #        requests:
+  #          storage: "8Gi"
